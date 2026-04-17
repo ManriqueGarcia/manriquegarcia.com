@@ -11,6 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		</p>
 
 		<div class="map-legend">
+			<span class="legend-item"><span class="legend-icon" style="background:#b8960f;">🏆</span> Sublime</span>
 			<span class="legend-item"><span class="legend-icon" style="background:#1a6b3c;">🍾</span> Sidrería / Restaurante</span>
 			<span class="legend-item"><span class="legend-icon" style="background:#b45309;">🍴</span> Restaurante</span>
 			<span class="legend-item"><span class="legend-icon" style="background:#7c3aed;">🏨</span> Hotel</span>
@@ -91,8 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	var iconVisit     = icon('📍', '#0369a1');
 	var iconBar       = icon('🍺', '#be185d');
 
+	var iconSublime = icon('🏆', '#b8960f');
+
 	var places = [
 		// === SIDRERÍAS / RESTAURANTES (Gijón) ===
+		{ lat: 43.5082, lng: -5.6335, name: 'Sidrería Trabanco', info: 'Camín de la Sidra, Lavandera · Tel: 985 16 72 86<br>LA sidrería. Categoría Sublime. Producen su propia sidra y la comida ye espectacular.', url: 'https://www.trabanco.es', icon: iconSublime },
 		{ lat: 43.5329, lng: -5.6605, name: 'El Sauco', info: 'C/ Valencia 20 · Tel: 985 39 83 30<br>Sidras, pinchos, menú y carta. ★★★★★', url: 'http://www.elsauco.com', icon: iconSidreria },
 		{ lat: 43.5327, lng: -5.6588, name: 'Parrilla Antonio', info: 'Roncal 1 · Tel: 985 154 973<br>Pinchos y parrilla. ★★★★', icon: iconSidreria },
 		{ lat: 43.5330, lng: -5.6575, name: 'Sidrería Nava', info: 'C/ de la Serena 1 · Tel: 985 380 447<br>Sidra de calidad y buen menú. ★★★★', icon: iconSidreria },

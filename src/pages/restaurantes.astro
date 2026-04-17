@@ -48,7 +48,9 @@ import SidraRating from '../components/SidraRating.astro';
 			<p>
 				<strong>Sistema de puntuación:</strong> Nada de estrellitas aquí. Las valoraciones van en
 				<strong>botellines de sidra</strong>, de 3 a 5, siendo 3 "ta buenu", 4 "¡préstame!" y
-				5 "madre mía, ye pa nun marchase".
+				5 "madre mía, ye pa nun marchase". Y si ves 5 verdes + 1 dorada…
+				eso ye categoría <strong><em>Sublime</em></strong>. Ahí ya no hablamos de comer:
+				hablamos de experiencia religiosa.
 			</p>
 		</div>
 
@@ -71,6 +73,15 @@ import SidraRating from '../components/SidraRating.astro';
 		<h2>Restaurantes en Xixón</h2>
 
 		<div class="card-grid">
+			<div class="card">
+				<h3>Sidrería Trabanco</h3>
+				<SidraRating rating="sublime" />
+				<p class="address">Camín de la Sidra, Lavandera, Gijón</p>
+				<p class="phone">Tel: 985 16 72 86</p>
+				<p class="description">Esto no es una sidrería. Esto ye <strong>LA sidrería</strong>. Trabanco ye el Bernabéu de la sidra, el Vaticano del escanciado, el sitio donde los asturianos llevan a la xente de fuera cuando quieren dejarles la boca abierta. Producen su propia sidra (que ye una maravilla), la comida ye espectacular, y el sitio en sí — un lagar enorme rodeado de manzanos — ye pa quedase vivir. Si solo puedes ir a un sitio en toda Asturias, que sea este. Luego nos das las gracias.</p>
+				<p><a href="https://www.trabanco.es" rel="noopener noreferrer">trabanco.es</a></p>
+			</div>
+
 			<div class="card">
 				<h3>El Sauco</h3>
 				<SidraRating rating={5} />
