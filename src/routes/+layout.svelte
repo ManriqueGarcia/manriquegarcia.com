@@ -94,6 +94,7 @@
 <footer>
 	<div class="container">
 		<nav class="footer-nav" aria-label="Mapa del sitio">
+			<a href="/">Inicio</a>
 			<a href="/restaurantes">Restaurantes</a>
 			<a href="/bares">Bares</a>
 			<a href="/visitar">Qué visitar</a>
@@ -102,6 +103,7 @@
 			<a href="/diccionario">Diccionario</a>
 			<a href="/practico">Práctico</a>
 			<a href="/fiestas">Fiestas</a>
+			<a href="/guia">Guía PDF</a>
 		</nav>
 		<p class="footer-copy">{@html `&copy; ${year} manriquegarcia.com &mdash; Fechu con cariñu y sidra`}</p>
 	</div>

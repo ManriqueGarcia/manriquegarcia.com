@@ -1,4 +1,4 @@
-const CACHE_NAME = 'puxa-v3';
+const CACHE_NAME = 'puxa-v4';
 
 self.addEventListener('install', () => {
 	self.skipWaiting();
@@ -23,23 +23,37 @@ self.addEventListener('fetch', (event) => {
 	if (url.pathname.startsWith('/_app/immutable/')) {
 		event.respondWith(
 			caches.match(event.request).then(
-				(cached) => cached || fetch(event.request).then((res) => {
-					const clone = res.clone();
-					caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
-					return res;
-				})
+				(cached) =>
+					cached ||
+					fetch(event.request).then((res) => {
+						const clone = res.clone();
+						caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
+						return res;
+					})
 			)
 		);
 		return;
 	}
 
-	event.respondWith(
-		fetch(event.request)
-			.then((res) => {
-				const clone = res.clone();
-				caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
-				return res;
-			})
-			.catch(() => caches.match(event.request))
-	);
+	if (event.request.mode === 'navigate') {
+		event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+		return;
+	}
+
+	if (url.pathname.match(/\.(js|css|png|jpg|svg|webp|woff2?)$/)) {
+		event.respondWith(
+			caches.match(event.request).then(
+				(cached) =>
+					cached ||
+					fetch(event.request).then((res) => {
+						const clone = res.clone();
+						caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
+						return res;
+					})
+			)
+		);
+		return;
+	}
+
+	event.respondWith(fetch(event.request));
 });

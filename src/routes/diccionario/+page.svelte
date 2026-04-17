@@ -154,7 +154,7 @@
 	/>
 	<meta property="og:site_name" content="¡Puxa Asturies!" />
 	<meta property="og:locale" content="es_ES" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Diccionario | ¡Puxa Asturies!" />
 	<meta
 		name="twitter:description"

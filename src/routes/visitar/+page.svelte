@@ -206,6 +206,24 @@
 			{ '@type': 'ListItem', position: 2, name: 'Qué visitar', item: 'https://manriquegarcia.com/visitar' }
 		]
 	});
+
+	const allPlaces = [...gijon, ...oviedo, ...pueblinos];
+	const placesJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Qué visitar en Asturias',
+		itemListElement: allPlaces.map((p, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			item: {
+				'@type': 'TouristAttraction',
+				name: p.name,
+				description: p.description,
+				image: `https://manriquegarcia.com${p.image}`,
+				address: { '@type': 'PostalAddress', addressRegion: 'Asturias', addressCountry: 'ES' }
+			}
+		}))
+	});
 </script>
 
 <svelte:head>
@@ -224,7 +242,7 @@
 	/>
 	<meta property="og:site_name" content="¡Puxa Asturies!" />
 	<meta property="og:locale" content="es_ES" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Qué visitar | ¡Puxa Asturies!" />
 	<meta
 		name="twitter:description"
@@ -235,6 +253,7 @@
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html `<script type="application/ld+json">${placesJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">
@@ -295,7 +314,10 @@
 				<img
 					src={place.image}
 					alt={`Vista de ${place.name}, Asturias`}
+					width="400"
+					height="267"
 					loading="lazy"
+					decoding="async"
 					class="card-image"
 				/>
 				<div class="card-body">
@@ -322,7 +344,10 @@
 				<img
 					src={place.image}
 					alt={`Vista de ${place.name}, Asturias`}
+					width="400"
+					height="267"
 					loading="lazy"
+					decoding="async"
 					class="card-image"
 				/>
 				<div class="card-body">

@@ -50,7 +50,7 @@
 	<meta property="og:description" content={pageDesc} />
 	<meta property="og:site_name" content="¡Puxa Asturies!" />
 	<meta property="og:locale" content="es_ES" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -181,7 +181,7 @@
 		] as item, i}
 			<a href={item.href} class="nav-card" in:fly={{ y: 20, duration: 400, delay: i * 80 }}>
 				<div class="icon">{item.icon}</div>
-				<h3>{item.title}</h3>
+				<h2>{item.title}</h2>
 				<p>{item.desc}</p>
 			</a>
 		{/each}

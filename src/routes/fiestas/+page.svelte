@@ -101,6 +101,23 @@
 			{ '@type': 'ListItem', position: 2, name: 'Fiestas', item: 'https://manriquegarcia.com/fiestas' }
 		]
 	});
+
+	const eventJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Fiestas de Asturias',
+		itemListElement: fiestas.map((f, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			item: {
+				'@type': 'Event',
+				name: f.name,
+				description: f.description,
+				location: { '@type': 'Place', name: f.location, address: { '@type': 'PostalAddress', addressRegion: 'Asturias', addressCountry: 'ES' } },
+				eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode'
+			}
+		}))
+	});
 </script>
 
 <svelte:head>
@@ -113,7 +130,7 @@
 	<meta property="og:description" content={pageDesc} />
 	<meta property="og:site_name" content="¡Puxa Asturies!" />
 	<meta property="og:locale" content="es_ES" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -121,6 +138,7 @@
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html `<script type="application/ld+json">${eventJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">

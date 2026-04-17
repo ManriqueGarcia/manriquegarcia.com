@@ -198,6 +198,23 @@
 			{ '@type': 'ListItem', position: 2, name: 'Hoteles', item: 'https://manriquegarcia.com/hoteles' }
 		]
 	});
+
+	const hotelJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Hoteles en Gijón',
+		itemListElement: hotels.map((h, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			item: {
+				'@type': 'LodgingBusiness',
+				name: h.name,
+				address: { '@type': 'PostalAddress', streetAddress: h.address, addressLocality: 'Gijón', addressRegion: 'Asturias', addressCountry: 'ES' },
+				...(h.phone ? { telephone: '+34 ' + h.phone.replace(/^Tel:\s*/, '') } : {}),
+				...(h.url ? { url: h.url } : {})
+			}
+		}))
+	});
 </script>
 
 <svelte:head>
@@ -210,7 +227,7 @@
 	<meta property="og:description" content={pageDesc} />
 	<meta property="og:site_name" content="¡Puxa Asturies!" />
 	<meta property="og:locale" content="es_ES" />
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -218,6 +235,7 @@
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html `<script type="application/ld+json">${hotelJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">
