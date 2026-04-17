@@ -60,8 +60,6 @@
 
 <header>
 	<div class="container">
-		<a href="/" class="site-title">¡Puxa Asturies!</a>
-		<div class="header-actions">
 		<nav aria-label="Navegación principal">
 			<a href="/" class:active={$page.url.pathname === '/'}>Inicio</a>
 			<a href="/restaurantes" class:active={$page.url.pathname.startsWith('/restaurantes')}>Restaurantes</a>
@@ -74,17 +72,16 @@
 			<a href="/fiestas" class:active={$page.url.pathname.startsWith('/fiestas')}>Fiestas</a>
 			<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
 			<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
+			<button
+				type="button"
+				class="theme-toggle"
+				onclick={toggleTheme}
+				aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+				aria-pressed={theme === 'dark'}
+			>
+				{theme === 'dark' ? '☀️' : '🌙'}
+			</button>
 		</nav>
-		<button
-			type="button"
-			class="theme-toggle"
-			onclick={toggleTheme}
-			aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
-			aria-pressed={theme === 'dark'}
-		>
-			{theme === 'dark' ? '☀️' : '🌙'}
-		</button>
-		</div>
 	</div>
 </header>
 
@@ -111,39 +108,25 @@
 </footer>
 
 <style>
-	.header-actions {
-		display: flex;
-		align-items: center;
-		gap: 0.65rem;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-	}
-
 	.theme-toggle {
-		flex-shrink: 0;
-		width: 2.25rem;
-		height: 2.25rem;
+		appearance: none;
+		width: 1.75rem;
+		height: 1.75rem;
 		padding: 0;
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		border-radius: 50%;
 		background: rgba(255, 255, 255, 0.06);
 		color: inherit;
-		font-size: 1rem;
+		font-size: 0.85rem;
 		line-height: 1;
 		cursor: pointer;
+		vertical-align: middle;
 		transition: background 0.2s, border-color 0.2s;
 	}
 
 	.theme-toggle:hover {
 		background: rgba(255, 255, 255, 0.12);
 		border-color: rgba(255, 255, 255, 0.35);
-	}
-
-	@media (max-width: 640px) {
-		.header-actions {
-			justify-content: center;
-			width: 100%;
-		}
 	}
 
 	.nav-pdf {

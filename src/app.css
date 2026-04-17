@@ -65,11 +65,9 @@ header {
   z-index: 100;
 }
 
-header .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+header .container { display: flex; align-items: center; justify-content: center; }
 
-.site-title { font-family: var(--font-heading); color: var(--color-hero-text); font-size: 1.15rem; white-space: nowrap; }
-
-nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+nav { display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center; justify-content: center; }
 nav a { color: rgba(245, 240, 232, 0.7); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
 nav a:hover, nav a.active { color: var(--color-hero-text); background: rgba(255, 255, 255, 0.1); text-decoration: none; }
 
