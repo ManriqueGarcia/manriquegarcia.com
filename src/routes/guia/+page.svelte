@@ -14,7 +14,7 @@
 		{ name: 'Llagar El Quesu', rating: 5, address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero', phone: '985 985 304', url: 'elquesu.es', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },
 		{ name: 'Sidrería El Globo', rating: 3, address: 'C/ San Bernardo 13, 33201 Gijón', phone: '985 172 247', url: 'sidreriaelglobo.es', description: 'Comida típica asturiana sin florituras.' },
 		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. de la Costa 32, 33205 Gijón', phone: '985 161 499', url: 'sidrerialacosta.com', description: 'Especialidad en carnes argentinas. Chuletón y entraña a la parrilla con sidra asturiana.' },
-		{ name: 'Tino El Roxu', rating: 4, address: 'Av. de la Costa 30, 33205 Gijón', phone: '985 141 792', url: 'tinoelroxu.com', description: 'Cocina tradicional asturiana: carnes, pescados, mariscos.' },
+		{ name: 'La Chalana', rating: 4, address: 'C/ San José 31, 33209 Gijón', phone: '985 164 827', url: 'lachalana.com', description: 'Especialidad en marisco. Merece cada céntimo.' },
 		{ name: 'Sidrería Cabranes', rating: 4, address: 'Av. Pablo Iglesias 23, 33205 Gijón', phone: '985 131 487', url: 'sidreriacabranes.es', description: 'El rabo de toro ye pa llorar de la emoción.' },
 	];
 

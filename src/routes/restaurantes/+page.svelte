@@ -94,13 +94,13 @@
 			url: 'http://sidrerialacosta.com'
 		},
 		{
-			name: 'Tino El Roxu',
+			name: 'La Chalana',
 			rating: 4,
-			address: 'Av. de la Costa 30, 33205 Gijón',
-			phone: '985 141 792',
+			address: 'C/ San José 31, 33209 Gijón',
+			phone: '985 164 827',
 			description:
-				'Cocina tradicional asturiana de la de verdad: carnes, pescados, mariscos. De esos restaurantes que llevan los abuelos toda la vida recomendando.',
-			url: 'https://www.tinoelroxu.com'
+				'Especialidad en marisco. Aviso: saldrás con los ojos como platos y la cartera ligera, pero feliz. Muy feliz. Merece cada céntimo, oh.',
+			url: 'http://www.lachalana.com'
 		},
 		{
 			name: 'Sidrería Cabranes',

@@ -82,11 +82,12 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.542,
-			lng: -5.6548,
-			name: 'Tino El Roxu',
-			info: 'Av. de la Costa 30 · Tel: 985 141 792<br>Cocina tradicional asturiana. ★★★★',
-			type: 'sidreria'
+			lat: 43.5374,
+			lng: -5.6655,
+			name: 'La Chalana',
+			info: 'C/ San José 31 · Tel: 985 164 827<br>Especialidad en marisco. ★★★★',
+			url: 'http://www.lachalana.com',
+			type: 'restaurant'
 		},
 		{
 			lat: 43.5382,
