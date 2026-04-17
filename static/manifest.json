@@ -1,0 +1,11 @@
+{
+  "name": "¡Puxa Asturies! - Guía de Asturias",
+  "short_name": "Puxa Asturies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a3a2a",
+  "theme_color": "#1a3a2a",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

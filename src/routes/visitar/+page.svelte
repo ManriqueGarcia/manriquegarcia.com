@@ -1,5 +1,8 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
+	import NearMe from '$lib/components/NearMe.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import { slugify } from '$lib/utils/slugify.js';
 
 	const gijon = [
 		{
@@ -82,6 +85,8 @@
 	const pueblinos = [
 		{
 			name: 'Candás',
+			lat: 43.5906,
+			lng: -5.7736,
 			dist: '15 km desde Xixón · 40 km desde Uviéu',
 			description:
 				'Miradores, playas, puerto pesquero y el Festival de la Sardina el 1 de agosto (todo el pueblo oliendo a sardinas a la brasa, una maravilla). Si vas en verano, no te lo pierdas. Si vas en invierno, también mola.',
@@ -89,6 +94,8 @@
 		},
 		{
 			name: 'Luanco',
+			lat: 43.6167,
+			lng: -5.7936,
 			dist: '20 km desde Xixón · 45 km desde Uviéu',
 			description:
 				'La zona de veraneo favorita de los asturianos. Playas guapes, buen pescao, y ese ritmo lento de pueblo marinero que te hace olvidar que existen los emails. Prescripción médica: mínimo un día aquí.',
@@ -96,6 +103,8 @@
 		},
 		{
 			name: 'Colunga',
+			lat: 43.4867,
+			lng: -5.2722,
 			dist: '45 km desde Xixón · 65 km desde Uviéu',
 			description:
 				'El conceyu de Colunga ye tierra de dinosaurios (literalmente: el MUJA, Museo del Jurásico, está aquí al lau). Pueblo tranquilu con buena gastronomía, sidra y una costa que quita el hipo. Además, Lastres pertenece a Colunga, así que dos por el precio de uno.',
@@ -103,6 +112,8 @@
 		},
 		{
 			name: 'Lastres',
+			lat: 43.519,
+			lng: -5.269,
 			dist: '50 km desde Xixón · 70 km desde Uviéu',
 			description:
 				'Conocido como "San Martín del Sella" por la serie Doctor Mateo. Si la viste, reconocerás cada rincón. Si no la viste, te da igual: el pueblo ye guapísimo con o sin tele.',
@@ -110,6 +121,8 @@
 		},
 		{
 			name: 'Cudillero',
+			lat: 43.569,
+			lng: -6.146,
 			dist: '60 km desde Xixón · 55 km desde Uviéu',
 			description:
 				'El pueblo más fotogénico de Asturias. Casines de colores apilaes en la ladera como si fueran fichas de dominó. Es tan bonito que cuesta creer que sea real y no un decorado de película.',
@@ -117,6 +130,8 @@
 		},
 		{
 			name: 'Ribadesella',
+			lat: 43.4625,
+			lng: -5.0583,
 			dist: '70 km desde Xixón · 85 km desde Uviéu',
 			description:
 				'Famosa por el Descenso Internacional del Sella en piraguas: miles de personas, mucha folixia y ríu pa dar y regalar. Fuera de temporada es un pueblo tranquilo pa pasear por la ría. Playa de Santa Marina, espectacular.',
@@ -124,6 +139,8 @@
 		},
 		{
 			name: 'Llanes',
+			lat: 43.42,
+			lng: -4.75,
 			dist: '110 km desde Xixón · 130 km desde Uviéu',
 			description:
 				'Playas de esas que salen en las postales y los Cubos de la Memoria de Ibarrola: bloques de hormigón pintados que están más guapos que muchos cuadros de museo. Arte, mar y sidra. ¿Se puede pedir más?',
@@ -131,6 +148,8 @@
 		},
 		{
 			name: 'Luarca',
+			lat: 43.5464,
+			lng: -6.5319,
 			dist: '115 km desde Xixón · 95 km desde Uviéu',
 			description:
 				'La "Villa Blanca de la Costa Verde". Un pueblo marinero precioso metíu entre acantilados con un puerto que ye una postal. Aquí nació Severo Ochoa, premio Nobel. El cementerio con vistas al mar ye de los más bonitos que vas a ver (morboso pero cierto). El faro, los acantilados y la ermita en lo alto completan un combo imbatible.',
@@ -138,6 +157,8 @@
 		},
 		{
 			name: 'Tapia de Casariego',
+			lat: 43.567,
+			lng: -6.943,
 			dist: '170 km desde Xixón · 150 km desde Uviéu',
 			description:
 				'Capital del surf en Asturias, campeonatos mundiales incluidos. Pero no hace falta surfear: el pueblo ye una maravilla con su isla del faro, sus playas salvajes y un ambiente tranquilu que engancha. La playa de Peñarronda, compartida con Castropol, ye de las más guapes del Cantábrico. Merece el viaje aunque pille lejos.',
@@ -145,6 +166,8 @@
 		},
 		{
 			name: 'Taramundi',
+			lat: 43.358,
+			lng: -7.112,
 			dist: '195 km desde Xixón · 175 km desde Uviéu',
 			description:
 				'El pueblo que inventó el turismo rural en España (en serio, fue el primero en los años 80). Famoso por sus cuchillos artesanales — la navaja taramundi ye un clásico — y por el conjunto etnográfico de Os Teixois, con mazos, fraguas y molinos movidos por agua. Está en el interior profundo de Asturias, rodeado de bosques y ríos. Si buscas desconexión total, ye tu sitio.',
@@ -244,12 +267,17 @@
 		(casi en Galicia), toos ganan. Ordenáoslos de más cerca a más lejos pa que planifiques la ruta.
 	</p>
 
+	<NearMe places={pueblinos} />
+
 	<div class="card-grid">
 		{#each pueblinos as place (place.name)}
 			<article class="card has-image" use:reveal>
 				<img src={place.image} alt="" loading="lazy" class="card-image" />
 				<div class="card-body">
-					<h3>{place.name}</h3>
+					<div class="place-title-row">
+						<h3>{place.name}</h3>
+						<FavoriteButton slug={`pueblo-${slugify(place.name)}`} name={place.name} />
+					</div>
 					{#if place.dist}
 						<span class="dist-badge">🚗 {place.dist}</span>
 					{/if}
@@ -274,3 +302,18 @@
 		page="/visitar"
 	/>
 </main>
+
+<style>
+	.place-title-row {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.place-title-row h3 {
+		margin: 0;
+		flex: 1;
+		min-width: 0;
+	}
+</style>

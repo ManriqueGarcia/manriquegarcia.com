@@ -2,6 +2,10 @@
 	import { fly } from 'svelte/transition';
 	import SidraRating from '$lib/components/SidraRating.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareWhatsApp from '$lib/components/ShareWhatsApp.svelte';
+	import QuickRating from '$lib/components/QuickRating.svelte';
+	import { slugify } from '$lib/utils/slugify.js';
 
 	const restaurants = [
 		{
@@ -258,6 +262,14 @@
 								<a href={r.url} target="_blank" rel="noopener noreferrer">Web oficial →</a>
 							</p>
 						{/if}
+						<div class="card-actions-row">
+							<FavoriteButton slug={`rest-${slugify(r.name)}`} name={r.name} />
+							<ShareWhatsApp
+								name={r.name}
+								description={r.description.length > 140 ? r.description.slice(0, 137) + '…' : r.description}
+							/>
+							<QuickRating itemId={`rest-${slugify(r.name)}`} label="¿Qué tal?" />
+						</div>
 					</div>
 				</article>
 			{/each}
@@ -380,5 +392,15 @@
 	.card-actions a {
 		font-weight: 600;
 		color: var(--color-accent);
+	}
+
+	.card-actions-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 0.75rem;
+		margin-top: 0.85rem;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--color-border);
 	}
 </style>

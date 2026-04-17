@@ -19,6 +19,21 @@
   --radius: 12px;
 }
 
+[data-theme="dark"] {
+  --color-bg: #1a1a2e;
+  --color-text: #e8e4de;
+  --color-text-muted: #a0a0a0;
+  --color-accent: #4dd882;
+  --color-accent-light: #1a3a2a;
+  --color-accent-hover: #6ee89a;
+  --color-warm: #e8854a;
+  --color-warm-light: #3a2a1a;
+  --color-border: #2a2a3e;
+  --color-card: #22223a;
+  --color-hero-bg: #0f0f1e;
+  --color-hero-text: #e8e4de;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {

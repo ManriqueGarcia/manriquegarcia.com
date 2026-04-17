@@ -1,5 +1,8 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import ShareWhatsApp from '$lib/components/ShareWhatsApp.svelte';
+	import { slugify } from '$lib/utils/slugify.js';
 
 	const hotels = [
 		{
@@ -206,7 +209,13 @@
 	<div class="card-grid">
 		{#each hotels as h (h.name)}
 			<article class="card">
-				<h3>{h.name}</h3>
+				<div class="hotel-title-row">
+					<h3>{h.name}</h3>
+					<div class="hotel-actions">
+						<FavoriteButton slug={`hotel-${slugify(h.name)}`} name={h.name} />
+						<ShareWhatsApp name={h.name} description={h.description} />
+					</div>
+				</div>
 				<p class="address">{h.address}</p>
 				{#if h.phone}
 					<p class="phone">{h.phone}</p>
@@ -239,6 +248,27 @@
 </main>
 
 <style>
+	.hotel-title-row {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-bottom: 0.35rem;
+	}
+
+	.hotel-title-row h3 {
+		margin: 0;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.hotel-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		flex-shrink: 0;
+	}
+
 	.tags {
 		display: flex;
 		flex-wrap: wrap;

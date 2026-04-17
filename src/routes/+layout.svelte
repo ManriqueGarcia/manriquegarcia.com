@@ -2,10 +2,54 @@
 	import '../app.css';
 	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
 	const year = new Date().getFullYear();
+
+	const ASTURIAN_PHRASES = [
+		'Asturies ye sidra, mar y montaña',
+		'Nun hai pan duru pa bona sidra',
+		'En Asturies, el paraguas ye complementu obligatoriu',
+		'Más vale culín en mano que botella per abrir',
+		'Si nun llueve, nun ye Asturies',
+		'Fai un día ñubláu... como siempre',
+		'Aquí comemos como si mañana nun existiera',
+		'En Xixón, la playa ye el salón de casa',
+		'Puxa Sporting, pase lo que pase',
+		'La fabada nun entiende de dietas',
+		'Esti paraísu natural ta meyor con sidra',
+		'Que nun te engañe el sol: lleva chubasqueru',
+		'De cañes por Xixón, ¿qué puede salir mal?',
+		'Asturies nun se visita, Asturies se vive',
+		'Si la vida te da manzanes, fai sidra'
+	];
+
+	let asturianPhrase = $state(
+		ASTURIAN_PHRASES[Math.floor(Math.random() * ASTURIAN_PHRASES.length)]
+	);
+
+	let theme = $state(/** @type {'light' | 'dark'} */ ('light'));
+	let themeHydrated = $state(false);
+
+	onMount(() => {
+		const stored = localStorage.getItem('theme');
+		if (stored === 'dark' || stored === 'light') {
+			theme = stored;
+		}
+		themeHydrated = true;
+	});
+
+	$effect(() => {
+		if (!themeHydrated) return;
+		document.documentElement.dataset.theme = theme;
+		localStorage.setItem('theme', theme);
+	});
+
+	function toggleTheme() {
+		theme = theme === 'dark' ? 'light' : 'dark';
+	}
 </script>
 
 <svelte:head>
@@ -57,21 +101,13 @@
 					</g>
 					<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
 				</svg>
-				<!-- Escudo del Sporting: rojiblanco con 7 franjas y forma de escudo -->
-				<svg class="hf hf-shield" viewBox="0 0 40 48" title="Real Sporting de Gijón">
-					<defs><clipPath id="fs"><path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z"/></clipPath></defs>
-					<g clip-path="url(#fs)">
-						<rect width="40" height="48" fill="#fff"/>
-						<rect x="0" width="5.7" height="48" fill="#CC2229"/>
-						<rect x="11.4" width="5.7" height="48" fill="#CC2229"/>
-						<rect x="22.8" width="5.7" height="48" fill="#CC2229"/>
-						<rect x="34.3" width="5.7" height="48" fill="#CC2229"/>
-					</g>
-					<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-				</svg>
+				<!-- Escudo oficial del Real Sporting de Gijón -->
+				<img class="hf hf-shield" src="/images/sporting-gijon.svg" alt="Real Sporting de Gijón" title="Real Sporting de Gijón" />
 			</span>
 			<a href="/" class="site-title">¡Puxa Asturies!</a>
+			<p class="header-subtitle">{asturianPhrase}</p>
 		</div>
+		<div class="header-actions">
 		<nav>
 			<a href="/" class:active={$page.url.pathname === '/'}>Inicio</a>
 			<a href="/restaurantes" class:active={$page.url.pathname.startsWith('/restaurantes')}>Restaurantes</a>
@@ -80,8 +116,21 @@
 			<a href="/hoteles" class:active={$page.url.pathname.startsWith('/hoteles')}>Hoteles</a>
 			<a href="/mapa" class:active={$page.url.pathname.startsWith('/mapa')}>Mapa</a>
 			<a href="/diccionario" class:active={$page.url.pathname.startsWith('/diccionario')}>Diccionario</a>
+			<a href="/practico" class:active={$page.url.pathname.startsWith('/practico')}>Práctico</a>
+			<a href="/fiestas" class:active={$page.url.pathname.startsWith('/fiestas')}>Fiestas</a>
+			<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
 			<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
 		</nav>
+		<button
+			type="button"
+			class="theme-toggle"
+			onclick={toggleTheme}
+			aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
+			aria-pressed={theme === 'dark'}
+		>
+			{theme === 'dark' ? '☀️' : '🌙'}
+		</button>
+		</div>
 	</div>
 </header>
 
@@ -115,6 +164,57 @@
 
 	.brand:hover .header-flags {
 		opacity: 1;
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
+	.theme-toggle {
+		flex-shrink: 0;
+		width: 2.25rem;
+		height: 2.25rem;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.06);
+		color: inherit;
+		font-size: 1rem;
+		line-height: 1;
+		cursor: pointer;
+		transition: background 0.2s, border-color 0.2s;
+	}
+
+	.theme-toggle:hover {
+		background: rgba(255, 255, 255, 0.12);
+		border-color: rgba(255, 255, 255, 0.35);
+	}
+
+	.header-subtitle {
+		font-size: 0.72rem;
+		font-style: italic;
+		color: rgba(255, 255, 255, 0.5);
+		margin: 0;
+		line-height: 1.35;
+		max-width: min(100%, 42ch);
+	}
+
+	@media (max-width: 640px) {
+		.header-actions {
+			justify-content: center;
+			width: 100%;
+		}
+
+		.header-subtitle {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+		}
 	}
 
 	.nav-pdf {

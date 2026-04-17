@@ -1,5 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
 </script>
 
 <svelte:head>
@@ -32,6 +33,11 @@
 		que un pulpu en un garaje.
 	</p>
 
+	<div class="home-weather">
+		<p class="home-weather-label">Tiempu en Xixón (por si tienes que decidir si llevas paragües)</p>
+		<WeatherWidget />
+	</div>
+
 	<nav class="nav-cards">
 		{#each [
 			{
@@ -58,6 +64,18 @@
 				title: 'Hoteles',
 				desc: 'Pa echase a dormir después de tanta sidra'
 			},
+			{
+				href: '/practico',
+				icon: '🧳',
+				title: 'Práctico',
+				desc: 'Cómo llegar, moverte y númberos que salven el día'
+			},
+			{
+				href: '/fiestas',
+				icon: '🎉',
+				title: 'Fiestas',
+				desc: 'Calendariu de folixa y tradición (con humor)'
+			},
 			{ href: '/mapa', icon: '🗺️', title: 'Mapa', desc: 'Too colocáu en el mapa, que nun te pierdas' },
 			{
 				href: '/diccionario',
@@ -82,3 +100,26 @@
 		</p>
 	</div>
 </main>
+
+<style>
+	.home-weather {
+		margin: 2rem 0 2.25rem;
+		padding: 1.25rem 1.35rem;
+		background: var(--color-accent-light, #e8f5ed);
+		border-radius: var(--radius, 12px);
+		border: 1px solid rgba(26, 107, 60, 0.2);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.85rem;
+	}
+
+	.home-weather-label {
+		margin: 0;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--color-accent, #1a6b3c);
+		max-width: 28rem;
+		line-height: 1.45;
+	}
+</style>
