@@ -71,10 +71,10 @@
 		opacity: 0.9;
 	}
 	.sidra-label {
-		font-size: 0.8rem;
-		color: rgba(255, 255, 255, 0.7);
+		font-size: 0.85rem;
+		color: #fff;
 		margin-left: 0.4rem;
-		font-weight: 500;
+		font-weight: 600;
 	}
 	.sublime-label {
 		color: #ffd54f;
