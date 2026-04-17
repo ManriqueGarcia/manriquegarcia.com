@@ -466,6 +466,15 @@
 			map?.remove();
 		};
 	});
+
+	const breadcrumbJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://manriquegarcia.com/' },
+			{ '@type': 'ListItem', position: 2, name: 'Mapa', item: 'https://manriquegarcia.com/mapa' }
+		]
+	});
 </script>
 
 <svelte:head>
@@ -490,6 +499,11 @@
 		name="twitter:description"
 		content="Mapa interactivo de Asturias con restaurantes, sidrerías, hoteles y lugares de interés marcados."
 	/>
+	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
+	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 	<link
 		rel="stylesheet"
 		href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"

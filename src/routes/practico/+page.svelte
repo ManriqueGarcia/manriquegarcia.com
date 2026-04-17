@@ -5,6 +5,62 @@
 	const pageDesc =
 		'Información práctica para visitar Asturias: cómo llegar, transporte, teléfonos útiles, clima y costumbres.';
 	const canonical = 'https://manriquegarcia.com/practico';
+
+	const breadcrumbJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://manriquegarcia.com/' },
+			{ '@type': 'ListItem', position: 2, name: 'Info Práctica', item: 'https://manriquegarcia.com/practico' }
+		]
+	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Cómo llegar a Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Puedes llegar en avión al aeropuerto de Asturias (OVD), en tren con Renfe/ALSA, o en coche por la A-66 o la autovía del Cantábrico.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cómo moverse por Gijón?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Gijón se recorre fácil a pie. También hay autobuses urbanos y puedes alquilar bicicletas. Para pueblos cercanos necesitarás coche.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Qué tiempo hace en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Asturias tiene clima oceánico. Llueve bastante, las temperaturas son suaves (8-25°C) y siempre hay que llevar chubasquero, incluso en verano.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Se deja propina en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'No es obligatorio pero se agradece. Redondear la cuenta o dejar 1-2€ en restaurantes es lo habitual.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Qué es el escanciado de sidra?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Es la forma tradicional de servir sidra asturiana: se vierte desde altura para que la sidra se oxigene y coja ese punto espumoso. Se sirve en un culín (vaso pequeño) y se bebe de un trago.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -20,6 +76,12 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
+	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
+	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html `<script type="application/ld+json">${faqJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">

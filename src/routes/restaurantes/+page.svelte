@@ -127,24 +127,36 @@
 	const pageDesc =
 		'Las mejores sidrerías y restaurantes de Gijón y Asturias con valoraciones, direcciones y el ritual del escanciado de sidra.';
 	const canonical = 'https://manriquegarcia.com/restaurantes';
-	const restaurantListJsonLd = JSON.stringify({
+	const restaurantJsonLd = JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'ItemList',
-		name: 'Mejores sidrerías y restaurantes de Gijón',
-		itemListElement: restaurants.slice(0, 6).map((r, i) => {
-			/** @type {Record<string, unknown>} */
-			const item = {
+		name: 'Mejores sidrerías y restaurantes de Asturias',
+		itemListElement: restaurants.map((r, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			item: {
 				'@type': 'Restaurant',
 				name: r.name,
-				address: r.address
-			};
-			if (r.phone) {
-				const digits = r.phone.replace(/\s+/g, '');
-				item.telephone = digits.startsWith('+') ? digits : `+34${digits}`;
+				address: r.address,
+				...(r.phone && { telephone: `+34${r.phone.replace(/\s/g, '')}` }),
+				...(r.url && { url: r.url }),
+				servesCuisine: 'Asturiana'
 			}
-			if (r.url) item.url = r.url;
-			return { '@type': 'ListItem', position: i + 1, item };
-		})
+		}))
+	});
+
+	const breadcrumbJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://manriquegarcia.com/' },
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Restaurantes y Sidrerías',
+				item: 'https://manriquegarcia.com/restaurantes'
+			}
+		]
 	});
 </script>
 
@@ -161,7 +173,12 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
-	{@html `<script type="application/ld+json">${restaurantListJsonLd}<\/script>`}
+	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
+	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html `<script type="application/ld+json">${restaurantJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">

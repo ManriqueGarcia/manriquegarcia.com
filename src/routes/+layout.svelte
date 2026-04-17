@@ -123,13 +123,22 @@
 					<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
 				</svg>
 				<!-- Escudo oficial del Real Sporting de Gijón -->
-				<img class="hf hf-shield" src="/images/sporting-gijon.svg" alt="Real Sporting de Gijón" title="Real Sporting de Gijón" />
+				<img
+					class="hf hf-shield"
+					src="/images/sporting-gijon.svg"
+					alt="Real Sporting de Gijón"
+					title="Real Sporting de Gijón"
+					width="17"
+					height="20"
+					loading="lazy"
+					decoding="async"
+				/>
 			</span>
 			<a href="/" class="site-title">¡Puxa Asturies!</a>
 			<p class="header-subtitle">{asturianPhrase}</p>
 		</div>
 		<div class="header-actions">
-		<nav>
+		<nav aria-label="Navegación principal">
 			<a href="/" class:active={$page.url.pathname === '/'}>Inicio</a>
 			<a href="/restaurantes" class:active={$page.url.pathname.startsWith('/restaurantes')}>Restaurantes</a>
 			<a href="/bares" class:active={$page.url.pathname.startsWith('/bares')}>Bares y Cafés</a>
@@ -163,7 +172,17 @@
 
 <footer>
 	<div class="container">
-		{@html `&copy; ${year} manriquegarcia.com &mdash; Fechu con cariñu y sidra`}
+		<nav class="footer-nav" aria-label="Mapa del sitio">
+			<a href="/restaurantes">Restaurantes</a>
+			<a href="/bares">Bares</a>
+			<a href="/visitar">Qué visitar</a>
+			<a href="/hoteles">Hoteles</a>
+			<a href="/mapa">Mapa</a>
+			<a href="/diccionario">Diccionario</a>
+			<a href="/practico">Práctico</a>
+			<a href="/fiestas">Fiestas</a>
+		</nav>
+		<p class="footer-copy">{@html `&copy; ${year} manriquegarcia.com &mdash; Fechu con cariñu y sidra`}</p>
 	</div>
 </footer>
 
@@ -253,5 +272,31 @@
 	.hf-shield {
 		width: 17px;
 		height: 20px;
+	}
+
+	.footer-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem 1.25rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.footer-nav a {
+		color: rgba(255, 255, 255, 0.6);
+		text-decoration: none;
+		font-size: 0.85rem;
+		transition: color 0.2s;
+	}
+
+	.footer-nav a:hover {
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.footer-copy {
+		margin: 0;
+		font-size: 0.85rem;
+		opacity: 0.5;
+		text-align: center;
 	}
 </style>

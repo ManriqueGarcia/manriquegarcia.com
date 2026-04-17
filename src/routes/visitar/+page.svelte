@@ -197,6 +197,15 @@
 			}
 		};
 	}
+
+	const breadcrumbJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://manriquegarcia.com/' },
+			{ '@type': 'ListItem', position: 2, name: 'Qué visitar', item: 'https://manriquegarcia.com/visitar' }
+		]
+	});
 </script>
 
 <svelte:head>
@@ -221,6 +230,11 @@
 		name="twitter:description"
 		content="Qué visitar en Asturias: Gijón, Oviedo, Cudillero, Llanes, Luarca y más pueblos con fotos y distancias en coche."
 	/>
+	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
+	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">
@@ -254,7 +268,10 @@
 				<img
 					src={place.image}
 					alt={`Vista de ${place.name}, Asturias`}
+					width="400"
+					height="267"
 					loading="lazy"
+					decoding="async"
 					class="card-image"
 				/>
 				<div class="card-body">

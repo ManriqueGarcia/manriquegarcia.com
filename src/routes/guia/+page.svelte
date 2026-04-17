@@ -119,6 +119,15 @@
 	const pageDesc =
 		'Descarga la guía completa de Asturias en PDF: restaurantes, bares, hoteles, diccionario y lugares que visitar.';
 	const canonical = 'https://manriquegarcia.com/guia';
+
+	const breadcrumbJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://manriquegarcia.com/' },
+			{ '@type': 'ListItem', position: 2, name: 'Guía PDF', item: 'https://manriquegarcia.com/guia' }
+		]
+	});
 </script>
 
 <svelte:head>
@@ -134,6 +143,11 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
+	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
+	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="guia container">
