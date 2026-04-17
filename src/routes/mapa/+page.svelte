@@ -14,23 +14,23 @@
 			type: 'sublime'
 		},
 		{
-			lat: 43.5329,
-			lng: -5.6605,
+			lat: 43.5277,
+			lng: -5.669,
 			name: 'El Sauco',
 			info: 'C/ Valencia 20 · Tel: 985 39 83 30<br>Sidras, pinchos, menú y carta. ★★★★★',
 			url: 'http://www.elsauco.com',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5327,
-			lng: -5.6588,
+			lat: 43.5395,
+			lng: -5.6681,
 			name: 'Parrilla Antonio',
 			info: 'Roncal 1 · Tel: 985 154 973<br>Pinchos y parrilla. ★★★★',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.533,
-			lng: -5.6575,
+			lat: 43.5301,
+			lng: -5.6648,
 			name: 'Sidrería Nava',
 			info: 'C/ de la Serena 1 · Tel: 985 380 447<br>Sidra de calidad y buen menú. ★★★★',
 			type: 'sidreria'
@@ -59,38 +59,38 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.3963,
-			lng: -5.7735,
+			lat: 43.3914,
+			lng: -5.7533,
 			name: 'Llagar El Quesu',
 			info: 'Ctra. AS-17 Km 26, Bobes · Tel: 985 985 304<br>Parrilla argentina, muy acogedor. ★★★★★',
 			url: 'https://elquesu.es',
 			type: 'restaurant'
 		},
 		{
-			lat: 43.544,
-			lng: -5.6657,
+			lat: 43.5429,
+			lng: -5.6622,
 			name: 'Sidrería El Globo',
 			info: 'C/ San Bernardo 13 · Tel: 985 17 22 47<br>Comida típica asturiana. ★★★★',
 			url: 'http://www.sidreriaelglobo.es',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5418,
-			lng: -5.6553,
+			lat: 43.5372,
+			lng: -5.6606,
 			name: 'Sidrería La Costa',
 			info: 'Av. Costa 32<br>Especialidad en caza. ★★★★',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5382,
-			lng: -5.6509,
+			lat: 43.536,
+			lng: -5.6568,
 			name: 'Sidrería Cabranes',
 			info: 'Av. Pablo Iglesias 23 · Tel: 98 513 1487<br>Rabo de toro. ★★★★',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5332,
-			lng: -5.6592,
+			lat: 43.5282,
+			lng: -5.6686,
 			name: 'Barrio de la Sidra',
 			info: 'Zona del Llano: Parrilla Antonio I, Casa César, La Esquina, La Tropical, El Llabiegu, La Xana, Boal II, La Pumarada.',
 			type: 'sidreria'
@@ -103,15 +103,15 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.549,
-			lng: -5.6628,
+			lat: 43.5459,
+			lng: -5.6681,
 			name: 'Puerto Deportivo',
 			info: 'Escondite, Bulevar, La Habana…',
 			type: 'bar'
 		},
 		{
-			lat: 43.5448,
-			lng: -5.667,
+			lat: 43.5415,
+			lng: -5.6695,
 			name: 'Zona de Fomento',
 			info: 'Bodeguita del Medio, El Diario…',
 			type: 'bar'
@@ -131,8 +131,8 @@
 			type: 'bar'
 		},
 		{
-			lat: 43.5432,
-			lng: -5.652,
+			lat: 43.5427,
+			lng: -5.659,
 			name: 'Playa de San Lorenzo',
 			info: 'Playa urbana en pleno centro de Gijón.',
 			type: 'visit'
@@ -152,15 +152,15 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.538,
+			lat: 43.5221,
 			lng: -5.6453,
 			name: 'Parque Isabel la Católica',
 			info: 'Estanque de patos y cisnes, palomar y aviario.',
 			type: 'visit'
 		},
 		{
-			lat: 43.5362,
-			lng: -5.642,
+			lat: 43.5363,
+			lng: -5.6375,
 			name: 'El Molinón',
 			info: 'Estadio del Real Sporting de Gijón.',
 			url: 'https://www.realsporting.com',
@@ -175,7 +175,7 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.5691,
+			lat: 43.5623,
 			lng: -5.7040,
 			name: 'La Campa de Torres',
 			info: 'Parque Arqueológico-Natural, restos del castro de Noega.',
@@ -183,7 +183,7 @@
 		},
 		{
 			lat: 43.5200,
-			lng: -5.6193,
+			lng: -5.6233,
 			name: 'Jardín Botánico Atlántico',
 			info: 'Flora y vegetación atlántica. Tel: 985 18 51 30.',
 			url: 'https://www.botanico.gijon.es',
@@ -228,8 +228,8 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.5157,
-			lng: -5.2618,
+			lat: 43.5148,
+			lng: -5.2928,
 			name: 'Lastres',
 			info: '"San Martín del Sella" de Doctor Mateo.',
 			type: 'visit'
@@ -265,8 +265,8 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.5467,
-			lng: -6.5367,
+			lat: 43.5449,
+			lng: -6.5339,
 			name: 'Luarca',
 			info: 'La Villa Blanca de la Costa Verde. Puerto preciosu, faro y cementerio con vistas.',
 			type: 'visit'
@@ -293,24 +293,24 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.5414,
-			lng: -5.6596,
+			lat: 43.5394,
+			lng: -5.6624,
 			name: 'Hotel Hernán Cortés',
 			info: 'Fernández Vallín 5 · Tel: 985 346 000<br>Centro, 10 min de playa.',
 			url: 'https://hotelhernancortes.es',
 			type: 'hotel'
 		},
 		{
-			lat: 43.547,
-			lng: -5.6368,
+			lat: 43.5429,
+			lng: -5.639,
 			name: 'Hotel Begoña Park',
 			info: 'Ctra. Providencia 566 · Tel: 985 133 909<br>Cerca del Rinconín.',
 			url: 'https://hotelesbegona.com',
 			type: 'hotel'
 		},
 		{
-			lat: 43.5385,
-			lng: -5.6422,
+			lat: 43.5412,
+			lng: -5.6432,
 			name: 'Hotel ABBA',
 			info: 'Doctor Fleming 37<br>Junto a playa y Parque Isabel la Católica.',
 			url: 'https://abbagijonhotel.com',
@@ -333,15 +333,15 @@
 		},
 		{
 			lat: 43.538,
-			lng: -5.6635,
+			lng: -5.6823,
 			name: 'Hotel AC Gijón',
 			info: 'Avda. de Oviedo 15 · Tel: 985 990 500<br>Moderno, zona residencial.',
 			url: 'https://ac-hotels.com',
 			type: 'hotel'
 		},
 		{
-			lat: 43.5445,
-			lng: -5.66,
+			lat: 43.5433,
+			lng: -5.6657,
 			name: 'Hotel Blue Santa Rosa',
 			info: 'Santa Rosa 4 · Tel: 985 091 919<br>Centro peatonal, 50m de playa.',
 			url: 'https://bluehoteles.es',
@@ -349,38 +349,38 @@
 		},
 		{
 			lat: 43.546,
-			lng: -5.661,
+			lng: -5.6657,
 			name: 'Hotel Blue Marqués',
 			info: 'Marqués de San Esteban 11 · Tel: 985 090 929<br>Edificio clásico junto al Puerto.',
 			url: 'https://bluehoteles.es',
 			type: 'hotel'
 		},
 		{
-			lat: 43.5408,
-			lng: -5.657,
+			lat: 43.5376,
+			lng: -5.6584,
 			name: 'B&B Hotel Gijón Centro Begoña',
 			info: 'Avda. de la Costa 44 · Tel: 985 147 211<br>Centro, zona comercial.',
 			url: 'https://www.hotel-bb.com/es/hotel/gijon-centro-begona',
 			type: 'hotel'
 		},
 		{
-			lat: 43.543,
-			lng: -5.661,
+			lat: 43.5429,
+			lng: -5.6638,
 			name: 'Hotel Miramar',
 			info: 'C/ Santa Lucía 9 · Tel: 985 351 008<br>Edificio de 1926, junto a playa y puerto.',
 			type: 'hotel'
 		},
 		{
-			lat: 43.544,
-			lng: -5.655,
+			lat: 43.5389,
+			lng: -5.6482,
 			name: 'Hotel Arena',
 			info: 'Dr. Aquilino Hurlé 31 · Tel: 985 339 700<br>100m de playa San Lorenzo.',
 			url: 'https://hotelarena.es',
 			type: 'hotel'
 		},
 		{
-			lat: 43.535,
-			lng: -5.656,
+			lat: 43.5171,
+			lng: -5.6751,
 			name: 'Hotel Villa de Gijón',
 			info: 'C/ San Juan de Vallés 3 · Tel: 985 141 824',
 			url: 'https://hotelvilladegijon.com',
@@ -395,8 +395,8 @@
 			type: 'hotel'
 		},
 		{
-			lat: 43.5136,
-			lng: -5.5994,
+			lat: 43.5126,
+			lng: -5.5974,
 			name: 'Camping Deva',
 			info: 'Camín de la Pasadiella 85 · Tel: 985 13 38 48<br>Bungalows, cabañas y chalets.',
 			type: 'hotel'
