@@ -18,43 +18,59 @@
 <header>
 	<div class="container">
 		<div class="brand">
-			<a href="/" class="site-title">¡Puxa Asturies!</a>
-			<span class="header-flags" aria-hidden="true" title="Asturies · Xixón · Sporting">
-				<!-- Asturias: azul + Cruz de la Victoria -->
-				<svg class="hf" viewBox="0 0 30 20">
-					<defs><clipPath id="fa"><rect width="30" height="20" rx="2.5"/></clipPath></defs>
+			<span class="header-flags" aria-hidden="true">
+				<!-- Bandera de Asturias -->
+				<svg class="hf" viewBox="0 0 60 40" title="Asturies">
+					<defs><clipPath id="fa"><rect width="60" height="40" rx="3"/></clipPath></defs>
 					<g clip-path="url(#fa)">
-						<rect width="30" height="20" fill="#005DAA"/>
-						<line x1="15" y1="3.5" x2="15" y2="17" stroke="#D4A017" stroke-width="1.6" stroke-linecap="round"/>
-						<line x1="10.5" y1="8" x2="19.5" y2="8" stroke="#D4A017" stroke-width="1.6" stroke-linecap="round"/>
-						<text x="8" y="9.5" font-size="4.5" fill="#D4A017" font-family="serif" text-anchor="middle">α</text>
-						<text x="22" y="9.5" font-size="4.5" fill="#D4A017" font-family="serif" text-anchor="middle">ω</text>
+						<rect width="60" height="40" fill="#005DAA"/>
+						<g transform="translate(30,18)">
+							<line y1="-12" y2="14" stroke="#D4A017" stroke-width="2.8" stroke-linecap="round"/>
+							<line x1="-8" x2="8" y1="-3" y2="-3" stroke="#D4A017" stroke-width="2.8" stroke-linecap="round"/>
+							<circle cx="-8" cy="-3" r="1.8" fill="#D4A017"/>
+							<circle cx="8" cy="-3" r="1.8" fill="#D4A017"/>
+							<circle cx="0" cy="-12" r="1.8" fill="#D4A017"/>
+							<circle cx="0" cy="14" r="1.8" fill="#D4A017"/>
+							<text x="-13" y="-5" font-size="7.5" fill="#D4A017" font-family="serif" text-anchor="middle">α</text>
+							<text x="13" y="-5" font-size="7.5" fill="#D4A017" font-family="serif" text-anchor="middle">ω</text>
+						</g>
 					</g>
 				</svg>
-				<!-- Gijón/Xixón: azul + torre dorada -->
-				<svg class="hf" viewBox="0 0 30 20">
-					<defs><clipPath id="fg"><rect width="30" height="20" rx="2.5"/></clipPath></defs>
+				<!-- Escudo de Gijón/Xixón: azul + rey Pelayo con cruz dorada -->
+				<svg class="hf hf-shield" viewBox="0 0 40 48" title="Xixón">
+					<defs><clipPath id="fg"><path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z"/></clipPath></defs>
 					<g clip-path="url(#fg)">
-						<rect width="30" height="20" fill="#0C4B78"/>
-						<rect x="10.5" y="7" width="9" height="9" rx="0.8" fill="#C9922F" opacity="0.85"/>
-						<rect x="9.5" y="4.5" width="11" height="3.5" rx="0.5" fill="#C9922F" opacity="0.85"/>
-						<rect x="11.5" y="4.5" width="1.8" height="2" fill="#0C4B78"/>
-						<rect x="14.1" y="4.5" width="1.8" height="2" fill="#0C4B78"/>
-						<rect x="16.7" y="4.5" width="1.8" height="2" fill="#0C4B78"/>
-						<rect x="13" y="11" width="4" height="5" rx="2" fill="#0C4B78"/>
+						<rect width="40" height="48" fill="#0C4B78"/>
+						<rect x="0" y="0" width="40" height="6" fill="#D4A017"/>
+						<g transform="translate(20,26)" fill="#D4A017">
+							<ellipse cx="0" cy="-10" rx="3" ry="3.5"/>
+							<rect x="-4.5" y="-7" width="9" height="14" rx="2"/>
+							<rect x="-7" y="-5" width="4" height="10" rx="1.5" transform="rotate(-12,-5,0)"/>
+							<rect x="3" y="-5" width="4" height="10" rx="1.5" transform="rotate(12,5,0)"/>
+							<rect x="-2" y="6" width="3.5" height="9" rx="1"/>
+							<rect x="-1" y="6" width="3.5" height="9" rx="1"/>
+						</g>
+						<g transform="translate(30,14)" stroke="#D4A017" stroke-width="1.6" stroke-linecap="round" fill="none">
+							<line y1="-8" y2="6"/>
+							<line x1="-4" x2="4" y1="-4" y2="-4"/>
+						</g>
 					</g>
+					<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
 				</svg>
-				<!-- Sporting: rojiblanco -->
-				<svg class="hf" viewBox="0 0 30 20">
-					<defs><clipPath id="fs"><rect width="30" height="20" rx="2.5"/></clipPath></defs>
+				<!-- Escudo del Sporting: rojiblanco con 7 franjas y forma de escudo -->
+				<svg class="hf hf-shield" viewBox="0 0 40 48" title="Real Sporting de Gijón">
+					<defs><clipPath id="fs"><path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z"/></clipPath></defs>
 					<g clip-path="url(#fs)">
-						<rect width="30" height="20" fill="#fff"/>
-						<rect width="5" height="20" fill="#CC2229"/>
-						<rect x="10" width="5" height="20" fill="#CC2229"/>
-						<rect x="20" width="5" height="20" fill="#CC2229"/>
+						<rect width="40" height="48" fill="#fff"/>
+						<rect x="0" width="5.7" height="48" fill="#CC2229"/>
+						<rect x="11.4" width="5.7" height="48" fill="#CC2229"/>
+						<rect x="22.8" width="5.7" height="48" fill="#CC2229"/>
+						<rect x="34.3" width="5.7" height="48" fill="#CC2229"/>
 					</g>
+					<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
 				</svg>
 			</span>
+			<a href="/" class="site-title">¡Puxa Asturies!</a>
 		</div>
 		<nav>
 			<a href="/" class:active={$page.url.pathname === '/'}>Inicio</a>
@@ -84,20 +100,21 @@
 <style>
 	.brand {
 		display: flex;
-		align-items: center;
-		gap: 0.6rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.15rem;
 	}
 
 	.header-flags {
 		display: flex;
-		align-items: center;
-		gap: 3px;
-		opacity: 0.3;
-		transition: opacity 0.4s ease;
+		align-items: flex-end;
+		gap: 5px;
+		opacity: 0.65;
+		transition: opacity 0.3s ease;
 	}
 
 	.brand:hover .header-flags {
-		opacity: 0.85;
+		opacity: 1;
 	}
 
 	.nav-pdf {
@@ -106,10 +123,14 @@
 	}
 
 	.hf {
-		width: 16px;
-		height: 11px;
-		border-radius: 1.5px;
+		width: 28px;
+		height: 19px;
 		display: block;
-		filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
+		filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35));
+	}
+
+	.hf-shield {
+		width: 17px;
+		height: 20px;
 	}
 </style>
