@@ -22,17 +22,18 @@ function readStorage() {
 	}
 }
 
+/** @param {FavoriteItem[]} items */
+function writeStorage(items) {
+	if (!browser) return;
+	try {
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+	} catch { /* quota exceeded — ignore */ }
+}
+
 /**
  * Reactive favorites container (synced to localStorage in the browser).
- * Mutate only `items` (replace the array) — do not reassign `favorites`.
  */
 export const favorites = $state(/** @type {{ items: FavoriteItem[] }} */ ({ items: readStorage() }));
-
-$effect(() => {
-	if (!browser) return;
-	const { items } = favorites;
-	localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-});
 
 /**
  * Returns the current favorites array (reactive when read inside components).
@@ -54,6 +55,7 @@ export function toggleFavorite(slug, name) {
 	} else {
 		favorites.items = [...cur, { slug, name }];
 	}
+	writeStorage(favorites.items);
 }
 
 /**
@@ -61,6 +63,7 @@ export function toggleFavorite(slug, name) {
  */
 export function removeFavorite(slug) {
 	favorites.items = favorites.items.filter((f) => f.slug !== slug);
+	writeStorage(favorites.items);
 }
 
 /**
