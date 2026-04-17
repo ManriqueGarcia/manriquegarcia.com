@@ -252,21 +252,23 @@
 	{#key activeFilter}
 		<div class="card-grid">
 			{#each filtered as r, i (r.name)}
-				<article class="card" in:fly={{ y: 20, duration: 300, delay: i * 50 }}>
-					<header class="card-head">
+				<article class="rest-card" in:fly={{ y: 20, duration: 300, delay: i * 50 }}>
+					<div class="rest-header">
 						<h3>{r.name}</h3>
 						<SidraRating rating={r.rating} />
-					</header>
-					<p class="meta">{r.address}</p>
-					{#if r.phone}
-						<p class="meta"><a href={`tel:${r.phone.replace(/\s+/g, '')}`}>{r.phone}</a></p>
-					{/if}
-					<p class="description">{r.description}</p>
-					{#if r.url}
-						<p class="card-actions">
-							<a href={r.url} target="_blank" rel="noopener noreferrer">Web oficial</a>
-						</p>
-					{/if}
+					</div>
+					<div class="rest-body">
+						<p class="meta">{r.address}</p>
+						{#if r.phone}
+							<p class="meta"><a href={`tel:${r.phone.replace(/\s+/g, '')}`}>{r.phone}</a></p>
+						{/if}
+						<p class="description">{r.description}</p>
+						{#if r.url}
+							<p class="card-actions">
+								<a href={r.url} target="_blank" rel="noopener noreferrer">Web oficial →</a>
+							</p>
+						{/if}
+					</div>
 				</article>
 			{/each}
 		</div>
@@ -330,30 +332,55 @@
 		color: var(--color-hero-text);
 	}
 
-	.card-head {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		margin-bottom: 0.35rem;
+	.rest-card {
+		background: var(--color-card);
+		border-radius: var(--radius);
+		overflow: hidden;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+		transition: box-shadow 0.3s, transform 0.3s;
 	}
 
-	.card-head h3 {
+	.rest-card:hover {
+		box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+		transform: translateY(-2px);
+	}
+
+	.rest-header {
+		background: var(--color-hero-bg);
+		padding: 1.1rem 1.4rem;
+	}
+
+	.rest-header h3 {
 		margin: 0;
-		font-size: 1.4rem;
-		line-height: 1.3;
-		word-break: break-word;
-		color: #111;
+		font-size: 1.45rem;
 		font-weight: 700;
+		line-height: 1.25;
+		color: #fff;
+		font-family: var(--font-heading);
+		word-break: break-word;
+	}
+
+	.rest-body {
+		padding: 1.1rem 1.4rem 1.4rem;
 	}
 
 	.meta {
 		margin: 0.15rem 0;
-		font-size: 0.95rem;
+		font-size: 0.92rem;
 		color: var(--color-text-muted);
+	}
+
+	.meta a {
+		color: var(--color-text-muted);
+	}
+
+	.meta a:hover {
+		color: var(--color-accent);
 	}
 
 	.description {
 		margin: 0.75rem 0 0;
+		font-size: 0.92rem;
 	}
 
 	.card-actions {
@@ -362,5 +389,6 @@
 
 	.card-actions a {
 		font-weight: 600;
+		color: var(--color-accent);
 	}
 </style>

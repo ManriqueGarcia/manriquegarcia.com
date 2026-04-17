@@ -48,11 +48,11 @@
 		flex-wrap: wrap;
 	}
 	.sidra-bottle {
-		fill: #d4d0c8;
+		fill: rgba(255, 255, 255, 0.25);
 		transition: fill 0.3s;
 	}
 	.sidra-bottle.active {
-		fill: #1a6b3c;
+		fill: #4dd882;
 	}
 	.sidra-bottle.gold {
 		fill: #c8a415;
@@ -71,13 +71,13 @@
 		opacity: 0.9;
 	}
 	.sidra-label {
-		font-size: 0.78rem;
-		color: #6b6b6b;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.7);
 		margin-left: 0.4rem;
 		font-weight: 500;
 	}
 	.sublime-label {
-		color: #b8960f;
+		color: #ffd54f;
 		font-weight: 700;
 		font-style: italic;
 	}
