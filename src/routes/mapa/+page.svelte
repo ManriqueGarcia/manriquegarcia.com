@@ -43,24 +43,24 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5256,
-			lng: -5.6427,
+			lat: 43.5406,
+			lng: -5.6958,
 			name: 'Sidrería Celorio',
 			info: 'C/ Domingo Juliana 6 · Tel: 984 293 447<br>El cachopo asturiano. ★★★★',
 			url: 'https://restaurante-celorio.es',
 			type: 'restaurant'
 		},
 		{
-			lat: 43.537,
-			lng: -5.658,
+			lat: 43.5161,
+			lng: -5.6779,
 			name: 'Casa Ferino',
 			info: 'Ctra. de la Carbonera · Tel: 985 380 471<br>Especialidad en callos. ★★★★',
 			url: 'http://www.casaferino.com',
 			type: 'sidreria'
 		},
 		{
-			lat: 43.3952,
-			lng: -5.6516,
+			lat: 43.3963,
+			lng: -5.7735,
 			name: 'Llagar El Quesu',
 			info: 'Ctra. AS-17 Km 26, Bobes · Tel: 985 985 304<br>Parrilla argentina, muy acogedor. ★★★★★',
 			url: 'https://elquesu.es',
@@ -98,7 +98,7 @@
 		{
 		lat: 43.3645,
 		lng: -5.8450,
-		name: 'Calle Gascona',
+		name: 'Calle Gascona (Uviéu)',
 			info: 'La "Bulevar de la Sidra" de Oviedo. Concentración de sidrerías y tapeo.',
 			type: 'sidreria'
 		},
@@ -167,23 +167,23 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.526,
-			lng: -5.6277,
+			lat: 43.5245,
+			lng: -5.6150,
 			name: 'Universidad Laboral',
 			info: '270.000 m², el edificio más grande de España (1946-1956).',
 			url: 'https://www.laboralciudaddelacultura.com',
 			type: 'visit'
 		},
 		{
-			lat: 43.5629,
-			lng: -5.7021,
+			lat: 43.5691,
+			lng: -5.7040,
 			name: 'La Campa de Torres',
 			info: 'Parque Arqueológico-Natural, restos del castro de Noega.',
 			type: 'visit'
 		},
 		{
-			lat: 43.519,
-			lng: -5.6173,
+			lat: 43.5200,
+			lng: -5.6193,
 			name: 'Jardín Botánico Atlántico',
 			info: 'Flora y vegetación atlántica. Tel: 985 18 51 30.',
 			url: 'https://www.botanico.gijon.es',
@@ -213,8 +213,8 @@
 			type: 'visit'
 		},
 		{
-			lat: 43.374,
-			lng: -5.859,
+			lat: 43.3791,
+			lng: -5.8660,
 			name: 'Monte Naranco',
 			info: 'Santa María del Naranco (s. IX) y Cruz de la Victoria.',
 			type: 'visit'
@@ -395,8 +395,8 @@
 			type: 'hotel'
 		},
 		{
-			lat: 43.52,
-			lng: -5.612,
+			lat: 43.5136,
+			lng: -5.5994,
 			name: 'Camping Deva',
 			info: 'Camín de la Pasadiella 85 · Tel: 985 13 38 48<br>Bungalows, cabañas y chalets.',
 			type: 'hotel'
