@@ -1,0 +1,101 @@
+---
+interface Props {
+  title?: string;
+  categoryId?: string;
+  category?: string;
+}
+
+const {
+  title = '💬 Comentarios — ¿qué te pareció?',
+  categoryId = 'DIC_kwDOLl3BG84C7DVc',
+  category = 'General',
+} = Astro.props;
+---
+
+<details class="comment-section">
+  <summary>{title}</summary>
+  <div class="comment-body">
+    <p class="comment-hint">
+      Se necesita una cuenta de GitHub pa comentar (ye gratis).
+      Los comentarios se guardan en las
+      <a href="https://github.com/ManriqueGarcia/manriquegarcia.com/discussions"
+         target="_blank" rel="noopener noreferrer">Discussions del repo</a>.
+    </p>
+    <div class="giscus"></div>
+  </div>
+</details>
+
+<script is:inline
+  src="https://giscus.app/client.js"
+  data-repo="ManriqueGarcia/manriquegarcia.com"
+  data-repo-id="R_kgDOLl3BGw"
+  data-category={category}
+  data-category-id={categoryId}
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="es"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+</script>
+
+<style>
+  .comment-section {
+    margin-top: 2.5rem;
+    border: 1px solid var(--color-border, #e8e4de);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .comment-section summary {
+    padding: 0.9rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-heading, #2c2c2c);
+    background: #fafaf8;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+    list-style: none;
+  }
+
+  .comment-section summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .comment-section summary::before {
+    content: '▸ ';
+    display: inline;
+    transition: transform 0.2s;
+  }
+
+  .comment-section[open] summary::before {
+    content: '▾ ';
+  }
+
+  .comment-section summary:hover {
+    background: #f3f1ec;
+  }
+
+  .comment-section[open] summary {
+    border-bottom-color: var(--color-border, #e8e4de);
+  }
+
+  .comment-body {
+    padding: 1.25rem;
+  }
+
+  .comment-hint {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0 0 1rem;
+  }
+
+  .comment-hint a {
+    color: #1a6b3c;
+  }
+</style>
