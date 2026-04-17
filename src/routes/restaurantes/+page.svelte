@@ -339,9 +339,11 @@
 
 	.card-head h3 {
 		margin: 0;
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		line-height: 1.3;
 		word-break: break-word;
+		color: #111;
+		font-weight: 700;
 	}
 
 	.meta {
