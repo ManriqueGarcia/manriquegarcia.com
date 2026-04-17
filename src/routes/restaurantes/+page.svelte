@@ -49,15 +49,6 @@
 			url: 'https://restauranteasturianolagalana.es'
 		},
 		{
-			name: 'La Chalana',
-			rating: 4,
-			address: 'C/ San José 31, 33209 Gijón',
-			phone: '98 516 48 27',
-			description:
-				'Especialidad en marisco. Aviso: saldrás con los ojos como platos y la cartera ligera, pero feliz. Muy feliz. Merece cada céntimo, oh.',
-			url: 'http://www.lachalana.com'
-		},
-		{
 			name: 'Sidrería Celorio',
 			rating: 4,
 			address: 'C/ Domingo Juliana 6, 33212 Gijón',

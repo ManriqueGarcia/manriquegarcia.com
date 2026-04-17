@@ -9,7 +9,6 @@
 		{ name: 'Parrilla Antonio', rating: 4, address: 'Roncal 1, 33208 Gijón', phone: '985 154 973', url: 'parrilla-antonio-gijon.es', description: 'Pinchos y parrilla de cara al público. Choricitos y queso cabrales pa chuparse los deos.' },
 		{ name: 'Sidrería Nava', rating: 4, address: 'Pz. de la Serena 1, 33208 Gijón', phone: '985 380 447', description: 'Sidra de primera, pinchos que nun fallan, buen menú del día.' },
 		{ name: 'La Galana', rating: 4, address: 'Plaza Mayor 10, 33201 Gijón', phone: '985 17 24 29', url: 'restauranteasturianolagalana.es', description: 'Céntrico, sidra buena, comida muy buena. Vistes a la Plaza Mayor.' },
-		{ name: 'La Chalana', rating: 4, address: 'C/ San José 31, 33209 Gijón', phone: '985 164 827', url: 'lachalana.com', description: 'Especialidad en marisco. Merece cada céntimo.' },
 		{ name: 'Sidrería Celorio', rating: 4, address: 'C/ Domingo Juliana 6, 33212 Gijón', phone: '984 293 447', url: 'restaurante-celorio.es', description: 'El cachopo asturiano: bistec + jamón + queso + pimientos. Un cuarto ya da pa dos.' },
 		{ name: 'Casa Ferino', rating: 4, address: 'Ctra. de la Carbonera 78A, 33211 Gijón', phone: '985 380 471', url: 'casaferino.com', description: 'Los callos de Casa Ferino son legendarios. Vuelan por la noche.' },
 		{ name: 'Llagar El Quesu', rating: 5, address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero', phone: '985 985 304', url: 'elquesu.es', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },

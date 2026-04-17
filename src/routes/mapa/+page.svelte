@@ -43,14 +43,6 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5374,
-			lng: -5.6655,
-			name: 'La Chalana',
-			info: 'C/ San José 31 · Tel: 98 516 48 27<br>Especialidad en marisco. ★★★★',
-			url: 'http://www.lachalana.com',
-			type: 'restaurant'
-		},
-		{
 			lat: 43.5256,
 			lng: -5.6427,
 			name: 'Sidrería Celorio',
