@@ -166,10 +166,54 @@
 			<table class="dict-table">
 				<thead>
 					<tr>
-						<th>Castellano</th>
-						<th>Asturiano (Bable)</th>
-						<th>Catalán</th>
-						<th>Andaluz</th>
+						<th>
+							<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true">
+								<defs><clipPath id="fes"><rect width="30" height="20" rx="2"/></clipPath></defs>
+								<g clip-path="url(#fes)">
+									<rect width="30" height="5" fill="#AA151B"/>
+									<rect y="5" width="30" height="10" fill="#F1BF00"/>
+									<rect y="15" width="30" height="5" fill="#AA151B"/>
+								</g>
+							</svg>
+							Castellano
+						</th>
+						<th>
+							<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true">
+								<defs><clipPath id="fast"><rect width="30" height="20" rx="2"/></clipPath></defs>
+								<g clip-path="url(#fast)">
+									<rect width="30" height="20" fill="#005DAA"/>
+									<line x1="15" y1="3" x2="15" y2="17" stroke="#D4A017" stroke-width="1.4" stroke-linecap="round"/>
+									<line x1="11" y1="8" x2="19" y2="8" stroke="#D4A017" stroke-width="1.4" stroke-linecap="round"/>
+									<text x="8" y="9.5" font-size="4" fill="#D4A017" font-family="serif" text-anchor="middle">α</text>
+									<text x="22" y="9.5" font-size="4" fill="#D4A017" font-family="serif" text-anchor="middle">ω</text>
+								</g>
+							</svg>
+							Asturiano
+						</th>
+						<th>
+							<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true">
+								<defs><clipPath id="fcat"><rect width="30" height="20" rx="2"/></clipPath></defs>
+								<g clip-path="url(#fcat)">
+									<rect width="30" height="20" fill="#FCDD09"/>
+									<rect y="2.2" width="30" height="2" fill="#DA121A"/>
+									<rect y="6.6" width="30" height="2" fill="#DA121A"/>
+									<rect y="11" width="30" height="2" fill="#DA121A"/>
+									<rect y="15.4" width="30" height="2" fill="#DA121A"/>
+								</g>
+							</svg>
+							Catalán
+						</th>
+						<th>
+							<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true">
+								<defs><clipPath id="fand"><rect width="30" height="20" rx="2"/></clipPath></defs>
+								<g clip-path="url(#fand)">
+									<rect width="30" height="7" fill="#00963F"/>
+									<rect y="7" width="30" height="6" fill="#fff"/>
+									<rect y="13" width="30" height="7" fill="#00963F"/>
+								</g>
+							</svg>
+							Andaluz
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -234,6 +278,17 @@
 	.dict-search::placeholder {
 		color: var(--color-text-muted);
 		opacity: 0.85;
+	}
+
+	.th-flag {
+		width: 16px;
+		height: 11px;
+		display: inline-block;
+		vertical-align: -1px;
+		margin-right: 0.35rem;
+		opacity: 0.8;
+		border-radius: 1.5px;
+		filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
 	}
 
 	.no-results {
