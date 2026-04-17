@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CoffeeGuide from '../components/CoffeeGuide.astro';
 ---
 
 <BaseLayout title="Bares y Cafés">
@@ -38,34 +39,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			<h2>Cafeterías</h2>
 			<p class="page-intro">
 				En Asturias el café tiene nombres propios: no coinciden con lo que se pide en el resto de España, así
-				que conviene saber qué piden aquí antes de sorprenderse con la taza que te ponen.
+				que conviene saber qué piden aquí antes de sorprenderse con la taza que te ponen. Fíjate en el tamaño
+				de cada taza y la proporción de café y leche:
 			</p>
-			<table class="dict-table">
-				<thead>
-					<tr>
-						<th>Lo que pides</th>
-						<th>Qué es en la práctica</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Café de desayuno</td>
-						<td>Tazón grande de café con leche (no existe esta medida en otros lugares).</td>
-					</tr>
-					<tr>
-						<td>Café mediano</td>
-						<td>Café con leche normal.</td>
-					</tr>
-					<tr>
-						<td>Café con leche</td>
-						<td>Tiene la medida de un cortado en otras regiones.</td>
-					</tr>
-					<tr>
-						<td>Cortado</td>
-						<td>Café solo con una mancha de leche.</td>
-					</tr>
-				</tbody>
-			</table>
+			<CoffeeGuide />
 		</div>
 	</main>
 </BaseLayout>
