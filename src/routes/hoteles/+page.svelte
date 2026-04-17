@@ -201,7 +201,7 @@
 	<p class="page-intro">
 		Gijón dispone de una gran variedad de hoteles. Aquí hemos resumido los más conocidos, con
 		comentarios que nun van a sustituir a TripAdvisor pero sí a avisarte de lo importante: si ta
-		cerca de la playa, si hay parking, y si vas a despertate con ganas de fabada o con ganas de
+		cerca de la playa, si hay parking, y si vas a despertarte con ganas de fabada o con ganas de
 		volver a dormir.
 	</p>
 

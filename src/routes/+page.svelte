@@ -27,7 +27,7 @@
 		mire con cara de <em>"¿tú d'ónde vienes, bañista?"</em>.
 	</p>
 	<p>
-		Ah, y un diccionario. Porque aquí la xente habla bable, y si no pilles lo del
+		Ah, y un diccionario. Porque aquí la xente habla bable, y si no pillas lo del
 		<em>culín</em>, lo del <em>escanciáu</em> y lo del <em>yes bobu</em>, vas a estar más perdíu
 		que un pulpu en un garaje.
 	</p>

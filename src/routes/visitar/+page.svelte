@@ -146,7 +146,7 @@
 	<p class="page-intro">
 		Asturias nun ye solo sidra y cachopo (bueno, casi). Aquí tienes lo imprescindible pa decir que
 		<strong>verdaderamente</strong> estuviste: Xixón con olor a mar y ambición deportiva, Uviéu con
-		piedra que cuenta siglos, y pueblinos que parecen sacaos de un cuadru. Perdite, haz fotos, y
+		piedra que cuenta siglos, y pueblinos que parecen sacaos de un cuadru. Pérdete, haz fotos, y
 		que nun te dé vergüenza parecer turista: toos empezamos así.
 	</p>
 
@@ -162,7 +162,7 @@
 	<p>
 		Xixón ye esa ciudá que sale pocu en las revistas de moda y por eso ta mejor: playa larga,
 		románicos por ahí, Chillida mirando al infinitu y una afición al Sporting que explica metá de la
-		psicoloxía local. Si solo tienes un día, haz magia; si tienes más, vas a querer quedate.
+		psicoloxía local. Si solo tienes un día, haz magia; si tienes más, vas a querer quedarte.
 	</p>
 
 	<div class="card-grid">

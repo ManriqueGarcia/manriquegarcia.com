@@ -156,7 +156,7 @@
 		<strong>¿Qué es escanciar?</strong> Ye verter la sidra desde arriba — con brazo extendíu y
 		muñeca firme — pa que chispe contra el borde del vaso, oxigenar la sidra y sacar el gas y el
 		aroma que lleva dentro. Si lo haces bien, suena como una promesa. Si lo haces regular, igual
-		te sale bien: lo importante ye la intención y no quedate con la sidra “muerta” en el vaso.
+		te sale bien: lo importante ye la intención y no te quedes con la sidra “muerta” en el vaso.
 	</p>
 
 	<p>

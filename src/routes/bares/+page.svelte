@@ -33,7 +33,7 @@
 			<div class="card">
 				<h3>Zona de Fomento</h3>
 				<p class="description">
-					Bodeguita del Medio, El Diario y compañía. Más recogidin pero con mucho ambiente. Ideal pa
+					Bodeguita del Medio, El Diario y compañía. Más recogidín pero con mucho ambiente. Ideal pa
 					cuando quieres copas pero sin que te reviente el oído un altavoz a las 2 de la mañana.
 				</p>
 			</div>

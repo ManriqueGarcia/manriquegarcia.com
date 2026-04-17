@@ -137,7 +137,7 @@
 	<h1>Diccionario Asturiano</h1>
 
 	<p class="page-intro">
-		Llibru pa entenderse con la xente. Un pequeño diccionario pa que puedas comunicate durante la
+		Llibru pa entenderse con la xente. Un pequeño diccionario pa que puedas comunicarte durante la
 		tu estancia n’Asturies sin que te miren con cara de <em>“¿tú d’ónde vienes, bañista?”</em>
 	</p>
 
