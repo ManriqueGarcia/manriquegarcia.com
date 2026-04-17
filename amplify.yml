@@ -1,4 +1,8 @@
 version: 1
+customRules:
+  - source: /google3ec01a937de10d17.html
+    target: /google3ec01a937de10d17.html
+    status: '200'
 frontend:
   phases:
     preBuild:
