@@ -123,3 +123,11 @@ footer { background: var(--color-hero-bg); color: rgba(245, 240, 232, 0.6); text
   nav { justify-content: center; }
   .card-grid { grid-template-columns: 1fr; }
 }
+
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { background: #fff; }
+  main { padding: 0; }
+  a { color: inherit; }
+  a[href]::after { content: none; }
+}

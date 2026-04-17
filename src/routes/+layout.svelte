@@ -64,6 +64,7 @@
 			<a href="/hoteles" class:active={$page.url.pathname.startsWith('/hoteles')}>Hoteles</a>
 			<a href="/mapa" class:active={$page.url.pathname.startsWith('/mapa')}>Mapa</a>
 			<a href="/diccionario" class:active={$page.url.pathname.startsWith('/diccionario')}>Diccionario</a>
+			<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
 		</nav>
 	</div>
 </header>
@@ -97,6 +98,11 @@
 
 	.brand:hover .header-flags {
 		opacity: 0.85;
+	}
+
+	.nav-pdf {
+		border: 1px solid rgba(255,255,255,0.2);
+		font-size: 0.8rem !important;
 	}
 
 	.hf {
