@@ -1,47 +1,31 @@
 ---
 interface Props {
   title?: string;
-  categoryId?: string;
-  category?: string;
+  placeholder?: string;
 }
 
 const {
   title = '💬 Comentarios — ¿qué te pareció?',
-  categoryId = 'DIC_kwDOLl3BG84C7DVc',
-  category = 'General',
+  placeholder = 'Escribe tu comentario aquí…',
 } = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <details class="comment-section">
   <summary>{title}</summary>
-  <div class="comment-body">
-    <p class="comment-hint">
-      Se necesita una cuenta de GitHub pa comentar (ye gratis).
-      Los comentarios se guardan en las
-      <a href="https://github.com/ManriqueGarcia/manriquegarcia.com/discussions"
-         target="_blank" rel="noopener noreferrer">Discussions del repo</a>.
-    </p>
-    <div class="giscus"></div>
+  <div class="comment-body" data-page={currentPath}>
+    <form class="comment-form">
+      <input type="text" name="name" placeholder="Tu nombre" maxlength="50" required />
+      <textarea name="comment" placeholder={placeholder} maxlength="500" rows="3" required></textarea>
+      <button type="submit">Enviar</button>
+      <span class="form-status"></span>
+    </form>
+    <div class="comments-list">
+      <p class="comments-loading">Cargando comentarios…</p>
+    </div>
   </div>
 </details>
-
-<script is:inline
-  src="https://giscus.app/client.js"
-  data-repo="ManriqueGarcia/manriquegarcia.com"
-  data-repo-id="R_kgDOLl3BGw"
-  data-category={category}
-  data-category-id={categoryId}
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="light"
-  data-lang="es"
-  data-loading="lazy"
-  crossorigin="anonymous"
-  async>
-</script>
 
 <style>
   .comment-section {
@@ -63,39 +47,195 @@ const {
     list-style: none;
   }
 
-  .comment-section summary::-webkit-details-marker {
-    display: none;
+  .comment-section summary::-webkit-details-marker { display: none; }
+  .comment-section summary::before { content: '▸ '; }
+  .comment-section[open] summary::before { content: '▾ '; }
+  .comment-section summary:hover { background: #f3f1ec; }
+  .comment-section[open] summary { border-bottom-color: var(--color-border, #e8e4de); }
+
+  .comment-body { padding: 1.25rem; }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
   }
 
-  .comment-section summary::before {
-    content: '▸ ';
-    display: inline;
-    transition: transform 0.2s;
+  .comment-form input,
+  .comment-form textarea {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    resize: vertical;
   }
 
-  .comment-section[open] summary::before {
-    content: '▾ ';
+  .comment-form input:focus,
+  .comment-form textarea:focus {
+    outline: none;
+    border-color: #1a6b3c;
+    box-shadow: 0 0 0 2px rgba(26, 107, 60, 0.15);
   }
 
-  .comment-section summary:hover {
-    background: #f3f1ec;
+  .comment-form button {
+    align-self: flex-start;
+    padding: 0.5rem 1.2rem;
+    background: #1a6b3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
   }
 
-  .comment-section[open] summary {
-    border-bottom-color: var(--color-border, #e8e4de);
-  }
+  .comment-form button:hover { background: #155a31; }
+  .comment-form button:disabled { opacity: 0.6; cursor: wait; }
 
-  .comment-body {
-    padding: 1.25rem;
-  }
-
-  .comment-hint {
+  .form-status {
     font-size: 0.8rem;
-    color: #888;
-    margin: 0 0 1rem;
+    color: #1a6b3c;
+    min-height: 1.2em;
   }
 
-  .comment-hint a {
-    color: #1a6b3c;
+  .form-status.error { color: #c0392b; }
+
+  .comments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .comment-item {
+    padding: 0.75rem 1rem;
+    background: #fafaf8;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+
+  .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+
+  .comment-author {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #2c2c2c;
+  }
+
+  .comment-date {
+    font-size: 0.75rem;
+    color: #999;
+  }
+
+  .comment-text {
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  .comments-loading, .comments-empty {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
   }
 </style>
+
+<script is:inline>
+(function () {
+  var API = 'https://8u1htcpsr1.execute-api.eu-west-1.amazonaws.com/comments';
+
+  document.querySelectorAll('.comment-section').forEach(function (section) {
+    var body = section.querySelector('.comment-body');
+    var page = body.dataset.page;
+    var form = body.querySelector('.comment-form');
+    var list = body.querySelector('.comments-list');
+    var status = body.querySelector('.form-status');
+    var loaded = false;
+
+    function esc(s) {
+      var d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    function timeAgo(iso) {
+      var d = new Date(iso);
+      var now = Date.now();
+      var diff = Math.floor((now - d.getTime()) / 1000);
+      if (diff < 60) return 'ahora mismo';
+      if (diff < 3600) return Math.floor(diff / 60) + ' min';
+      if (diff < 86400) return Math.floor(diff / 3600) + ' h';
+      return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+    }
+
+    function render(items) {
+      if (!items.length) {
+        list.innerHTML = '<p class="comments-empty">Aún no hay comentarios. ¡Sé el primeru, bañista!</p>';
+        return;
+      }
+      list.innerHTML = items.map(function (c) {
+        return '<div class="comment-item">' +
+          '<div class="comment-meta">' +
+            '<span class="comment-author">' + esc(c.name) + '</span>' +
+            '<span class="comment-date">' + timeAgo(c.timestamp) + '</span>' +
+          '</div>' +
+          '<p class="comment-text">' + esc(c.comment) + '</p>' +
+        '</div>';
+      }).join('');
+    }
+
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      fetch(API + '?page=' + encodeURIComponent(page))
+        .then(function (r) { return r.json(); })
+        .then(render)
+        .catch(function () {
+          list.innerHTML = '<p class="comments-empty">No se pudieron cargar los comentarios.</p>';
+        });
+    }
+
+    section.addEventListener('toggle', function () {
+      if (section.open) load();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      var name = form.querySelector('[name="name"]').value.trim();
+      var comment = form.querySelector('[name="comment"]').value.trim();
+      if (!name || !comment) return;
+
+      btn.disabled = true;
+      status.textContent = 'Enviando…';
+      status.className = 'form-status';
+
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ page: page, name: name, comment: comment }),
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error();
+          return r.json();
+        })
+        .then(function () {
+          form.reset();
+          status.textContent = '¡Comentario enviáu! Gracies, oh.';
+          loaded = false;
+          load();
+        })
+        .catch(function () {
+          status.textContent = 'Error al enviar. Inténtalo de nuevo.';
+          status.className = 'form-status error';
+        })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+})();
+</script>
