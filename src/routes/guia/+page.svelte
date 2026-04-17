@@ -52,12 +52,16 @@
 	];
 
 	const pueblinos = [
-		{ name: 'Cudillero', desc: 'Casines de colores apilaes en la ladera. El pueblo más fotogénico de Asturias.' },
-		{ name: 'Lastres', desc: '"San Martín del Sella" de la serie Doctor Mateo.' },
-		{ name: 'Ribadesella', desc: 'Descenso Internacional del Sella en piraguas. Playa de Santa Marina.' },
-		{ name: 'Luanco', desc: 'Zona de veraneo favorita de los asturianos. Playas guapes, buen pescao.' },
-		{ name: 'Candás', desc: 'Miradores, playas, puerto pesquero. Festival de la Sardina (1 de agosto).' },
-		{ name: 'Llanes', desc: 'Cubos de la Memoria de Ibarrola. Playas de postal.' },
+		{ name: 'Candás', dist: '15 km / 40 km', desc: 'Miradores, playas, puerto pesquero. Festival de la Sardina (1 de agosto).' },
+		{ name: 'Luanco', dist: '20 km / 45 km', desc: 'Zona de veraneo favorita de los asturianos. Playas guapes, buen pescao.' },
+		{ name: 'Colunga', dist: '45 km / 65 km', desc: 'Tierra de dinosaurios (MUJA). Lastres pertenece a Colunga.' },
+		{ name: 'Lastres', dist: '50 km / 70 km', desc: '"San Martín del Sella" de la serie Doctor Mateo.' },
+		{ name: 'Cudillero', dist: '60 km / 55 km', desc: 'Casines de colores apilaes en la ladera. El pueblo más fotogénico de Asturias.' },
+		{ name: 'Ribadesella', dist: '70 km / 85 km', desc: 'Descenso Internacional del Sella en piraguas. Playa de Santa Marina.' },
+		{ name: 'Llanes', dist: '110 km / 130 km', desc: 'Cubos de la Memoria de Ibarrola. Playas de postal.' },
+		{ name: 'Luarca', dist: '115 km / 95 km', desc: 'Villa Blanca de la Costa Verde. Puerto, faro y cementerio con vistas al mar.' },
+		{ name: 'Tapia de Casariego', dist: '170 km / 150 km', desc: 'Capital del surf en Asturias. Isla del faro y playas salvajes.' },
+		{ name: 'Taramundi', dist: '195 km / 175 km', desc: 'Turismo rural, navajas artesanales y Os Teixois.' },
 	];
 
 	const hotels = [
@@ -206,8 +210,9 @@
 		</ul>
 
 		<h3>Pueblinos con encanto</h3>
+		<p class="dist-legend">Distancias: desde Xixón / desde Uviéu</p>
 		<ul class="place-list">
-			{#each pueblinos as p}<li><strong>{p.name}</strong> — {p.desc}</li>{/each}
+			{#each pueblinos as p}<li><strong>{p.name}</strong> <span class="dist-inline">({p.dist})</span> — {p.desc}</li>{/each}
 		</ul>
 	</section>
 
@@ -295,6 +300,8 @@
 	.place-list { margin: 0.5rem 0 1rem 1.2rem; font-size: 0.9rem; }
 	.place-list li { margin-bottom: 0.35rem; }
 	.place-list li strong { color: var(--color-accent); }
+	.dist-inline { font-size: 0.82rem; color: #27ae60; font-weight: 500; }
+	.dist-legend { font-size: 0.82rem; color: var(--color-text-muted); margin: 0.25rem 0 0.5rem; font-style: italic; }
 
 	.map-note { text-align: center; }
 	.guia-footer { text-align: center; color: var(--color-text-muted); font-size: 0.82rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border); }

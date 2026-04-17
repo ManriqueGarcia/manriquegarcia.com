@@ -278,6 +278,34 @@
 			type: 'visit'
 		},
 		{
+			lat: 43.5467,
+			lng: -6.5367,
+			name: 'Luarca',
+			info: 'La Villa Blanca de la Costa Verde. Puerto preciosu, faro y cementerio con vistas.',
+			type: 'visit'
+		},
+		{
+			lat: 43.5701,
+			lng: -6.9443,
+			name: 'Tapia de Casariego',
+			info: 'Capital del surf en Asturias. Isla del faro y playas salvajes.',
+			type: 'visit'
+		},
+		{
+			lat: 43.3599,
+			lng: -7.1055,
+			name: 'Taramundi',
+			info: 'Turismo rural, navajas artesanales y el conjunto etnográfico de Os Teixois.',
+			type: 'visit'
+		},
+		{
+			lat: 43.4875,
+			lng: -5.2721,
+			name: 'Colunga',
+			info: 'Tierra de dinosaurios (MUJA). Lastres pertenece a Colunga.',
+			type: 'visit'
+		},
+		{
 			lat: 43.5414,
 			lng: -5.6596,
 			name: 'Hotel Hernán Cortés',
