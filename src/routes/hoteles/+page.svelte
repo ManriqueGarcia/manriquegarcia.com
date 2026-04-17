@@ -101,14 +101,6 @@
 			url: 'https://bluehoteles.es'
 		},
 		{
-			name: 'Hotel León',
-			address: 'Avda. de la Costa 45, Gijón',
-			phone: 'Tel: 985 37 01 11',
-			description: 'Más de 30 años abriendo la puerta a los visitantes. Un veterano que sabe lo que hace.',
-			tags: [],
-			url: 'https://hotel-leon.com'
-		},
-		{
 			name: 'Hotel Celuisma Pathos',
 			address: 'Santa Elena 6, Gijón',
 			phone: 'Tel: 985 176 400',

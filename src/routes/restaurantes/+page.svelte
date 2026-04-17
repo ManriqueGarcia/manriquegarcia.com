@@ -94,15 +94,6 @@
 			url: 'http://sidrerialacosta.com'
 		},
 		{
-			name: 'La Chalana',
-			rating: 4,
-			address: 'C/ San José 31, 33209 Gijón',
-			phone: '985 164 827',
-			description:
-				'Especialidad en marisco. Aviso: saldrás con los ojos como platos y la cartera ligera, pero feliz. Muy feliz. Merece cada céntimo, oh.',
-			url: 'http://www.lachalana.com'
-		},
-		{
 			name: 'Sidrería Cabranes',
 			rating: 4,
 			address: 'Av. Pablo Iglesias 23, 33205 Gijón',

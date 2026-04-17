@@ -82,14 +82,6 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5374,
-			lng: -5.6655,
-			name: 'La Chalana',
-			info: 'C/ San José 31 · Tel: 985 164 827<br>Especialidad en marisco. ★★★★',
-			url: 'http://www.lachalana.com',
-			type: 'restaurant'
-		},
-		{
 			lat: 43.5382,
 			lng: -5.6509,
 			name: 'Sidrería Cabranes',
@@ -392,14 +384,6 @@
 			name: 'Hotel Villa de Gijón',
 			info: 'C/ San Juan de Vallés 3 · Tel: 985 141 824',
 			url: 'https://hotelvilladegijon.com',
-			type: 'hotel'
-		},
-		{
-			lat: 43.5425,
-			lng: -5.659,
-			name: 'Hotel León',
-			info: 'Avda. de la Costa 45 · Tel: 985 37 01 11',
-			url: 'https://hotel-leon.com',
 			type: 'hotel'
 		},
 		{

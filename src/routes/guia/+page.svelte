@@ -14,7 +14,6 @@
 		{ name: 'Llagar El Quesu', rating: 5, address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero', phone: '985 985 304', url: 'elquesu.es', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },
 		{ name: 'Sidrería El Globo', rating: 3, address: 'C/ San Bernardo 13, 33201 Gijón', phone: '985 172 247', url: 'sidreriaelglobo.es', description: 'Comida típica asturiana sin florituras.' },
 		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. de la Costa 32, 33205 Gijón', phone: '985 161 499', url: 'sidrerialacosta.com', description: 'Especialidad en carnes argentinas. Chuletón y entraña a la parrilla con sidra asturiana.' },
-		{ name: 'La Chalana', rating: 4, address: 'C/ San José 31, 33209 Gijón', phone: '985 164 827', url: 'lachalana.com', description: 'Especialidad en marisco. Merece cada céntimo.' },
 		{ name: 'Sidrería Cabranes', rating: 4, address: 'Av. Pablo Iglesias 23, 33205 Gijón', phone: '985 131 487', url: 'sidreriacabranes.es', description: 'El rabo de toro ye pa llorar de la emoción.' },
 	];
 
@@ -75,7 +74,6 @@
 		{ name: 'Hotel Blue Santa Rosa', address: 'Santa Rosa 4', phone: '985 091 919' },
 		{ name: 'Hotel Blue Marqués', address: 'Marqués de San Esteban 11', phone: '985 090 929' },
 		{ name: 'Apartamentos San Esteban', address: 'Marqués de San Esteban 11', phone: '985 09 09 29' },
-		{ name: 'Hotel León', address: 'Avda. de la Costa 45', phone: '985 37 01 11' },
 		{ name: 'Hotel Celuisma Pathos', address: 'Santa Elena 6', phone: '985 176 400' },
 		{ name: 'Hotel Castilla', address: 'C/ Corrida 50', phone: '985 346 200' },
 		{ name: 'Hotel La Polar', address: 'Avda Juan Carlos I, 20', phone: '984 29 64 03' },
