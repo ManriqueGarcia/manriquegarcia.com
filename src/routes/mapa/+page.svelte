@@ -9,7 +9,7 @@
 			lat: 43.5082,
 			lng: -5.6335,
 			name: 'Casa Trabanco',
-			info: 'Camín de la Sidra, Lavandera · Tel: 985 16 72 86<br>LA sidrería. Categoría Sublime.',
+			info: 'Ctra. de Lavandera 3255 · Tel: 985 136 462<br>LA sidrería. Categoría Sublime.',
 			url: 'https://www.casatrabanco.com',
 			type: 'sublime'
 		},
@@ -53,8 +53,9 @@
 		{
 			lat: 43.5256,
 			lng: -5.6427,
-			name: 'El Celorio',
-			info: 'C/ Juliana Domingo 6 · Tel: 984 393 962<br>El cachopo asturiano. ★★★★',
+			name: 'Sidrería Celorio',
+			info: 'C/ Domingo Juliana 6 · Tel: 984 293 447<br>El cachopo asturiano. ★★★★',
+			url: 'https://restaurante-celorio.es',
 			type: 'restaurant'
 		},
 		{
@@ -68,8 +69,9 @@
 		{
 			lat: 43.3952,
 			lng: -5.6516,
-			name: 'El Llagar del Quesu',
-			info: 'Bobes 2, Siero · Tel: 98 579 28 94<br>Parrilla argentina, muy acogedor. ★★★★★',
+			name: 'Llagar El Quesu',
+			info: 'Ctra. AS-17 Km 26, Bobes · Tel: 985 985 304<br>Parrilla argentina, muy acogedor. ★★★★★',
+			url: 'https://elquesu.es',
 			type: 'restaurant'
 		},
 		{

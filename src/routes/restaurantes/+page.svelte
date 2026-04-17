@@ -7,8 +7,8 @@
 		{
 			name: 'Casa Trabanco',
 			rating: 'sublime',
-			address: 'Camín de la Sidra, Lavandera, Gijón',
-			phone: '985 16 72 86',
+			address: 'Ctra. de Lavandera 3255, 33350 Gijón',
+			phone: '985 136 462',
 			description:
 				'Esto no es una sidrería. Esto ye LA sidrería. Casa Trabanco ye el Bernabéu de la sidra, el Vaticano del escanciado, el sitio donde los asturianos llevan a la xente de fuera cuando quieren dejarles la boca abierta. Producen su propia sidra (que ye una maravilla), la comida ye espectacular, y el sitio en sí — un lagar enorme rodeado de manzanos — ye pa quedase vivir. Si solo puedes ir a un sitio en toda Asturias, que sea este. Luego nos das las gracias.',
 			url: 'https://www.casatrabanco.com'
@@ -28,12 +28,13 @@
 			address: 'Roncal 1, 33208 Gijón',
 			phone: '985 154 973',
 			description:
-				'Llegas, te plantas en la barra, y empiezas a picar pinchos y sidra como si no hubiera mañana. La parrilla funciona de cara al público, así que ves cómo se hace tu comida. Los choricitos y el queso cabrales están pa chuparse los deos.'
+				'Llegas, te plantas en la barra, y empiezas a picar pinchos y sidra como si no hubiera mañana. La parrilla funciona de cara al público, así que ves cómo se hace tu comida. Los choricitos y el queso cabrales están pa chuparse los deos.',
+			url: 'https://parrilla-antonio-gijon.es'
 		},
 		{
 			name: 'Sidrería Nava',
 			rating: 4,
-			address: 'C/ de la Serena 1, 33208 Gijón',
+			address: 'Pz. de la Serena 1, 33208 Gijón',
 			phone: '985 380 447',
 			description:
 				'La sidra ye de primera, los pinchos nun fallan, y el menú del día merece la pena. Un clásico del Barrio de la Sidra al que siempre se vuelve.'
@@ -44,7 +45,8 @@
 			address: 'Plaza Mayor 10, 33201 Gijón',
 			phone: '985 17 24 29',
 			description:
-				'Muy céntrico (en la mismísima Plaza Mayor), sidra buena, comida muy buena. Eso sí, al estar en el meollo los precios suben un pelín. Pero oye, las vistas no te las quita nadie.'
+				'Muy céntrico (en la mismísima Plaza Mayor), sidra buena, comida muy buena. Eso sí, al estar en el meollo los precios suben un pelín. Pero oye, las vistas no te las quita nadie.',
+			url: 'https://restauranteasturianolagalana.es'
 		},
 		{
 			name: 'La Chalana',
@@ -56,12 +58,13 @@
 			url: 'http://www.lachalana.com'
 		},
 		{
-			name: 'El Celorio',
+			name: 'Sidrería Celorio',
 			rating: 4,
-			address: 'C/ Juliana Domingo 6, 33212 Gijón',
-			phone: '984 393 962',
+			address: 'C/ Domingo Juliana 6, 33212 Gijón',
+			phone: '984 293 447',
 			description:
-				'Aquí se viene a por el cachopo: bistec + jamón + queso + pimientos, rebozado y con patatas fritas. Un cuarto de cachopo ya es para dos personas. ¿Uno entero? Solo si llevas tres días sin comer o eres un asturiano de pura cepa.'
+				'Aquí se viene a por el cachopo: bistec + jamón + queso + pimientos, rebozado y con patatas fritas. Un cuarto de cachopo ya es para dos personas. ¿Uno entero? Solo si llevas tres días sin comer o eres un asturiano de pura cepa.',
+			url: 'https://restaurante-celorio.es'
 		},
 		{
 			name: 'Casa Ferino',
@@ -73,12 +76,13 @@
 			url: 'http://www.casaferino.com'
 		},
 		{
-			name: 'El Llagar del Quesu',
+			name: 'Llagar El Quesu',
 			rating: 5,
-			address: 'Bobes 2, 33429 Siero',
-			phone: '98 579 28 94',
+			address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero',
+			phone: '985 985 304',
 			description:
-				'Está en Siero (un poco fuera de Xixón, pero merece la escapada). Parrilla tipo argentina que ta pa morirse, decoración guapísima, ambiente acogedor. Ye de esos sitios de los que sales diciendo "hay que volver".'
+				'Está en Siero (un poco fuera de Xixón, pero merece la escapada). Parrilla tipo argentina que ta pa morirse, decoración guapísima, ambiente acogedor. Ye de esos sitios de los que sales diciendo "hay que volver".',
+			url: 'https://elquesu.es'
 		},
 		{
 			name: 'Sidrería El Globo',
@@ -92,7 +96,8 @@
 		{
 			name: 'Sidrería La Costa',
 			rating: 4,
-			address: 'Av. Costa 32, 33205 Gijón',
+			address: 'Av. de la Costa 32, 33205 Gijón',
+			phone: '985 161 499',
 			description:
 				'Especialidad en carnes argentinas. Si te gusta un buen chuletón o una entraña a la parrilla, este ye tu sitio. La mezcla de sidra asturiana con corte argentino suena rara pero funciona de maravilla.',
 			url: 'http://sidrerialacosta.com'
@@ -100,18 +105,20 @@
 		{
 			name: 'Tino El Roxu',
 			rating: 4,
-			address: 'Av. de la Costa 30, 33204 Gijón',
+			address: 'Av. de la Costa 30, 33205 Gijón',
 			phone: '985 141 792',
 			description:
-				'Cocina tradicional asturiana de la de verdad: carnes, pescados, mariscos. De esos restaurantes que llevan los abuelos toda la vida recomendando.'
+				'Cocina tradicional asturiana de la de verdad: carnes, pescados, mariscos. De esos restaurantes que llevan los abuelos toda la vida recomendando.',
+			url: 'https://www.tinoelroxu.com'
 		},
 		{
 			name: 'Sidrería Cabranes',
 			rating: 4,
 			address: 'Av. Pablo Iglesias 23, 33205 Gijón',
-			phone: '98 513 1487',
+			phone: '985 131 487',
 			description:
-				'El rabo de toro de Cabranes ye pa llorar de la emoción. Si está en carta, pídelo. Si no está, llora igualmente y pide otra cosa, que too ta ricu.'
+				'El rabo de toro de Cabranes ye pa llorar de la emoción. Si está en carta, pídelo. Si no está, llora igualmente y pide otra cosa, que too ta ricu.',
+			url: 'https://sidreriacabranes.es'
 		}
 	];
 

@@ -4,19 +4,19 @@
 	const ratingLabel = { 3: '★★★ Buena', 4: '★★★★ Muy buena', 5: '★★★★★ Excelente', sublime: '★★★★★+ Sublime' };
 
 	const restaurants = [
-		{ name: 'Casa Trabanco', rating: 'sublime', address: 'Camín de la Sidra, Lavandera, Gijón', phone: '985 16 72 86', url: 'casatrabanco.com', description: 'LA sidrería. Producen su propia sidra, la comida ye espectacular, y el sitio — un lagar rodeado de manzanos — ye pa quedase vivir.' },
-		{ name: 'El Sauco', rating: 5, address: 'C/ Valencia 20, 33210 Gijón', phone: '985 39 83 30', url: 'elsauco.com', description: 'Sidra, pinchos, menú y carta. Todo riquísimo. Nunca falta en nuestra ruta xixonenca.' },
-		{ name: 'Parrilla Antonio', rating: 4, address: 'Roncal 1, 33208 Gijón', phone: '985 154 973', description: 'Pinchos y parrilla de cara al público. Choricitos y queso cabrales pa chuparse los deos.' },
-		{ name: 'Sidrería Nava', rating: 4, address: 'C/ de la Serena 1, 33208 Gijón', phone: '985 380 447', description: 'Sidra de primera, pinchos que nun fallan, buen menú del día.' },
-		{ name: 'La Galana', rating: 4, address: 'Plaza Mayor 10, 33201 Gijón', phone: '985 17 24 29', description: 'Céntrico, sidra buena, comida muy buena. Vistes a la Plaza Mayor.' },
-		{ name: 'La Chalana', rating: 4, address: 'C/ San José 31, 33209 Gijón', phone: '98 516 48 27', url: 'lachalana.com', description: 'Especialidad en marisco. Merece cada céntimo.' },
-		{ name: 'El Celorio', rating: 4, address: 'C/ Juliana Domingo 6, 33212 Gijón', phone: '984 393 962', description: 'El cachopo asturiano: bistec + jamón + queso + pimientos. Un cuarto ya da pa dos.' },
-		{ name: 'Casa Ferino', rating: 4, address: 'Ctra. de la Carbonera, 33209 Gijón', phone: '985 380 471', url: 'casaferino.com', description: 'Los callos de Casa Ferino son legendarios. Vuelan por la noche.' },
-		{ name: 'El Llagar del Quesu', rating: 5, address: 'Bobes 2, 33429 Siero', phone: '98 579 28 94', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },
-		{ name: 'Sidrería El Globo', rating: 3, address: 'C/ San Bernardo 13, 33201 Gijón', phone: '985 17 22 47', url: 'sidreriaelglobo.es', description: 'Comida típica asturiana sin florituras.' },
-		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. Costa 32, 33205 Gijón', url: 'sidrerialacosta.com', description: 'Especialidad en carnes argentinas. Chuletón y entraña a la parrilla con sidra asturiana.' },
-		{ name: 'Tino El Roxu', rating: 4, address: 'Av. de la Costa 30, 33204 Gijón', phone: '985 141 792', description: 'Cocina tradicional asturiana: carnes, pescados, mariscos.' },
-		{ name: 'Sidrería Cabranes', rating: 4, address: 'Av. Pablo Iglesias 23, 33205 Gijón', phone: '98 513 1487', description: 'El rabo de toro ye pa llorar de la emoción.' },
+		{ name: 'Casa Trabanco', rating: 'sublime', address: 'Ctra. de Lavandera 3255, 33350 Gijón', phone: '985 136 462', url: 'casatrabanco.com', description: 'LA sidrería. Producen su propia sidra, la comida ye espectacular, y el sitio — un lagar rodeado de manzanos — ye pa quedase vivir.' },
+		{ name: 'El Sauco', rating: 5, address: 'C/ Valencia 20, 33210 Gijón', phone: '985 398 330', url: 'elsauco.com', description: 'Sidra, pinchos, menú y carta. Todo riquísimo. Nunca falta en nuestra ruta xixonenca.' },
+		{ name: 'Parrilla Antonio', rating: 4, address: 'Roncal 1, 33208 Gijón', phone: '985 154 973', url: 'parrilla-antonio-gijon.es', description: 'Pinchos y parrilla de cara al público. Choricitos y queso cabrales pa chuparse los deos.' },
+		{ name: 'Sidrería Nava', rating: 4, address: 'Pz. de la Serena 1, 33208 Gijón', phone: '985 380 447', description: 'Sidra de primera, pinchos que nun fallan, buen menú del día.' },
+		{ name: 'La Galana', rating: 4, address: 'Plaza Mayor 10, 33201 Gijón', phone: '985 17 24 29', url: 'restauranteasturianolagalana.es', description: 'Céntrico, sidra buena, comida muy buena. Vistes a la Plaza Mayor.' },
+		{ name: 'La Chalana', rating: 4, address: 'C/ San José 31, 33209 Gijón', phone: '985 164 827', url: 'lachalana.com', description: 'Especialidad en marisco. Merece cada céntimo.' },
+		{ name: 'Sidrería Celorio', rating: 4, address: 'C/ Domingo Juliana 6, 33212 Gijón', phone: '984 293 447', url: 'restaurante-celorio.es', description: 'El cachopo asturiano: bistec + jamón + queso + pimientos. Un cuarto ya da pa dos.' },
+		{ name: 'Casa Ferino', rating: 4, address: 'Ctra. de la Carbonera 78A, 33211 Gijón', phone: '985 380 471', url: 'casaferino.com', description: 'Los callos de Casa Ferino son legendarios. Vuelan por la noche.' },
+		{ name: 'Llagar El Quesu', rating: 5, address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero', phone: '985 985 304', url: 'elquesu.es', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },
+		{ name: 'Sidrería El Globo', rating: 3, address: 'C/ San Bernardo 13, 33201 Gijón', phone: '985 172 247', url: 'sidreriaelglobo.es', description: 'Comida típica asturiana sin florituras.' },
+		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. de la Costa 32, 33205 Gijón', phone: '985 161 499', url: 'sidrerialacosta.com', description: 'Especialidad en carnes argentinas. Chuletón y entraña a la parrilla con sidra asturiana.' },
+		{ name: 'Tino El Roxu', rating: 4, address: 'Av. de la Costa 30, 33205 Gijón', phone: '985 141 792', url: 'tinoelroxu.com', description: 'Cocina tradicional asturiana: carnes, pescados, mariscos.' },
+		{ name: 'Sidrería Cabranes', rating: 4, address: 'Av. Pablo Iglesias 23, 33205 Gijón', phone: '985 131 487', url: 'sidreriacabranes.es', description: 'El rabo de toro ye pa llorar de la emoción.' },
 	];
 
 	const bars = [
