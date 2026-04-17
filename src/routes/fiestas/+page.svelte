@@ -73,6 +73,13 @@
 				'Manzana en toles sos formas: dulce, sidra de la zona y paisaxe de valle. Ideal si busques folixa tranquila y sabores de tierra.',
 		},
 		{
+			name: 'Semana Negra de Xixón',
+			date: 'Xullo',
+			location: 'Xixón (El Natahoyo)',
+			description:
+				'Festival de novela negra, ciencia ficción y cultura popular. Carpas, conciertos, libros y barra libre de tertulies. El plan perfecto pa les noches de verano.',
+		},
+		{
 			name: 'Amagüestu',
 			date: 'Payares',
 			location: 'Tol país (tradición rural)',

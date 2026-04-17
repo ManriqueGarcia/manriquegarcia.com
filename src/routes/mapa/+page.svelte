@@ -410,17 +410,17 @@
 			type: 'fiesta'
 		},
 		{
-			lat: 43.5322,
-			lng: -5.6611,
+			lat: 43.5450,
+			lng: -5.6626,
 			name: 'Selmana Grande de Xixón',
-			info: '📅 Agostu<br>La ciudá en modo fiesta: música, eventos y noches interminables.',
+			info: '📅 Agostu<br>La ciudá en modo fiesta: música, eventos y noches interminables. Centro en Plaza Mayor.',
 			type: 'fiesta'
 		},
 		{
-			lat: 43.5398,
-			lng: -5.6460,
+			lat: 43.5450,
+			lng: -5.6626,
 			name: 'Festival de la Sidra Natural',
-			info: '📅 Agostu<br>Culines, escanciáu y discusiones sobre qué chigre ye "el verdaderu".',
+			info: '📅 Agostu<br>Na Plaza Mayor: culines, escanciáu y discusiones sobre qué chigre ye "el verdaderu".',
 			type: 'fiesta'
 		},
 		{
@@ -459,10 +459,17 @@
 			type: 'fiesta'
 		},
 		{
-			lat: 43.5300,
-			lng: -5.6700,
-			name: 'Feria de Muestres d\'Asturies',
-			info: '📅 Agostu<br>Feria, conciertos y casetes. Tol mundu pa\'l mesmu sitiu.',
+			lat: 43.5395,
+			lng: -5.6373,
+			name: 'Feria de Muestres d\'Asturies (FIDMA)',
+			info: '📅 Agostu<br>Recinto Ferial Luis Adaro. Feria, conciertos y casetes. Tol mundu pa\'l mesmu sitiu.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5415,
+			lng: -5.6772,
+			name: 'Semana Negra de Xixón',
+			info: '📅 Xullo<br>Festival de literatura, cultura y folixa nel Natahoyo. Carpas, conciertos y libros.',
 			type: 'fiesta'
 		}
 	];
