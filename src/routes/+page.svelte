@@ -129,9 +129,9 @@
 		que un pulpu en un garaje.
 	</p>
 
-	<aside class="home-weather">
+	<div class="home-weather">
 		<WeatherWidget />
-	</aside>
+	</div>
 
 	<nav class="nav-cards">
 		{#each [
@@ -225,16 +225,6 @@
 	}
 
 	.home-weather {
-		float: right;
-		margin: 0 0 1rem 1.5rem;
-		max-width: 280px;
-	}
-
-	@media (max-width: 640px) {
-		.home-weather {
-			float: none;
-			margin: 1.25rem 0;
-			max-width: 100%;
-		}
+		margin: 2rem 0 0.5rem;
 	}
 </style>

@@ -76,67 +76,47 @@
 	});
 </script>
 
-<div class="weather-widget" aria-live="polite">
-	<div class="weather-head">
-		<span class="weather-place">Xixón</span>
-		{#if loading}
-			<p class="weather-status">Cargando tiempu…</p>
-		{:else if error}
-			<p class="weather-status weather-err">{error}</p>
-		{:else if current}
-			<div class="weather-now">
+<div class="weather-bar" aria-live="polite">
+	{#if loading}
+		<p class="weather-status">Cargando tiempu…</p>
+	{:else if error}
+		<p class="weather-status weather-err">{error}</p>
+	{:else}
+		<div class="weather-current">
+			<span class="weather-label">Xixón ahora</span>
+			{#if current}
 				<span class="weather-emoji" aria-hidden="true">{weatherEmoji(current.code)}</span>
 				<span class="weather-temp">{current.temp}°C</span>
-			</div>
-		{/if}
-	</div>
-
-	{#if !loading && !error && days.length > 0}
-		<ul class="weather-days">
+			{/if}
+		</div>
+		{#if days.length > 0}
+			<span class="weather-sep" aria-hidden="true"></span>
 			{#each days as d (d.date)}
-				<li class="weather-day">
+				<div class="weather-day">
 					<span class="day-name">{d.label}</span>
 					<span class="day-icon" aria-hidden="true">{weatherEmoji(d.code)}</span>
-					<span class="day-temps"><span class="max">{d.max}°</span> / <span class="min">{d.min}°</span></span>
-				</li>
+					<span class="day-temps">{d.max}° / {d.min}°</span>
+				</div>
 			{/each}
-		</ul>
+		{/if}
 	{/if}
-
-	<p class="weather-foot">
-		Datos de <a href="https://open-meteo.com/" rel="noopener noreferrer">Open-Meteo</a>
-	</p>
 </div>
 
 <style>
-	.weather-widget {
-		background: var(--color-card, #fff);
-		border: 1px solid var(--color-border, #e8e4de);
-		border-radius: var(--radius, 12px);
-		padding: 1rem 1.15rem;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-		max-width: 320px;
-	}
-
-	.weather-head {
+	.weather-bar {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
-		gap: 0.5rem 1rem;
-		margin-bottom: 0.65rem;
-	}
-
-	.weather-place {
-		font-family: var(--font-heading, Georgia, serif);
-		font-weight: 700;
-		font-size: 1rem;
-		color: var(--color-accent, #1a6b3c);
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		background: var(--color-accent-light, #e8f5ed);
+		border: 1px solid rgba(26, 107, 60, 0.15);
+		border-radius: var(--radius, 12px);
+		padding: 0.6rem 1.1rem;
+		font-size: 0.85rem;
 	}
 
 	.weather-status {
 		margin: 0;
-		font-size: 0.88rem;
 		color: var(--color-text-muted, #6b6b6b);
 	}
 
@@ -144,51 +124,48 @@
 		color: #a33;
 	}
 
-	.weather-now {
+	.weather-current {
 		display: flex;
 		align-items: center;
 		gap: 0.35rem;
+		font-weight: 600;
+	}
+
+	.weather-label {
+		color: var(--color-accent, #1a6b3c);
+		margin-right: 0.15rem;
 	}
 
 	.weather-emoji {
-		font-size: 1.75rem;
+		font-size: 1.25rem;
 		line-height: 1;
 	}
 
 	.weather-temp {
-		font-size: 1.35rem;
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 	}
 
-	.weather-days {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 0.45rem;
-		border-top: 1px solid var(--color-border, #e8e4de);
-		padding-top: 0.65rem;
+	.weather-sep {
+		width: 1px;
+		height: 1.2rem;
+		background: var(--color-border, #e8e4de);
 	}
 
 	.weather-day {
-		display: grid;
-		grid-template-columns: 1fr auto auto;
+		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.82rem;
+		gap: 0.25rem;
 	}
 
 	.day-name {
-		color: var(--color-text, #2c2c2c);
 		font-weight: 500;
+		color: var(--color-text, #2c2c2c);
 	}
 
 	.day-icon {
-		font-size: 1.15rem;
+		font-size: 1rem;
 		line-height: 1;
-		text-align: center;
 	}
 
 	.day-temps {
@@ -196,21 +173,5 @@
 		color: var(--color-text-muted, #6b6b6b);
 		font-size: 0.8rem;
 		white-space: nowrap;
-	}
-
-	.day-temps .max {
-		color: var(--color-text, #2c2c2c);
-		font-weight: 600;
-	}
-
-	.weather-foot {
-		margin: 0.65rem 0 0;
-		font-size: 0.72rem;
-		color: var(--color-text-muted, #6b6b6b);
-	}
-
-	.weather-foot a {
-		color: inherit;
-		text-decoration: underline;
 	}
 </style>
