@@ -1,10 +1,10 @@
 # manriquegarcia.com
 
-Sitio web personal de Manrique Garcia, construido con [Astro](https://astro.build).
+Guía de Asturias: restaurantes, sidrerías, bares, hoteles, lugares que visitar y diccionario asturiano.
 
 ## Tecnología
 
-- **Framework**: Astro 4.x (generación estática)
+- **Framework**: Astro 6.x (generación estática)
 - **Hosting**: AWS Amplify
 - **Dominio**: manriquegarcia.com
 
@@ -21,12 +21,14 @@ npm run preview    # Vista previa del build local
 
 ```
 src/
-├── layouts/       # Layouts base y de posts
-├── pages/         # Páginas y rutas
-│   ├── posts/     # Publicaciones en Markdown
+├── layouts/       # Layout base compartido
+├── pages/         # Páginas del sitio
 │   ├── index.astro
-│   ├── about.astro
-│   └── blog.astro
+│   ├── restaurantes.astro
+│   ├── bares.astro
+│   ├── visitar.astro
+│   ├── hoteles.astro
+│   └── diccionario.astro
 └── styles/        # Estilos globales
 ```
 

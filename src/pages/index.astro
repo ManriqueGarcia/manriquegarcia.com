@@ -2,23 +2,56 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout pageTitle="Inicio">
-  <h1>Manrique Garcia</h1>
-  <p>Bienvenido a mi sitio personal. Aquí comparto publicaciones sobre tecnología, aprendizajes y proyectos.</p>
+<BaseLayout title="Inicio">
+	<div class="hero">
+		<h1>Descubre Asturias</h1>
+		<p class="subtitle">
+			Tu guía completa para disfrutar de lo mejor de Gijón, Oviedo y los pueblinos asturianos
+		</p>
+	</div>
 
-  <h2>Últimas publicaciones</h2>
-  <ul class="post-list">
-    <li>
-      <a href="/posts/post-3/">Mi tercera publicación en el blog</a>
-      <div class="post-meta">15 julio 2022</div>
-    </li>
-    <li>
-      <a href="/posts/post-2/">Mi segunda publicación en el blog</a>
-      <div class="post-meta">8 julio 2022</div>
-    </li>
-    <li>
-      <a href="/posts/post-1/">Mi primera publicación en el blog</a>
-      <div class="post-meta">1 julio 2022</div>
-    </li>
-  </ul>
+	<main class="container">
+		<p>
+			Esta guía reúne lo esencial para moverte por Asturias con confianza: restaurantes y sidrerías donde
+			probar la cocina y la sidra de verdad, bares y cafés para el tapeo y el café, lugares que merece la
+			pena visitar en Gijón, Oviedo y los pueblinos, opciones de hoteles para quedarte en la zona, y un
+			diccionario asturiano divertido para pillar el tono local.
+		</p>
+
+		<nav class="nav-cards">
+			<a href="/restaurantes/" class="nav-card">
+				<div class="icon" aria-hidden="true">🍽️</div>
+				<h3>Restaurantes y Sidrerías</h3>
+				<p>Los mejores lugares para comer y beber sidra</p>
+			</a>
+			<a href="/bares/" class="nav-card">
+				<div class="icon" aria-hidden="true">🍺</div>
+				<h3>Bares y Cafés</h3>
+				<p>Zonas de copas y cafeterías</p>
+			</a>
+			<a href="/visitar/" class="nav-card">
+				<div class="icon" aria-hidden="true">🏔️</div>
+				<h3>Qué visitar</h3>
+				<p>Gijón, Oviedo y pueblinos con encanto</p>
+			</a>
+			<a href="/hoteles/" class="nav-card">
+				<div class="icon" aria-hidden="true">🏨</div>
+				<h3>Hoteles</h3>
+				<p>Dónde alojarse en Gijón</p>
+			</a>
+			<a href="/diccionario/" class="nav-card">
+				<div class="icon" aria-hidden="true">📖</div>
+				<h3>Diccionario</h3>
+				<p>Aprende a entenderte con la xente</p>
+			</a>
+		</nav>
+
+		<div class="section-note">
+			<p>
+				La sidra asturiana debe ser escanciada (tirada desde lo alto para que rompa al caer en el vaso) y
+				consumida en el acto. No se bebe todo el contenido (culín), sino que se deja un poco para eliminar
+				los posos.
+			</p>
+		</div>
+	</main>
 </BaseLayout>
