@@ -122,10 +122,46 @@
 					return false;
 				})
 	);
+
+	const pageTitle = 'Restaurantes y Sidrerías | ¡Puxa Asturies!';
+	const pageDesc =
+		'Las mejores sidrerías y restaurantes de Gijón y Asturias con valoraciones, direcciones y el ritual del escanciado de sidra.';
+	const canonical = 'https://manriquegarcia.com/restaurantes';
+	const restaurantListJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Mejores sidrerías y restaurantes de Gijón',
+		itemListElement: restaurants.slice(0, 6).map((r, i) => {
+			/** @type {Record<string, unknown>} */
+			const item = {
+				'@type': 'Restaurant',
+				name: r.name,
+				address: r.address
+			};
+			if (r.phone) {
+				const digits = r.phone.replace(/\s+/g, '');
+				item.telephone = digits.startsWith('+') ? digits : `+34${digits}`;
+			}
+			if (r.url) item.url = r.url;
+			return { '@type': 'ListItem', position: i + 1, item };
+		})
+	});
 </script>
 
 <svelte:head>
-	<title>Restaurantes y Sidrerías | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
+	{@html `<script type="application/ld+json">${restaurantListJsonLd}<\/script>`}
 </svelte:head>
 
 <main class="container">

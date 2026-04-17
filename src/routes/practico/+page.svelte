@@ -1,9 +1,25 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
+
+	const pageTitle = 'Información práctica | ¡Puxa Asturies!';
+	const pageDesc =
+		'Información práctica para visitar Asturias: cómo llegar, transporte, teléfonos útiles, clima y costumbres.';
+	const canonical = 'https://manriquegarcia.com/practico';
 </script>
 
 <svelte:head>
-	<title>Información práctica | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
 </svelte:head>
 
 <main class="container">

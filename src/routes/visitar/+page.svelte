@@ -201,6 +201,26 @@
 
 <svelte:head>
 	<title>Qué visitar | ¡Puxa Asturies!</title>
+	<meta
+		name="description"
+		content="Qué visitar en Asturias: Gijón, Oviedo, Cudillero, Llanes, Luarca y más pueblos con fotos y distancias en coche."
+	/>
+	<link rel="canonical" href="https://manriquegarcia.com/visitar" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://manriquegarcia.com/visitar" />
+	<meta property="og:title" content="Qué visitar | ¡Puxa Asturies!" />
+	<meta
+		property="og:description"
+		content="Qué visitar en Asturias: Gijón, Oviedo, Cudillero, Llanes, Luarca y más pueblos con fotos y distancias en coche."
+	/>
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Qué visitar | ¡Puxa Asturies!" />
+	<meta
+		name="twitter:description"
+		content="Qué visitar en Asturias: Gijón, Oviedo, Cudillero, Llanes, Luarca y más pueblos con fotos y distancias en coche."
+	/>
 </svelte:head>
 
 <main class="container">
@@ -231,7 +251,12 @@
 	<div class="card-grid">
 		{#each gijon as place (place.name)}
 			<article class="card has-image" use:reveal>
-				<img src={place.image} alt="" loading="lazy" class="card-image" />
+				<img
+					src={place.image}
+					alt={`Vista de ${place.name}, Asturias`}
+					loading="lazy"
+					class="card-image"
+				/>
 				<div class="card-body">
 					<h3>{place.name}</h3>
 					<p class="description">{place.description}</p>
@@ -250,7 +275,12 @@
 	<div class="card-grid">
 		{#each oviedo as place (place.name)}
 			<article class="card has-image" use:reveal>
-				<img src={place.image} alt="" loading="lazy" class="card-image" />
+				<img
+					src={place.image}
+					alt={`Vista de ${place.name}, Asturias`}
+					loading="lazy"
+					class="card-image"
+				/>
 				<div class="card-body">
 					<h3>{place.name}</h3>
 					<p class="description">{place.description}</p>
@@ -272,7 +302,12 @@
 	<div class="card-grid">
 		{#each pueblinos as place (place.name)}
 			<article class="card has-image" use:reveal>
-				<img src={place.image} alt="" loading="lazy" class="card-image" />
+				<img
+					src={place.image}
+					alt={`Vista de ${place.name}, Asturias`}
+					loading="lazy"
+					class="card-image"
+				/>
 				<div class="card-body">
 					<div class="place-title-row">
 						<h3>{place.name}</h3>

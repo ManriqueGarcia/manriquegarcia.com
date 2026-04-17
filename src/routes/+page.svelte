@@ -1,10 +1,41 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
+
+	const pageTitle = 'Inicio | ¡Puxa Asturies!';
+	const pageDesc =
+		'Guía informal de Asturias: restaurantes, sidrerías, playas, pueblos y diccionario asturiano. Todo lo que necesitas pa disfrutar del Paraísu Natural.';
+	const canonical = 'https://manriquegarcia.com/';
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: '¡Puxa Asturies!',
+		url: 'https://manriquegarcia.com',
+		description:
+			'Guía informal de Asturias: restaurantes, sidrerías, playas, pueblos y diccionario asturiano.',
+		inLanguage: 'es',
+		author: {
+			'@type': 'Person',
+			name: 'Manrique García',
+			url: 'https://manriquegarcia.com'
+		}
+	});
 </script>
 
 <svelte:head>
-	<title>Inicio | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
+	{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>
 
 <div class="hero">

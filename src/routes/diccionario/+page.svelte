@@ -131,6 +131,26 @@
 
 <svelte:head>
 	<title>Diccionario | ¡Puxa Asturies!</title>
+	<meta
+		name="description"
+		content="Diccionario asturiano-castellano-catalán-andaluz: palabras y expresiones útiles para entender Asturias."
+	/>
+	<link rel="canonical" href="https://manriquegarcia.com/diccionario" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://manriquegarcia.com/diccionario" />
+	<meta property="og:title" content="Diccionario | ¡Puxa Asturies!" />
+	<meta
+		property="og:description"
+		content="Diccionario asturiano-castellano-catalán-andaluz: palabras y expresiones útiles para entender Asturias."
+	/>
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Diccionario | ¡Puxa Asturies!" />
+	<meta
+		name="twitter:description"
+		content="Diccionario asturiano-castellano-catalán-andaluz: palabras y expresiones útiles para entender Asturias."
+	/>
 </svelte:head>
 
 <main class="container">

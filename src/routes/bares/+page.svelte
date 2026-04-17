@@ -1,10 +1,26 @@
 <script>
 	import CoffeeGuide from '$lib/components/CoffeeGuide.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
+
+	const pageTitle = 'Bares y Cafés | ¡Puxa Asturies!';
+	const pageDesc =
+		'Bares, cafeterías y zonas de copas en Gijón y Oviedo. Guía de cafés asturianos y dónde tomar sidra.';
+	const canonical = 'https://manriquegarcia.com/bares';
 </script>
 
 <svelte:head>
-	<title>Bares y Cafés | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
 </svelte:head>
 
 <main>

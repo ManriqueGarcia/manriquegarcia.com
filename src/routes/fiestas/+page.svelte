@@ -80,10 +80,26 @@
 				'Castañes asaes, nues longues y olor a fueu. Si nun has probáu castaña con sidra, falta dalgo importante na to vida. Corrixe eso.',
 		},
 	];
+
+	const pageTitle = 'Calendariu de fiestes | ¡Puxa Asturies!';
+	const pageDesc =
+		'Calendario de fiestas de Asturias: Descenso del Sella, Semana Grande de Gijón, San Juan y más celebraciones.';
+	const canonical = 'https://manriquegarcia.com/fiestas';
 </script>
 
 <svelte:head>
-	<title>Calendariu de fiestes | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
 </svelte:head>
 
 <main class="container">

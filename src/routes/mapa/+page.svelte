@@ -470,6 +470,26 @@
 
 <svelte:head>
 	<title>Mapa | ¡Puxa Asturies!</title>
+	<meta
+		name="description"
+		content="Mapa interactivo de Asturias con restaurantes, sidrerías, hoteles y lugares de interés marcados."
+	/>
+	<link rel="canonical" href="https://manriquegarcia.com/mapa" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://manriquegarcia.com/mapa" />
+	<meta property="og:title" content="Mapa | ¡Puxa Asturies!" />
+	<meta
+		property="og:description"
+		content="Mapa interactivo de Asturias con restaurantes, sidrerías, hoteles y lugares de interés marcados."
+	/>
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Mapa | ¡Puxa Asturies!" />
+	<meta
+		name="twitter:description"
+		content="Mapa interactivo de Asturias con restaurantes, sidrerías, hoteles y lugares de interés marcados."
+	/>
 	<link
 		rel="stylesheet"
 		href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"

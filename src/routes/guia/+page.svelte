@@ -114,10 +114,26 @@
 			setTimeout(doPrint, 400);
 		}
 	});
+
+	const pageTitle = 'Guía completa — ¡Puxa Asturies!';
+	const pageDesc =
+		'Descarga la guía completa de Asturias en PDF: restaurantes, bares, hoteles, diccionario y lugares que visitar.';
+	const canonical = 'https://manriquegarcia.com/guia';
 </script>
 
 <svelte:head>
-	<title>Guía completa — ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
 </svelte:head>
 
 <main class="guia container">

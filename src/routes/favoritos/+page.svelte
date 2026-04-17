@@ -8,10 +8,26 @@
 		if (slug.startsWith('pueblo-')) return '/visitar';
 		return '/';
 	}
+
+	const pageTitle = 'Favoritos | ¡Puxa Asturies!';
+	const pageDesc = 'Tus restaurantes, hoteles y pueblos guardados de la guía ¡Puxa Asturies!.';
+	const canonical = 'https://manriquegarcia.com/favoritos';
 </script>
 
 <svelte:head>
-	<title>Favoritos | ¡Puxa Asturies!</title>
+	<title>{pageTitle}</title>
+	<meta name="robots" content="noindex" />
+	<meta name="description" content={pageDesc} />
+	<link rel="canonical" href={canonical} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDesc} />
+	<meta property="og:site_name" content="¡Puxa Asturies!" />
+	<meta property="og:locale" content="es_ES" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDesc} />
 </svelte:head>
 
 <main class="container">

@@ -8,6 +8,25 @@
 
 	const year = new Date().getFullYear();
 
+	/** Rutas con `<meta name="description">` propia en su `+page.svelte` — el fallback del layout no se duplica. */
+	const ROUTES_WITH_PAGE_DESCRIPTION = new Set([
+		'/',
+		'/restaurantes',
+		'/bares',
+		'/visitar',
+		'/hoteles',
+		'/mapa',
+		'/diccionario',
+		'/practico',
+		'/fiestas',
+		'/guia',
+		'/favoritos'
+	]);
+
+	let showLayoutFallbackDescription = $derived(
+		!ROUTES_WITH_PAGE_DESCRIPTION.has($page.url.pathname)
+	);
+
 	const ASTURIAN_PHRASES = [
 		'Asturies ye sidra, mar y montaña',
 		'Nun hai pan duru pa bona sidra',
@@ -53,10 +72,12 @@
 </script>
 
 <svelte:head>
-	<meta
-		name="description"
-		content="La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu"
-	/>
+	{#if showLayoutFallbackDescription}
+		<meta
+			name="description"
+			content="La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu"
+		/>
+	{/if}
 </svelte:head>
 
 <header>
