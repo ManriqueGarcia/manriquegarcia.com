@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import 'leaflet/dist/leaflet.css';
 
 	/** @typedef {'sublime' | 'sidreria' | 'restaurant' | 'hotel' | 'visit' | 'bar' | 'fiesta'} PlaceType */
 
@@ -479,56 +480,39 @@
 	/** @type {HTMLDivElement | undefined} */
 	let mapEl;
 
-	onMount(() => {
-		/** @type {import('leaflet').Map | null} */
-		let map = null;
-		let tries = 0;
-		const maxTries = 120;
+	onMount(async () => {
+		const L = (await import('leaflet')).default;
+		if (!mapEl) return;
 
-		const interval = setInterval(() => {
-			tries += 1;
-			if (tries > maxTries) {
-				clearInterval(interval);
-				return;
+		const map = L.map(mapEl).setView([43.53, -5.65], 11);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution:
+				'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+		/** @param {PlaceType} t */
+		function makeIcon(t) {
+			const { emoji, color } = typeStyle[t];
+			return L.divIcon({
+				className: 'leaflet-custom-pin-wrap',
+				html: `<div class="leaflet-custom-pin" style="background:${color}">${emoji}</div>`,
+				iconSize: [34, 34],
+				iconAnchor: [17, 34],
+				popupAnchor: [0, -30]
+			});
+		}
+
+		for (const p of places) {
+			const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.type) }).addTo(map);
+			let html = `<div class="map-popup"><strong>${p.name}</strong><br>${p.info}`;
+			if (p.url) {
+				html += `<br><a href="${p.url}" target="_blank" rel="noopener noreferrer">Visitar web →</a>`;
 			}
-			if (typeof window === 'undefined' || !mapEl) return;
-			const L = window['L'];
-			if (!L) return;
-			clearInterval(interval);
+			html += '</div>';
+			marker.bindPopup(html);
+		}
 
-			map = L.map(mapEl).setView([43.53, -5.65], 11);
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution:
-					'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-			}).addTo(map);
-
-			/** @param {PlaceType} t */
-			function makeIcon(t) {
-				const { emoji, color } = typeStyle[t];
-				return L.divIcon({
-					className: 'leaflet-custom-pin-wrap',
-					html: `<div class="leaflet-custom-pin" style="background:${color}">${emoji}</div>`,
-					iconSize: [34, 34],
-					iconAnchor: [17, 34],
-					popupAnchor: [0, -30]
-				});
-			}
-
-			for (const p of places) {
-				const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.type) }).addTo(map);
-				let html = `<div class="map-popup"><strong>${p.name}</strong><br>${p.info}`;
-				if (p.url) {
-					html += `<br><a href="${p.url}" target="_blank" rel="noopener noreferrer">Visitar web →</a>`;
-				}
-				html += '</div>';
-				marker.bindPopup(html);
-			}
-		}, 50);
-
-		return () => {
-			clearInterval(interval);
-			map?.remove();
-		};
+		return () => { map.remove(); };
 	});
 
 	const breadcrumbJsonLd = JSON.stringify({
@@ -568,15 +552,6 @@
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
-	<link
-		rel="stylesheet"
-		href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-		crossorigin="anonymous"
-	/>
-	<script
-		src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-		crossorigin="anonymous"
-	></script>
 </svelte:head>
 
 <main class="container map-page">
