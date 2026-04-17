@@ -65,13 +65,13 @@
 			url: 'https://hotelvilladegijon.com'
 		},
 		{
-			name: 'Hotel Begoña Centro',
+			name: 'B&B Hotel Gijón Centro Begoña',
 			address: 'Avda. de la Costa 44, Gijón',
 			phone: 'Tel: 985 147 211',
 			description:
-				'Centro total: zona comercial, estaciones cerca, playa a un paso. No tienes excusa pa no salir a la calle.',
+				'El antiguo Begoña Centro, ahora reformado por la cadena B&B Hotels. Centro total: zona comercial, estaciones cerca, playa a un paso. No tienes excusa pa no salir a la calle.',
 			tags: ['Céntrico'],
-			url: 'https://hotelesbegona.com'
+			url: 'https://www.hotel-bb.com/es/hotel/gijon-centro-begona'
 		},
 		{
 			name: 'Hotel Blue Santa Rosa',

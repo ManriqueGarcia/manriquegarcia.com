@@ -70,7 +70,7 @@
 		{ name: 'Hotel TRYP Rey Pelayo', address: 'V. Torcuato F. Miranda 26', phone: '985 199 800' },
 		{ name: 'Hotel AC Gijón', address: 'Avda. de Oviedo 15', phone: '985 990 500' },
 		{ name: 'Hotel Villa de Gijón', address: 'C/ San Juan de Vallés 3', phone: '985 141 824' },
-		{ name: 'Hotel Begoña Centro', address: 'Avda. de la Costa 44', phone: '985 147 211' },
+		{ name: 'B&B Hotel Gijón Centro Begoña', address: 'Avda. de la Costa 44', phone: '985 147 211' },
 		{ name: 'Hotel Blue Santa Rosa', address: 'Santa Rosa 4', phone: '985 091 919' },
 		{ name: 'Hotel Blue Marqués', address: 'Marqués de San Esteban 11', phone: '985 090 929' },
 		{ name: 'Apartamentos San Esteban', address: 'Marqués de San Esteban 11', phone: '985 09 09 29' },

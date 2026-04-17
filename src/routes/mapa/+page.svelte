@@ -358,9 +358,9 @@
 		{
 			lat: 43.5408,
 			lng: -5.657,
-			name: 'Hotel Begoña Centro',
+			name: 'B&B Hotel Gijón Centro Begoña',
 			info: 'Avda. de la Costa 44 · Tel: 985 147 211<br>Centro, zona comercial.',
-			url: 'https://hotelesbegona.com',
+			url: 'https://www.hotel-bb.com/es/hotel/gijon-centro-begona',
 			type: 'hotel'
 		},
 		{
