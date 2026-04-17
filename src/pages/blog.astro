@@ -1,25 +1,23 @@
 ---
-const pageTitle = "Mi blog de Astro aprendizaje"
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<a href="/">Inicio</a>
-<a href="/about/">Sobre mi</a>
-<a href="/blog/">Blog</a>
-<h1>{pageTitle}</h1>
-<p>Aquí es donde publicaré acerca de mi viaje aprendiendo Astro./p>
-<ul>
-  <li><a href="/posts/post-1/">Publicación 1</a></li>
-  <li><a href="/posts/post-2/">Publicación 2</a></li>
-  <li><a href="/posts/post-3/">Publicación 3</a></li>
-</ul>
 
-	</body>
-</html>
+<BaseLayout pageTitle="Blog">
+  <h1>Mi blog</h1>
+  <p>Aquí es donde publicaré acerca de mi viaje aprendiendo Astro.</p>
+
+  <ul class="post-list">
+    <li>
+      <a href="/posts/post-3/">Mi tercera publicación en el blog</a>
+      <div class="post-meta">15 julio 2022</div>
+    </li>
+    <li>
+      <a href="/posts/post-2/">Mi segunda publicación en el blog</a>
+      <div class="post-meta">8 julio 2022</div>
+    </li>
+    <li>
+      <a href="/posts/post-1/">Mi primera publicación en el blog</a>
+      <div class="post-meta">1 julio 2022</div>
+    </li>
+  </ul>
+</BaseLayout>
