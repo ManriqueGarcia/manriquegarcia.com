@@ -89,10 +89,10 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.5282,
-			lng: -5.6686,
-			name: 'Barrio de la Sidra',
-			info: 'Zona del Llano: Parrilla Antonio I, Casa César, La Esquina, La Tropical, El Llabiegu, La Xana, Boal II, La Pumarada.',
+			lat: 43.5295,
+			lng: -5.6675,
+			name: 'Barrio de la Sidra (El Llano)',
+			info: 'El Llano ye el barriu sidreru por excelencia: Parrilla Antonio, Casa César, La Esquina, La Tropical, El Llabiegu, La Xana, Boal II, La Pumarada…',
 			type: 'sidreria'
 		},
 		{
