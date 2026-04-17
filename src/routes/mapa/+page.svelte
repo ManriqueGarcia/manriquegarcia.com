@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	/** @typedef {'sublime' | 'sidreria' | 'restaurant' | 'hotel' | 'visit' | 'bar'} PlaceType */
+	/** @typedef {'sublime' | 'sidreria' | 'restaurant' | 'hotel' | 'visit' | 'bar' | 'fiesta'} PlaceType */
 
 	/** @type {Array<{ lat: number; lng: number; name: string; info: string; url?: string; type: PlaceType }>} */
 	const places = [
@@ -400,6 +400,69 @@
 			name: 'Camping Deva',
 			info: 'Camín de la Pasadiella 85 · Tel: 985 13 38 48<br>Bungalows, cabañas y chalets.',
 			type: 'hotel'
+		},
+		{
+			lat: 43.5456,
+			lng: -5.6645,
+			name: 'Carnaval de Xixón',
+			info: '📅 Febreru<br>Disfraces, chirigotas y ambientazu por les cais.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5322,
+			lng: -5.6611,
+			name: 'Selmana Grande de Xixón',
+			info: '📅 Agostu<br>La ciudá en modo fiesta: música, eventos y noches interminables.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5398,
+			lng: -5.6460,
+			name: 'Festival de la Sidra Natural',
+			info: '📅 Agostu<br>Culines, escanciáu y discusiones sobre qué chigre ye "el verdaderu".',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5432,
+			lng: -5.6520,
+			name: 'Nueche de San Xuan',
+			info: '📅 23 de xunu<br>Hogueras na playa, saltos y magia de nueche corta.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5888,
+			lng: -5.7602,
+			name: 'Festival de la Sardina (Candás)',
+			info: '📅 1 d\'agostu<br>Sardinas a la brasa, mar de fondu y xente que flipa.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.4613,
+			lng: -5.0585,
+			name: 'Descensu del Sella',
+			info: '📅 Primer sábadu d\'agostu<br>Miles de piraguas, folixa y ríu. Fiesta Nacional de Interés Turístico.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.3621,
+			lng: -5.8440,
+			name: 'San Matéu (Uviéu)',
+			info: '📅 Septiembre<br>Fiestes grandes na capital: conciertos y cascu históricu petáu.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.4813,
+			lng: -5.4354,
+			name: 'Fiesta de la Mazana (Villaviciosa)',
+			info: '📅 Octubre<br>Manzana en toles sos formes: dulce, sidra y paisaxe de valle.',
+			type: 'fiesta'
+		},
+		{
+			lat: 43.5300,
+			lng: -5.6700,
+			name: 'Feria de Muestres d\'Asturies',
+			info: '📅 Agostu<br>Feria, conciertos y casetes. Tol mundu pa\'l mesmu sitiu.',
+			type: 'fiesta'
 		}
 	];
 
@@ -409,7 +472,8 @@
 		restaurant: { emoji: '🍴', color: '#b45309' },
 		hotel: { emoji: '🏨', color: '#7c3aed' },
 		visit: { emoji: '📍', color: '#0369a1' },
-		bar: { emoji: '🍺', color: '#be185d' }
+		bar: { emoji: '🍺', color: '#be185d' },
+		fiesta: { emoji: '🎪', color: '#d4380d' }
 	};
 
 	/** @type {HTMLDivElement | undefined} */
@@ -536,6 +600,7 @@
 			<li><span class="lg hotel">🏨</span> Hotel / alojamiento</li>
 			<li><span class="lg visit">📍</span> Qué visitar</li>
 			<li><span class="lg bar">🍺</span> Bares / copas</li>
+			<li><span class="lg fiesta">🎪</span> Fiestas y romería</li>
 		</ul>
 	</div>
 
@@ -644,5 +709,8 @@
 	}
 	.lg.bar {
 		background: #be185d;
+	}
+	.lg.fiesta {
+		background: #d4380d;
 	}
 </style>
