@@ -94,7 +94,8 @@
 			rating: 4,
 			address: 'Av. Costa 32, 33205 Gijón',
 			description:
-				'Especialidad en caza. Pa los que les gusta el monte y luego comérselo. Gran variedad y calidad.'
+				'Especialidad en carnes argentinas. Si te gusta un buen chuletón o una entraña a la parrilla, este ye tu sitio. La mezcla de sidra asturiana con corte argentino suena rara pero funciona de maravilla.',
+			url: 'http://sidrerialacosta.com'
 		},
 		{
 			name: 'Tino El Roxu',

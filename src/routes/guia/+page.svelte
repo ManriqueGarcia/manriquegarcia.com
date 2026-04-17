@@ -14,7 +14,7 @@
 		{ name: 'Casa Ferino', rating: 4, address: 'Ctra. de la Carbonera, 33209 Gijón', phone: '985 380 471', url: 'casaferino.com', description: 'Los callos de Casa Ferino son legendarios. Vuelan por la noche.' },
 		{ name: 'El Llagar del Quesu', rating: 5, address: 'Bobes 2, 33429 Siero', phone: '98 579 28 94', description: 'Parrilla tipo argentina en Siero. Decoración guapísima, ambiente acogedor.' },
 		{ name: 'Sidrería El Globo', rating: 3, address: 'C/ San Bernardo 13, 33201 Gijón', phone: '985 17 22 47', url: 'sidreriaelglobo.es', description: 'Comida típica asturiana sin florituras.' },
-		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. Costa 32, 33205 Gijón', description: 'Especialidad en caza. Gran variedad y calidad.' },
+		{ name: 'Sidrería La Costa', rating: 4, address: 'Av. Costa 32, 33205 Gijón', url: 'sidrerialacosta.com', description: 'Especialidad en carnes argentinas. Chuletón y entraña a la parrilla con sidra asturiana.' },
 		{ name: 'Tino El Roxu', rating: 4, address: 'Av. de la Costa 30, 33204 Gijón', phone: '985 141 792', description: 'Cocina tradicional asturiana: carnes, pescados, mariscos.' },
 		{ name: 'Sidrería Cabranes', rating: 4, address: 'Av. Pablo Iglesias 23, 33205 Gijón', phone: '98 513 1487', description: 'El rabo de toro ye pa llorar de la emoción.' },
 	];
