@@ -109,9 +109,9 @@
 			type: 'sidreria'
 		},
 		{
-			lat: 43.3627,
-			lng: -5.8478,
-			name: 'Calle Gascona',
+		lat: 43.3645,
+		lng: -5.8450,
+		name: 'Calle Gascona',
 			info: 'La "Bulevar de la Sidra" de Oviedo. Concentración de sidrerías y tapeo.',
 			type: 'sidreria'
 		},
