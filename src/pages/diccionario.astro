@@ -2,43 +2,148 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Diccionario Asturiano">
+<BaseLayout title="Diccionario">
 	<main class="container">
-		<h1>Diccionario Asturiano</h1>
+		<h1>Diccionario</h1>
 		<p class="page-intro">
-			Llibru pa entenderse con la xente. Un pequeño diccionario para que puedas comunicarte durante tu estancia en Asturias.
+			Llibru pa entenderse con la xente &mdash; Diccionari &mdash; Disionario, pixa.<br/>
+			Un pequeño diccionario multilingüe para que puedas comunicarte durante tu estancia en Asturias&hellip; o donde te lleve la vida.
 		</p>
 
-		<table class="dict-table">
-			<thead>
-				<tr>
-					<th>Castellano</th>
-					<th>Asturiano (Bable)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr><td>Mujeres</td><td>Muyeres</td></tr>
-				<tr><td>Hombres</td><td>Paisanus</td></tr>
-				<tr><td>Creo que te has equivocado</td><td>Yes bobu, yes bobu del todo</td></tr>
-				<tr><td>Ese lugar queda a demasiada distancia</td><td>Ta a tomar pol culo pa'ya</td></tr>
-				<tr><td>Estoy hambriento</td><td>Toy de un esfamiao que mete mieu</td></tr>
-				<tr><td>¿Te has hecho algún daño?</td><td>¿Mancastete?</td></tr>
-				<tr><td>¿Qué sucede?</td><td>¿Que ye oh?</td></tr>
-				<tr><td>¡No entiendo lo que dices!</td><td>¡Que babayaes me cuentes, oh!</td></tr>
-				<tr><td>Se ha caído rodando por la montaña</td><td>¡Mialu com rueda tovia!</td></tr>
-				<tr><td>Oiga, joven, por favor</td><td>Ah, güaje, esti cosu como ye, oh?</td></tr>
-				<tr><td>Sigue recto hasta el final</td><td>To tieso</td></tr>
-				<tr><td>¿Otra sidra?</td><td>Pon un culín, oh</td></tr>
-				<tr><td>Invito yo</td><td>Ya pago, oh</td></tr>
-				<tr><td>Me gusta</td><td>Préstame</td></tr>
-				<tr><td>Fiesta</td><td>Folixia asgalla</td></tr>
-				<tr><td>Voy al baño</td><td>Voi mixiar la sidrina!</td></tr>
-				<tr><td>Vete a la mierda</td><td>A tomar pol culo</td></tr>
-				<tr><td>Me gusta el fútbol</td><td>¡Puxa Sporting!</td></tr>
-				<tr><td>Estar atento</td><td>Enterome de to</td></tr>
-				<tr><td>No queda sidra</td><td>(no existe)</td></tr>
-			</tbody>
-		</table>
+		<div class="table-scroll">
+			<table class="dict-table">
+				<thead>
+					<tr>
+						<th>Castellano</th>
+						<th>Asturiano (Bable)</th>
+						<th>Catalán</th>
+						<th>Andaluz</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Mujeres</td>
+						<td>Muyeres</td>
+						<td>Dones</td>
+						<td>Mujere</td>
+					</tr>
+					<tr>
+						<td>Hombres</td>
+						<td>Paisanus</td>
+						<td>Homes</td>
+						<td>Homes</td>
+					</tr>
+					<tr>
+						<td>Creo que te has equivocado</td>
+						<td>Yes bobu, yes bobu del todo</td>
+						<td>Nen, t'equivoques</td>
+						<td>Nanai de la china</td>
+					</tr>
+					<tr>
+						<td>Ese lugar queda a demasiada distancia</td>
+						<td>Ta a tomar pol culo pa'ya</td>
+						<td>N'hem en metro</td>
+						<td>De Fernandopo pa ya</td>
+					</tr>
+					<tr>
+						<td>Estoy hambriento</td>
+						<td>Toy de un esfamiao que mete mieu</td>
+						<td>Tinc fam</td>
+						<td>Toi desmayao</td>
+					</tr>
+					<tr>
+						<td>¿Te has hecho algún daño?</td>
+						<td>¿Mancastete?</td>
+						<td>T'has fet mal?</td>
+						<td>¿Tasescoñao?</td>
+					</tr>
+					<tr>
+						<td>¿Qué sucede?</td>
+						<td>¿Que ye oh?</td>
+						<td>Qué succeeix?</td>
+						<td>¿Que paha?</td>
+					</tr>
+					<tr>
+						<td>¡No entiendo lo que dices!</td>
+						<td>¡Que babayaes me cuentes, oh!</td>
+						<td>Però, qué dius!</td>
+						<td>Es un bastinazo</td>
+					</tr>
+					<tr>
+						<td>Se ha caído rodando por la montaña</td>
+						<td>¡Mialu com rueda tovia!</td>
+						<td>Ha caigut per la montanya!</td>
+						<td>¡Que carajazo se ha pegao, pixa!</td>
+					</tr>
+					<tr>
+						<td>Oiga, joven, por favor</td>
+						<td>Ah, güaje, esti cosu como ye, oh?</td>
+						<td>Jove, si-us-plau</td>
+						<td>Killo, ven pacá</td>
+					</tr>
+					<tr>
+						<td>Sigue recto hasta el final</td>
+						<td>To tieso</td>
+						<td>No sóc d'aquí</td>
+						<td>To palante</td>
+					</tr>
+					<tr>
+						<td>¿Otra sidra?</td>
+						<td>Pon un culín, oh</td>
+						<td>Fem un pensament?</td>
+						<td>¿Un rebujito?</td>
+					</tr>
+					<tr>
+						<td>Invito yo</td>
+						<td>Ya pago, oh</td>
+						<td>Una merda!</td>
+						<td>Convío</td>
+					</tr>
+					<tr>
+						<td>Me gusta</td>
+						<td>Préstame</td>
+						<td>M'agrada molt, merci</td>
+						<td>Ta guapo</td>
+					</tr>
+					<tr>
+						<td>Fiesta</td>
+						<td>Folixia asgalla</td>
+						<td>Fes-te la festa</td>
+						<td>La feria</td>
+					</tr>
+					<tr>
+						<td>Voy al baño</td>
+						<td>Voi mixiar la sidrina!</td>
+						<td>Vaig a fer un pipi</td>
+						<td>Voy a echar el litro</td>
+					</tr>
+					<tr>
+						<td>Vete a la mierda</td>
+						<td>A tomar pol culo</td>
+						<td>No en dic de paraulotes</td>
+						<td>Te qui i pui ya</td>
+					</tr>
+					<tr>
+						<td>Me gusta el fútbol</td>
+						<td>¡Puxa Sporting!</td>
+						<td>Força Barça!</td>
+						<td>¡Viva er Beti manque pierda!</td>
+					</tr>
+					<tr>
+						<td>Estar atento</td>
+						<td>Enterome de to</td>
+						<td>Escolta, noi</td>
+						<td>Aliquindoi</td>
+					</tr>
+					<tr>
+						<td>No queda sidra</td>
+						<td>(no existe)</td>
+						<td>Un Vichy, si-us-plau</td>
+						<td>Un cardo</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 		<div class="section-note">
 			<p>Si aprendes estas expresiones, serás considerado un verdadero asturiano de adopción.</p>

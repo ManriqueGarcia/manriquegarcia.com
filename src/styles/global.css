@@ -251,6 +251,17 @@ main {
   background: rgba(0, 0, 0, 0.015);
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+}
+
+.table-scroll .dict-table {
+  margin: 0;
+  min-width: 600px;
+}
+
 /* Home nav cards */
 .nav-cards {
   display: grid;
