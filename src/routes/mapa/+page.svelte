@@ -211,6 +211,14 @@
 			type: 'visit'
 		},
 		{
+			lat: 43.3628,
+			lng: -5.8479,
+			name: 'Teatro Campoamor',
+			info: 'Calle Pelayo, Oviedo<br>Teatro de ópera (1892). Premios Princesa de Asturias.',
+			url: 'https://www.teatrocampoamor.es',
+			type: 'visit'
+		},
+		{
 			lat: 43.3621,
 			lng: -5.844,
 			name: 'Barrio Antiguo (Oviedo)',

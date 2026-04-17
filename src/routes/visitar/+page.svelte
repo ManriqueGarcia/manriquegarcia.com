@@ -66,6 +66,12 @@
 			image: '/images/casco-historico-oviedo.jpg'
 		},
 		{
+			name: 'Teatro Campoamor',
+			description:
+				'El teatro de ópera de Uviéu, donde cada año se entregan los Premios Princesa de Asturias. Inaugurado en 1892, ye una joya arquitectónica. Si pillas función, ve. Si no, al menos plántate delante y hazle una foto que ye mu fotoxénicu. Y si alguien te dice que aquí cantó Plácido Domingo, créetelo: ye verdad.',
+			image: '/images/teatro-campoamor.jpg'
+		},
+		{
 			name: 'Monte Naranco',
 			description:
 				'Santa María del Naranco (siglo IX, prerrománico, Patrimonio de la Humanidad, la joya de la corona) y la Cruz de la Victoria de 35 metros. Las vistas desde arriba son pa quedase vivir. Eso sí, la cuesta pa subir te hace sudar el cachopo del mediodía.',

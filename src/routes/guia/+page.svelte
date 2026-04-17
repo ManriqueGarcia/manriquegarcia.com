@@ -47,6 +47,7 @@
 	const oviedo = [
 		{ name: 'La Catedral', desc: 'Gótica, prerrománica, románica, renacentista y barroca. Cámara Santa, Patrimonio de la Humanidad.' },
 		{ name: 'Barrio Antiguo', desc: 'Casco viejo. Palacio Arzobispal, Universidad Vieja (s. XVI), estatua de Woody Allen.' },
+		{ name: 'Teatro Campoamor', desc: 'Teatro de ópera (1892). Premios Princesa de Asturias. Joya arquitectónica en pleno centro.' },
 		{ name: 'Monte Naranco', desc: 'Santa María del Naranco (s. IX), Patrimonio de la Humanidad. Cruz de la Victoria de 35 m.' },
 	];
 
