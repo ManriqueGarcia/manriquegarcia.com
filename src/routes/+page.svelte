@@ -68,10 +68,9 @@
 		que un pulpu en un garaje.
 	</p>
 
-	<div class="home-weather">
-		<p class="home-weather-label">Tiempu en Xixón (por si tienes que decidir si llevas paragües)</p>
+	<aside class="home-weather">
 		<WeatherWidget />
-	</div>
+	</aside>
 
 	<nav class="nav-cards">
 		{#each [
@@ -138,23 +137,16 @@
 
 <style>
 	.home-weather {
-		margin: 2rem 0 2.25rem;
-		padding: 1.25rem 1.35rem;
-		background: var(--color-accent-light, #e8f5ed);
-		border-radius: var(--radius, 12px);
-		border: 1px solid rgba(26, 107, 60, 0.2);
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.85rem;
+		float: right;
+		margin: 0 0 1rem 1.5rem;
+		max-width: 280px;
 	}
 
-	.home-weather-label {
-		margin: 0;
-		font-size: 0.95rem;
-		font-weight: 600;
-		color: var(--color-accent, #1a6b3c);
-		max-width: 28rem;
-		line-height: 1.45;
+	@media (max-width: 640px) {
+		.home-weather {
+			float: none;
+			margin: 1.25rem 0;
+			max-width: 100%;
+		}
 	}
 </style>

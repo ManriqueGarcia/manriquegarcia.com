@@ -27,28 +27,6 @@
 		!ROUTES_WITH_PAGE_DESCRIPTION.has($page.url.pathname)
 	);
 
-	const ASTURIAN_PHRASES = [
-		'Asturies ye sidra, mar y montaña',
-		'Nun hai pan duru pa bona sidra',
-		'En Asturies, el paraguas ye complementu obligatoriu',
-		'Más vale culín en mano que botella per abrir',
-		'Si nun llueve, nun ye Asturies',
-		'Fai un día ñubláu... como siempre',
-		'Aquí comemos como si mañana nun existiera',
-		'En Xixón, la playa ye el salón de casa',
-		'Puxa Sporting, pase lo que pase',
-		'La fabada nun entiende de dietas',
-		'Esti paraísu natural ta meyor con sidra',
-		'Que nun te engañe el sol: lleva chubasqueru',
-		'De cañes por Xixón, ¿qué puede salir mal?',
-		'Asturies nun se visita, Asturies se vive',
-		'Si la vida te da manzanes, fai sidra'
-	];
-
-	let asturianPhrase = $state(
-		ASTURIAN_PHRASES[Math.floor(Math.random() * ASTURIAN_PHRASES.length)]
-	);
-
 	let theme = $state(/** @type {'light' | 'dark'} */ ('light'));
 	let themeHydrated = $state(false);
 
@@ -135,7 +113,6 @@
 				/>
 			</span>
 			<a href="/" class="site-title">¡Puxa Asturies!</a>
-			<p class="header-subtitle">{asturianPhrase}</p>
 		</div>
 		<div class="header-actions">
 		<nav aria-label="Navegación principal">
@@ -234,26 +211,10 @@
 		border-color: rgba(255, 255, 255, 0.35);
 	}
 
-	.header-subtitle {
-		font-size: 0.72rem;
-		font-style: italic;
-		color: rgba(255, 255, 255, 0.5);
-		margin: 0;
-		line-height: 1.35;
-		max-width: min(100%, 42ch);
-	}
-
 	@media (max-width: 640px) {
 		.header-actions {
 			justify-content: center;
 			width: 100%;
-		}
-
-		.header-subtitle {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			max-width: 100%;
 		}
 	}
 
