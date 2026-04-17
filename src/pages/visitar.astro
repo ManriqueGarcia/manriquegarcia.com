@@ -1,5 +1,99 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const gijon = [
+	{
+		name: 'Playa de San Lorenzo',
+		description: 'En pleno centro de Gijón, para chapuzón y sol. Mar Cantábrico con mareas.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Gijon-playa_san_lorenzo_y_Cimadevilla.JPG/800px-Gijon-playa_san_lorenzo_y_Cimadevilla.JPG',
+	},
+	{
+		name: 'Barrio de Cimadevilla',
+		description: 'La parte más antigua de la ciudad, con vestigios romanos y las Termas de Campo Valdés.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cimadevilla_desde_Santa_Catalina.jpg/800px-Cimadevilla_desde_Santa_Catalina.jpg',
+	},
+	{
+		name: 'Cerro de Santa Catalina',
+		description: 'Parques y jardines en Cimadevilla. Zonas infantiles, auditorio y cafetería. Aquí se encuentra el Elogio del Horizonte de Chillida. Panorámica espectacular de la costa.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Elogio_del_horizonte_01.jpg/800px-Elogio_del_horizonte_01.jpg',
+	},
+	{
+		name: 'Parque Isabel la Católica',
+		description: 'Precioso parque con estanque de patos y cisnes, palomar y aviario con avestruces.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Parque_Isabel_la_Cat%C3%B3lica_%28Gij%C3%B3n%29.jpg/800px-Parque_Isabel_la_Cat%C3%B3lica_%28Gij%C3%B3n%29.jpg',
+	},
+	{
+		name: 'El Molinón',
+		description: 'Estadio del Real Sporting de Gijón, ubicado en el Parque Isabel la Católica junto al río Piles.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/El_Molin%C3%B3n_-_Panorama.jpg/800px-El_Molin%C3%B3n_-_Panorama.jpg',
+	},
+	{
+		name: 'Universidad Laboral',
+		description: 'Construida entre 1946-1956, la obra arquitectónica más importante del siglo XX en Asturias, 270.000 m², el edificio más grande de España.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Gij%C3%B3n_-_Torre_de_la_Laboral_Ciudad_de_la_Cultura_%28ex_Universidad_Laboral%29_01.jpg/600px-Gij%C3%B3n_-_Torre_de_la_Laboral_Ciudad_de_la_Cultura_%28ex_Universidad_Laboral%29_01.jpg',
+	},
+	{
+		name: 'La Campa de Torres',
+		description: 'Enclave habitado desde tiempos antiguos. Parque Arqueológico-Natural con restos del oppidum Noega, un primitivo castro de los cilúrnigos.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Campa_Torres_%28Xix%C3%B3n%29.jpg/800px-Campa_Torres_%28Xix%C3%B3n%29.jpg',
+	},
+	{
+		name: 'Jardín Botánico Atlántico',
+		description: 'El primero del noroeste de la Península Ibérica, especializado en flora y vegetación atlántica. Avda. del Jardín Botánico s/n. Tel: 985 18 51 30.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Jard%C3%ADn_Bot%C3%A1nico_de_Gij%C3%B3n.JPG/800px-Jard%C3%ADn_Bot%C3%A1nico_de_Gij%C3%B3n.JPG',
+	},
+];
+
+const oviedo = [
+	{
+		name: 'La Catedral',
+		description: 'Catedral gótica con estructuras prerrománicas (Cámara Santa), románicas, renacentistas y barrocas.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Catedral_de_San_Salvador_de_Oviedo.jpg/600px-Catedral_de_San_Salvador_de_Oviedo.jpg',
+	},
+	{
+		name: 'Barrio Antiguo',
+		description: 'Arte prerrománico, Catedral gótica, Palacio Arzobispal y Universidad Vieja (s. XVI). Calles con encanto para pasear.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Oviedo_16_2_casco_historico.jpg/800px-Oviedo_16_2_casco_historico.jpg',
+	},
+	{
+		name: 'Monte Naranco',
+		description: 'Sierra con la iglesia prerrománica de Santa María del Naranco (s. IX) y el monumento al Sagrado Corazón de Jesús con la Cruz de la Victoria de 35 metros.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Santa_Mar%C3%ADa_del_Naranco_%28Oviedo%29.jpg/800px-Santa_Mar%C3%ADa_del_Naranco_%28Oviedo%29.jpg',
+	},
+];
+
+const pueblinos = [
+	{
+		name: 'Cudillero',
+		description: 'Típico pueblo pesquero pequeño pero encantador por su precioso verde junto al mar.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cudillero%2C_Asturias.jpg/800px-Cudillero%2C_Asturias.jpg',
+	},
+	{
+		name: 'Lastres',
+		description: 'Pueblo televisivo conocido como "San Martín del Sella" por la serie "Doctor Mateo". Pasea por los lugares de la serie.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/150._Lastres.jpg/800px-150._Lastres.jpg',
+	},
+	{
+		name: 'Ribadesella',
+		description: 'Pueblo famoso por el descenso internacional en piraguas del río Sella, un evento que concentra a miles de seguidores.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Ribadesella%2C_Asturias.jpg/800px-Ribadesella%2C_Asturias.jpg',
+	},
+	{
+		name: 'Luanco',
+		description: 'Principal zona de veraneo de Asturias por su situación y paisaje. Edificios históricos como la iglesia parroquial de Santa María.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Puerto_de_Luanco.jpg/800px-Puerto_de_Luanco.jpg',
+	},
+	{
+		name: 'Candás',
+		description: 'Villa de gran atracción turística, espléndidos miradores, playas y puerto pesquero. Festival de la Sardina el 1 de agosto.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cand%C3%A1s%2C_San_F%C3%A9lix.jpg/800px-Cand%C3%A1s%2C_San_F%C3%A9lix.jpg',
+	},
+	{
+		name: 'Llanes',
+		description: 'Lugar precioso para un día de playa. Conocido por los Cubos de la Memoria, bloques de hormigón pintados por Agustín Ibarrola.',
+		image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Cubos_de_la_memoria_%28Llanes%29.jpg/800px-Cubos_de_la_memoria_%28Llanes%29.jpg',
+	},
+];
 ---
 
 <BaseLayout title="Qué visitar">
@@ -7,95 +101,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		<h1>Qué visitar</h1>
 		<p class="page-intro">
 			Asturias combina mar y montaña, ciudades vivas y pueblinos con encanto. Desde playas y miradores hasta
-			parques, patrimonio y rincones para perderse, hay planes para todos los gustos y cada estación del año.
+			parques, patrimonio y rincones para perderse, hay planes para todos los gustos.
 		</p>
 
 		<h2>Gijón</h2>
 		<p>La villa de Gijón tiene muchos rincones que te harán disfrutar.</p>
 		<p>
-			<strong>Infogijón</strong> &mdash; Tel: <a href="tel:+34985341771">985 341 771</a> /
-			<a href="tel:+34902013500">902 013 500</a>. Email:
-			<a href="mailto:infogijon@gijon.info">infogijon@gijon.info</a>
+			<strong>Infogijón</strong> &mdash; Tel: <a href="tel:+34985341771">985 341 771</a>.
+			Email: <a href="mailto:infogijon@gijon.info">infogijon@gijon.info</a>
 		</p>
 
 		<div class="card-grid">
-			<article class="card">
-				<h3>Parque Isabel la Católica</h3>
-				<p class="description">Precioso parque con estanque de patos y cisnes, palomar y aviario con avestruces.</p>
-			</article>
-			<article class="card">
-				<h3>El Molinón</h3>
-				<p class="description">Estadio del Real Sporting de Gijón, ubicado en el Parque Isabel la Católica junto al río Piles.</p>
-			</article>
-			<article class="card">
-				<h3>Universidad Laboral</h3>
-				<p class="description">Construida entre 1946-1956, la obra arquitectónica más importante del siglo XX en Asturias, 270.000 m², el edificio más grande de España.</p>
-			</article>
-			<article class="card">
-				<h3>Playa de San Lorenzo</h3>
-				<p class="description">En pleno centro de Gijón, para chapuzón y sol. Mar Cantábrico con mareas.</p>
-			</article>
-			<article class="card">
-				<h3>Barrio de Cimadevilla</h3>
-				<p class="description">La parte más antigua de la ciudad, vestigios romanos y las Termas.</p>
-			</article>
-			<article class="card">
-				<h3>Cerro de Santa Catalina</h3>
-				<p class="description">Parques y jardines en Cimadevilla. Zonas infantiles, auditorio, cafetería. Panorámica de la costa.</p>
-			</article>
-			<article class="card">
-				<h3>La Campa de Torres</h3>
-				<p class="description">Enclave habitado desde tiempos antiguos, Parque Arqueológico-Natural, restos del oppidum Noega.</p>
-			</article>
-			<article class="card">
-				<h3>Jardín Botánico</h3>
-				<p class="description">El primero del noroeste de la Península Ibérica, especializado en flora atlántica. Avda. del Jardín Botánico s/n. Tel: <a href="tel:+34985185130">985 18 51 30</a>.</p>
-			</article>
+			{gijon.map((place) => (
+				<article class="card has-image">
+					<img
+						src={place.image}
+						alt={place.name}
+						class="card-image"
+						loading="lazy"
+						decoding="async"
+					/>
+					<div class="card-body">
+						<h3>{place.name}</h3>
+						<p class="description">{place.description}</p>
+					</div>
+				</article>
+			))}
 		</div>
 
 		<h2>Oviedo</h2>
 		<div class="card-grid">
-			<article class="card">
-				<h3>La Catedral</h3>
-				<p class="description">Catedral gótica con estructuras prerrománicas (Cámara Santa), románicas, renacentistas y barrocas.</p>
-			</article>
-			<article class="card">
-				<h3>Barrio Antiguo</h3>
-				<p class="description">Arte prerrománico, Catedral gótica, Palacio Arzobispal y Universidad Vieja (s. XVI).</p>
-			</article>
-			<article class="card">
-				<h3>Monte Naranco</h3>
-				<p class="description">Sierra con monumento al Sagrado Corazón de Jesús (1950), Cruz de la Victoria de 35 metros.</p>
-			</article>
+			{oviedo.map((place) => (
+				<article class="card has-image">
+					<img
+						src={place.image}
+						alt={place.name}
+						class="card-image"
+						loading="lazy"
+						decoding="async"
+					/>
+					<div class="card-body">
+						<h3>{place.name}</h3>
+						<p class="description">{place.description}</p>
+					</div>
+				</article>
+			))}
 		</div>
 
 		<h2>Pueblinos</h2>
 		<p>Asturias se caracteriza por sus pueblinos, en los que pasear y degustar su gastronomía.</p>
 		<div class="card-grid">
-			<article class="card">
-				<h3>Cudillero</h3>
-				<p class="description">Típico pueblo pesquero pequeño pero encantador, verde junto al mar.</p>
-			</article>
-			<article class="card">
-				<h3>Lastres</h3>
-				<p class="description">Pueblo televisivo conocido por "Doctor Mateo". Pasear por los lugares de la serie.</p>
-			</article>
-			<article class="card">
-				<h3>Ribadesella</h3>
-				<p class="description">Pueblo famoso por el descenso en piraguas del río Sella.</p>
-			</article>
-			<article class="card">
-				<h3>Luanco</h3>
-				<p class="description">Principal zona de veraneo, edificios históricos como iglesia de Santa María.</p>
-			</article>
-			<article class="card">
-				<h3>Candás</h3>
-				<p class="description">Villa de gran atracción turística, miradores, playas, puerto pesquero. Festival de la Sardina el 1 de agosto.</p>
-			</article>
-			<article class="card">
-				<h3>Llanes</h3>
-				<p class="description">Lugar precioso para un día de playa. Conocido por los Cubos de la Memoria pintados por Agustín Ibarrola.</p>
-			</article>
+			{pueblinos.map((place) => (
+				<article class="card has-image">
+					<img
+						src={place.image}
+						alt={place.name}
+						class="card-image"
+						loading="lazy"
+						decoding="async"
+					/>
+					<div class="card-body">
+						<h3>{place.name}</h3>
+						<p class="description">{place.description}</p>
+					</div>
+				</article>
+			))}
+		</div>
+
+		<div class="section-note" style="margin-top: 2rem;">
+			<p>Fotografías de <a href="https://commons.wikimedia.org" rel="noopener noreferrer">Wikimedia Commons</a>, bajo licencias Creative Commons y dominio público.</p>
 		</div>
 	</main>
 </BaseLayout>
