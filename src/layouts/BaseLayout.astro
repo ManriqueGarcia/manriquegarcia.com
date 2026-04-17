@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Guía para descubrir Asturias: restaurantes, sidrerías, hoteles y lugares que visitar' } = Astro.props;
+const { title, description = 'La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu' } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -17,12 +17,12 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Guía de Asturias</title>
+    <title>{title} | ¡Puxa Asturies!</title>
   </head>
   <body>
     <header>
       <div class="container">
-        <a href="/" class="site-title">Guía de Asturias</a>
+        <a href="/" class="site-title">¡Puxa Asturies!</a>
         <nav>
           <a href="/" class={currentPath === '/' ? 'active' : ''}>Inicio</a>
           <a href="/restaurantes/" class={currentPath.startsWith('/restaurantes') ? 'active' : ''}>Restaurantes</a>
@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname;
     <slot />
     <footer>
       <div class="container">
-        &copy; {new Date().getFullYear()} manriquegarcia.com &mdash; Guía de Asturias
+        &copy; {new Date().getFullYear()} manriquegarcia.com &mdash; Fechu con cariñu y sidra
       </div>
     </footer>
   </body>
