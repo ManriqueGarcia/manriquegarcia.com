@@ -2,6 +2,24 @@
 	import { fly } from 'svelte/transition';
 	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
 
+	const PHRASES = [
+		'Asturies ye sidra, mar y montaña',
+		'Nun hai pan duru pa bona sidra',
+		'En Asturies, el paraguas ye complementu obligatoriu',
+		'Más vale culín en mano que botella per abrir',
+		'Si nun llueve, nun ye Asturies',
+		'Fai un día ñubláu... como siempre',
+		'Aquí comemos como si mañana nun existiera',
+		'En Xixón, la playa ye el salón de casa',
+		'Puxa Sporting, pase lo que pase',
+		'La fabada nun entiende de dietas',
+		'Esti paraísu natural ta meyor con sidra',
+		'Que nun te engañe el sol: lleva chubasqueru',
+		'Asturies nun se visita, Asturies se vive',
+		'Si la vida te da manzanes, fai sidra'
+	];
+	const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
+
 	const pageTitle = 'Inicio | ¡Puxa Asturies!';
 	const pageDesc =
 		'Guía informal de Asturias: restaurantes, sidrerías, playas, pueblos y diccionario asturiano. Todo lo que necesitas pa disfrutar del Paraísu Natural.';
@@ -43,6 +61,49 @@
 </svelte:head>
 
 <div class="hero">
+	<p class="hero-phrase">{phrase}</p>
+	<div class="hero-flags" aria-hidden="true">
+		<!-- Bandera de Asturias -->
+		<svg class="hf" viewBox="0 0 60 40">
+			<defs><clipPath id="fa"><rect width="60" height="40" rx="3"/></clipPath></defs>
+			<g clip-path="url(#fa)">
+				<rect width="60" height="40" fill="#005DAA"/>
+				<g transform="translate(30,18)">
+					<line y1="-12" y2="14" stroke="#D4A017" stroke-width="2.8" stroke-linecap="round"/>
+					<line x1="-8" x2="8" y1="-3" y2="-3" stroke="#D4A017" stroke-width="2.8" stroke-linecap="round"/>
+					<circle cx="-8" cy="-3" r="1.8" fill="#D4A017"/>
+					<circle cx="8" cy="-3" r="1.8" fill="#D4A017"/>
+					<circle cx="0" cy="-12" r="1.8" fill="#D4A017"/>
+					<circle cx="0" cy="14" r="1.8" fill="#D4A017"/>
+					<text x="-13" y="-5" font-size="7.5" fill="#D4A017" font-family="serif" text-anchor="middle">α</text>
+					<text x="13" y="-5" font-size="7.5" fill="#D4A017" font-family="serif" text-anchor="middle">ω</text>
+				</g>
+			</g>
+		</svg>
+		<!-- Escudo de Gijón/Xixón -->
+		<svg class="hf hf-shield" viewBox="0 0 40 48">
+			<defs><clipPath id="fg"><path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z"/></clipPath></defs>
+			<g clip-path="url(#fg)">
+				<rect width="40" height="48" fill="#0C4B78"/>
+				<rect x="0" y="0" width="40" height="6" fill="#D4A017"/>
+				<g transform="translate(20,26)" fill="#D4A017">
+					<ellipse cx="0" cy="-10" rx="3" ry="3.5"/>
+					<rect x="-4.5" y="-7" width="9" height="14" rx="2"/>
+					<rect x="-7" y="-5" width="4" height="10" rx="1.5" transform="rotate(-12,-5,0)"/>
+					<rect x="3" y="-5" width="4" height="10" rx="1.5" transform="rotate(12,5,0)"/>
+					<rect x="-2" y="6" width="3.5" height="9" rx="1"/>
+					<rect x="-1" y="6" width="3.5" height="9" rx="1"/>
+				</g>
+				<g transform="translate(30,14)" stroke="#D4A017" stroke-width="1.6" stroke-linecap="round" fill="none">
+					<line y1="-8" y2="6"/>
+					<line x1="-4" x2="4" y1="-4" y2="-4"/>
+				</g>
+			</g>
+			<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+		</svg>
+		<!-- Escudo del Real Sporting de Gijón -->
+		<img class="hf hf-shield" src="/images/sporting-gijon.svg" alt="Real Sporting de Gijón" width="24" height="30" decoding="async" />
+	</div>
 	<h1>¡Puxa Asturies!</h1>
 	<p class="subtitle">
 		La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu
@@ -136,6 +197,33 @@
 </main>
 
 <style>
+	.hero-phrase {
+		font-size: 0.85rem;
+		font-style: italic;
+		color: rgba(245, 240, 232, 0.5);
+		margin: 0 0 0.75rem;
+	}
+
+	.hero-flags {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		gap: 10px;
+		margin-bottom: 1rem;
+	}
+
+	.hf {
+		width: 40px;
+		height: 27px;
+		display: block;
+		filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+	}
+
+	.hf-shield {
+		width: 24px;
+		height: 30px;
+	}
+
 	.home-weather {
 		float: right;
 		margin: 0 0 1rem 1.5rem;
