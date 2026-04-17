@@ -6,8 +6,8 @@
 	/** @type {Array<{ lat: number; lng: number; name: string; info: string; url?: string; type: PlaceType }>} */
 	const places = [
 		{
-			lat: 43.5082,
-			lng: -5.6335,
+			lat: 43.4705,
+			lng: -5.6456,
 			name: 'Casa Trabanco',
 			info: 'Ctra. de Lavandera 3255 · Tel: 985 136 462<br>LA sidrería. Categoría Sublime.',
 			url: 'https://www.casatrabanco.com',
