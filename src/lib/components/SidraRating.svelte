@@ -44,7 +44,8 @@
 		display: flex;
 		align-items: center;
 		gap: 0.2rem;
-		margin: 0.5rem 0;
+		margin: 0;
+		flex-wrap: wrap;
 	}
 	.sidra-bottle {
 		fill: #d4d0c8;

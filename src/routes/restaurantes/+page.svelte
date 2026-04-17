@@ -332,14 +332,16 @@
 
 	.card-head {
 		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 0.75rem;
+		flex-direction: column;
+		gap: 0.25rem;
 		margin-bottom: 0.35rem;
 	}
 
 	.card-head h3 {
 		margin: 0;
+		font-size: 1.3rem;
+		line-height: 1.3;
+		word-break: break-word;
 	}
 
 	.meta {
