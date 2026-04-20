@@ -25,12 +25,15 @@
 		'/blog/cachopo',
 		'/blog/sidra',
 		'/blog/descenso-del-sella',
+		'/blog/gijon-vs-oviedo',
 		'/faq',
 		'/quiz',
 		'/en',
 		'/plan',
 		'/culines',
-		'/presupuesto'
+		'/presupuesto',
+		'/hoy',
+		'/rutas'
 	]);
 
 	let showLayoutFallbackDescription = $derived(
