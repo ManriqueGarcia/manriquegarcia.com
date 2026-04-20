@@ -4,11 +4,17 @@ customRules:
     target: /google3ec01a937de10d17.html
     status: '200'
   - source: /acm-observabilidad-en-azure.html
-    target: /index.html
-    status: '404'
+    target: https://k8s.manriquegarcia.com/acm-observabilidad-en-azure.html
+    status: '301'
   - source: /acm-observabilidad-en-azure
-    target: /index.html
-    status: '404'
+    target: https://k8s.manriquegarcia.com/acm-observabilidad-en-azure.html
+    status: '301'
+  - source: /primer-post.html
+    target: https://k8s.manriquegarcia.com/primer-post.html
+    status: '301'
+  - source: /primer-post
+    target: https://k8s.manriquegarcia.com/primer-post.html
+    status: '301'
 frontend:
   phases:
     preBuild:
