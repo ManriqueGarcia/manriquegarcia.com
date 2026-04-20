@@ -80,6 +80,12 @@
 			<a href="/diccionario" class:active={$page.url.pathname.startsWith('/diccionario')}>Diccionario</a>
 			<a href="/practico" class:active={$page.url.pathname.startsWith('/practico')}>Práctico</a>
 			<a href="/fiestas" class:active={$page.url.pathname.startsWith('/fiestas')}>Fiestas</a>
+			<a href="/hoy" class:active={$page.url.pathname.startsWith('/hoy')}>📍 Hoy</a>
+			<a href="/rutas" class:active={$page.url.pathname.startsWith('/rutas')}>🥾 Rutas</a>
+			<a href="/plan" class:active={$page.url.pathname.startsWith('/plan')}>🎲 Plan</a>
+			<a href="/quiz" class:active={$page.url.pathname.startsWith('/quiz')}>🧠 Quiz</a>
+			<a href="/culines" class:active={$page.url.pathname.startsWith('/culines')}>🍺 Culines</a>
+			<a href="/presupuesto" class:active={$page.url.pathname.startsWith('/presupuesto')}>💰 Presupuesto</a>
 			<a href="/faq" class:active={$page.url.pathname.startsWith('/faq')}>FAQ</a>
 			<a href="/blog" class:active={$page.url.pathname.startsWith('/blog')}>Blog</a>
 			<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
