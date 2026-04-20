@@ -193,10 +193,43 @@
 		bind:value={searchQuery}
 	/>
 
-	<div class="table-scroll">
-		{#if filtered.length === 0}
-			<p class="no-results">Nun atopé ná, bañista. Prueba con otra palabra.</p>
-		{:else}
+	{#if filtered.length === 0}
+		<p class="no-results">Nun atopé ná, bañista. Prueba con otra palabra.</p>
+	{:else}
+		<!-- Cards for mobile -->
+		<div class="dict-cards">
+			{#each filtered as row (row.es + row.ast)}
+				<div class="dict-card">
+					<div class="dict-card-header">{row.es}</div>
+					<div class="dict-card-langs">
+						<div class="dict-lang">
+							<span class="dict-lang-label">
+								<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true"><defs><clipPath id="m-fast"><rect width="30" height="20" rx="2"/></clipPath></defs><g clip-path="url(#m-fast)"><rect width="30" height="20" fill="#005DAA"/><line x1="15" y1="3" x2="15" y2="17" stroke="#D4A017" stroke-width="1.4" stroke-linecap="round"/><line x1="11" y1="8" x2="19" y2="8" stroke="#D4A017" stroke-width="1.4" stroke-linecap="round"/><text x="8" y="9.5" font-size="4" fill="#D4A017" font-family="serif" text-anchor="middle">α</text><text x="22" y="9.5" font-size="4" fill="#D4A017" font-family="serif" text-anchor="middle">ω</text></g></svg>
+								Asturiano
+							</span>
+							<span class="dict-lang-text">{row.ast}</span>
+						</div>
+						<div class="dict-lang">
+							<span class="dict-lang-label">
+								<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true"><defs><clipPath id="m-fcat"><rect width="30" height="20" rx="2"/></clipPath></defs><g clip-path="url(#m-fcat)"><rect width="30" height="20" fill="#FCDD09"/><rect y="2.2" width="30" height="2" fill="#DA121A"/><rect y="6.6" width="30" height="2" fill="#DA121A"/><rect y="11" width="30" height="2" fill="#DA121A"/><rect y="15.4" width="30" height="2" fill="#DA121A"/></g></svg>
+								Catalán
+							</span>
+							<span class="dict-lang-text">{row.cat}</span>
+						</div>
+						<div class="dict-lang">
+							<span class="dict-lang-label">
+								<svg class="th-flag" viewBox="0 0 30 20" aria-hidden="true"><defs><clipPath id="m-fand"><rect width="30" height="20" rx="2"/></clipPath></defs><g clip-path="url(#m-fand)"><rect width="30" height="7" fill="#00963F"/><rect y="7" width="30" height="6" fill="#fff"/><rect y="13" width="30" height="7" fill="#00963F"/></g></svg>
+								Andaluz
+							</span>
+							<span class="dict-lang-text">{row.and}</span>
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
+
+		<!-- Table for desktop -->
+		<div class="table-scroll dict-desktop">
 			<table class="dict-table">
 				<thead>
 					<tr>
@@ -261,8 +294,8 @@
 					{/each}
 				</tbody>
 			</table>
-		{/if}
-	</div>
+		</div>
+	{/if}
 
 	<div class="section-note">
 		<p>
@@ -330,5 +363,76 @@
 		text-align: center;
 		font-size: 1.05rem;
 		color: var(--color-text-muted);
+	}
+
+	/* Mobile: cards visible, table hidden */
+	.dict-cards {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin: 1.5rem 0;
+	}
+	.dict-desktop {
+		display: none;
+	}
+
+	.dict-card {
+		background: var(--color-card);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius, 12px);
+		overflow: hidden;
+	}
+
+	.dict-card-header {
+		background: var(--color-hero-bg);
+		color: var(--color-hero-text);
+		font-weight: 600;
+		font-size: 1rem;
+		padding: 0.7rem 1rem;
+	}
+
+	.dict-card-langs {
+		padding: 0.5rem 0;
+	}
+
+	.dict-lang {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.45rem 1rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+	.dict-lang:last-child {
+		border-bottom: none;
+	}
+
+	.dict-lang-label {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--color-text-muted);
+	}
+	.dict-lang-label .th-flag {
+		width: 14px;
+		height: 10px;
+	}
+
+	.dict-lang-text {
+		font-size: 0.92rem;
+		line-height: 1.4;
+	}
+
+	/* Desktop (≥ 700px): table visible, cards hidden */
+	@media (min-width: 700px) {
+		.dict-cards {
+			display: none;
+		}
+		.dict-desktop {
+			display: block;
+		}
 	}
 </style>
