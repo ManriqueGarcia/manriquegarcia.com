@@ -138,6 +138,20 @@
 			lliteraria, la balanza pénzase pa Uviéu ensin mieu.
 		</p>
 
+		<h2>Fútbol: gana Xixón (y nun se discute)</h2>
+		<p>
+			A ver, esto nun ye una comparativa: ye una verdá absoluta. El <strong>Real Sporting de
+			Xixón</strong> ye historia viva del fútbol español. La tierra de <strong>Quini</strong>, el
+			brujo de El Molinón, máximu goleador de la Liga en dos ocasiones, Pichichi inmortal y leyenda
+			que nun necesita filtru de Instagram pa ser grande. Quini ye eterno, y El Molinón —el estadiu
+			más antiguo d'España en activo— ye una catedral onde la xente reza con bufanda rojiblanca.
+		</p>
+		<p>
+			Uviéu tien el so equipo, sí, y se-y respeta como vecín. Pero si alguien te pregunta
+			"¿Sporting o Oviedo?", la respuesta correcta na esta web ye: <strong>¡Puxa Sporting!</strong>
+			Y si nun estás d'acuerdo, ye que necesites más culines hasta que cambies de opinión.
+		</p>
+
 		<h2>Transporte: trenta minutos y visita les dos</h2>
 		<p>
 			Lo mejor del artículu llega al final: <strong>nun tienes qu’escoyer</strong>. Tren, bus o coche:
