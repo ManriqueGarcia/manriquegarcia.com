@@ -3,7 +3,7 @@
 
 	const pageTitle = 'Información práctica | ¡Puxa Asturies!';
 	const pageDesc =
-		'Información práctica para visitar Asturias: cómo llegar, transporte, teléfonos útiles, clima y costumbres.';
+		'Información práctica para visitar Asturias: cómo llegar, transporte, teléfonos útiles, clima, gastronomía, sidra y costumbres.';
 	const canonical = 'https://manriquegarcia.com/practico';
 
 	const breadcrumbJsonLd = JSON.stringify({
@@ -58,6 +58,22 @@
 					'@type': 'Answer',
 					text: 'Es la forma tradicional de servir sidra asturiana: se vierte desde altura para que la sidra se oxigene y coja ese punto espumoso. Se sirve en un culín (vaso pequeño) y se bebe de un trago.'
 				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cuáles son los platos típicos de Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'La fabada asturiana, el cachopo, los oricios, el pixín (rape), los quesos (Cabrales, Gamonéu, Afuega el Pitu), y la tortilla de patatas son imprescindibles.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Qué ropa llevar a Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Chubasquero o paraguas siempre, calzado cómodo para caminar, y ropa de capas porque la temperatura cambia varias veces al día. Bañador también, incluso en primavera.'
+				}
 			}
 		]
 	});
@@ -88,7 +104,7 @@
 	<h1>Información práctica (pa que nun te pierdas)</h1>
 
 	<p class="page-intro">
-		Lo básico pa llegar, moverte y llamar a quién toque si pasa dalgo. Nada de postureo: esto ye lo
+		Lo básico pa llegar, moverte, comer y llamar a quién toque si pasa dalgo. Nada de postureo: esto ye lo
 		que te diría un amigu en el chigre antes del segundu culín.
 	</p>
 
@@ -118,7 +134,7 @@
 	<p>
 		<strong>Carretera:</strong> la <strong>A-8</strong> escueye la costa cantábrica como si fuera
 		una autopista con vistas; la <strong>A-66</strong> une con el interior y el sur de la región.
-		Buen asfaltu, respetu al límite y ojo co’ niebla en inviernu.
+		Buen asfaltu, respetu al límite y ojo co' niebla en inviernu.
 	</p>
 
 	<h2>Moverse por Xixón</h2>
@@ -132,8 +148,14 @@
 	</p>
 	<p>
 		<strong>Bici y andando:</strong> Xixón se disfruta a pasu lentu: paseu marítimu, Cimadevilla,
-		subidicas que entrenen pierna… Si alquilas bici o traes la tuya, respeta carriles y peatones: aquí
+		subidicas que entrenen pierna... Si alquilas bici o traes la tuya, respeta carriles y peatones: aquí
 		la xente va con prisa pero con educación (naide perfectu, eh).
+	</p>
+	<p>
+		<strong>Coche de alquiler:</strong> imprescindible si quieres explorar pueblos, montaña o la costa
+		occidental. Hay oferta en el aeropuerto y en Xixón centro. Las carreteras de montaña son estrechas
+		pero con vistas que compensan cada curva. Aparcamiento en Xixón: en el centro ye limitáu, usa los
+		parkings subterráneos (Begoña, Plaza Mayor, Puerto Deportivo).
 	</p>
 
 	<h2>Teléfonos útiles</h2>
@@ -163,12 +185,89 @@
 					<td><strong>985 185 000</strong></td>
 				</tr>
 				<tr>
+					<td>HUCA - Hospital Central de Asturias (Uviéu)</td>
+					<td><strong>985 108 000</strong></td>
+				</tr>
+				<tr>
 					<td>Farmacia de guardia (información)</td>
 					<td><strong>010</strong></td>
+				</tr>
+				<tr>
+					<td>Radio Taxi Xixón</td>
+					<td><strong>985 252 500</strong></td>
+				</tr>
+				<tr>
+					<td>EMTUSA (bus urbanu Xixón)</td>
+					<td><strong>985 291 811</strong></td>
+				</tr>
+				<tr>
+					<td>ALSA (autobuses interurbanos)</td>
+					<td><strong>902 422 242</strong></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+
+	<h2>La sidra: manual de supervivencia</h2>
+	<p>
+		La sidra ye la bebida sagrada d'Asturies. Si vienes y nun pruebas un culín, ye como ir a Roma y nun
+		ver al Papa: técnicamente posible, pero ¿pa qué?
+	</p>
+	<p>
+		<strong>El escanciado:</strong> la sidra asturiana se sirve escanciao — el camareru (o tú, si te
+		atreves) vierte la botella desde arriba pa que la sidra caya con fuerza nel vasu y se oxigene.
+		Se sirve un <strong>culín</strong> (un dedín de sidra nel vasu) y se bebe d'un trago. Si
+		dexes un pocu nel fondu del vasu, tíralo al suelu — ye tradición, nun ye falta de educación.
+	</p>
+	<p>
+		<strong>Cuánto cuesta:</strong> una botella de sidra natural en sidrería ronda los
+		<strong>4-6 euros</strong>. Con una botella salen unos 6-7 culines. Un menú del día en
+		sidrería cuesta entre <strong>12 y 18 euros</strong> con primer platu, segundu, postre, pan
+		y sidra o agua.
+	</p>
+	<p>
+		<strong>Sidra natural vs. sidra de nueva expresión:</strong> la natural ye la clásica
+		(escanciao obligatorio, sabor ácidu-afrutáu); la de nueva expresión viene con burbujas como
+		el champán y nun necesita escanciar. Ambas son buenísimes, pero un asturianu de cepa
+		siempre te va recomendar la natural.
+	</p>
+	<p>
+		<strong>Temporada de sidra:</strong> la sidra natural se elabora entre octubre y enero, y
+		se empieza a beber en primavera (les espichas, cuando se abren los toneles). L'añada varía
+		de sabor cada año según la mazana. En verano se bebe a tope; en inviernu la xente tira más
+		pa sidra de nueva expresión o vinu.
+	</p>
+
+	<h2>Comer en Asturias: lo esencial</h2>
+	<p>
+		Asturies ye una potencia gastronómica que come bastante por encima de lo que su tamaño sugiere.
+		Aquí van los imprescindibles:
+	</p>
+	<p>
+		<strong>Fabada asturiana:</strong> el platu estrella. Fabes de la granja, compango (morcilla,
+		chorizu, tocín, lacón) y hores de fueu lentu. Pídela solo si tienes hambre de verdá: ye
+		contundente como un abrazu asturianu.
+	</p>
+	<p>
+		<strong>Cachopo:</strong> dos filetes de ternera empanaos con jamón y quesu nel mediu. El
+		tamaño ye brutal: un cachopo individual alimenta a dos personas normales (o a un asturianu
+		hambrientu). Hay versiones con centollo, boletus, cabrales...
+	</p>
+	<p>
+		<strong>Mariscu y pescáu:</strong> oricios (erizos de mar), percebes, nécores, pixín (rape),
+		bonitu del norte, xarda (caballa)... si te gusta el mar, Asturies ye un paraísu. Na costa los
+		precios son razonables comparaos con otras zonas turístiques.
+	</p>
+	<p>
+		<strong>Quesos:</strong> Asturies tien más de <strong>40 variedades de quesu</strong>. El
+		Cabrales ye el más famoso (azul, intensu), pero tamién el Afuega'l Pitu, el Beyos, el Gamonéu,
+		el Vidiago y decenes más. Pide una tabla de quesos asturianos y descubre.
+	</p>
+	<p>
+		<strong>Postres:</strong> arroz con leche (el de verdá, con costra de canela quemada),
+		frixuelos (crepes fininos), casadielles (empanadillas dulces de nuez) y torrija asturiana
+		empapada en sidra. Pa chuparse los deos.
+	</p>
 
 	<h2>Costumbres y propinas</h2>
 	<p>
@@ -177,25 +276,123 @@
 		suelto. Lo importante ye el respetu al personal del bar o del restaurante — eso sí que cuenta.
 	</p>
 	<p>
-		<strong>Horarios de comida:</strong> la comida suele ser sobre las <strong>14:00–16:00</strong> y
-		la cena <strong>21:00–23:00</strong>. Si pides cena a las 19:00, igual te miran con cariñu… o con
+		<strong>Horarios de comida:</strong> la comida suele ser sobre las <strong>14:00-16:00</strong> y
+		la cena <strong>21:00-23:00</strong>. Si pides cena a las 19:00, igual te miran con cariñu... o con
 		pena. Los <strong>domingos</strong> muchas tiendas cierran o abren menos: planifica la compra o
 		vas a comer bocadillo de máquina (nun ye plan ideal, créenos).
 	</p>
+	<p>
+		<strong>El "ir de chigres":</strong> ye la versión asturiana del tapeo. Entras en un bar, pides
+		un culín y una tapa (o un pinchin), y a los 15-20 minutos cambias de local. Así se puede hacer
+		una ruta de 5-6 chigres en una nueche sin problema. La zona clásica en Xixón ye la calle
+		de la Corrida, el barrio de Cimadevilla y el Muro de San Lorenzo.
+	</p>
 
-	<h2>Clima</h2>
+	<h2>Clima por estaciones</h2>
 	<p>
 		Asturies ye <strong>lluviosa</strong>: lleva <strong>chubasquero o paragües</strong> aunque el
-		móvil diga “soleáu”, que aquí el Cantábrico cambia de humor en cinco minutos. Los
-		<strong>veranos</strong> son <strong>suaves</strong>, más o menos <strong>18–25 °C</strong>; los
-		<strong>iviernos</strong>, <strong>templaos</strong> al comparar con el interior peninsular,
-		<strong>8–14 °C</strong> como referencia, con xornaes de niebla que parecen de película en blanco y
-		negru.
+		móvil diga "soleáu", que aquí el Cantábricu cambia de humor en cinco minutos.
 	</p>
+	<p>
+		<strong>Primavera (marzo-mayo):</strong> temperaturas entre 10 y 20 °C, florece too el verde que
+		vas a fotografiar. Llueve, sí, pero con intermitencia: sol y lluvia se alternan nel mesmu día.
+		Ideal si quieres evitar aglomeraciones y disfrutar de paisaxe sin cola.
+	</p>
+	<p>
+		<strong>Veranu (junio-septiembre):</strong> la época estrella pa playa. Las temperatures
+		raramente pasan de 28 °C, así que ye un refugio pa quien fuxe del calor del sur. Eso sí,
+		agosto ta petáu: reserva con tiempu.
+	</p>
+	<p>
+		<strong>Seronda / otoño (octubre-noviembre):</strong> la seronda asturiana ye espectacular: colores ocre,
+		castañes, setes y los montes en modo postal. Más lluvia, pero tolo compensa con gastronomía
+		de temporada (fabada, callos, pote, amagüestu).
+	</p>
+	<p>
+		<strong>Inviernu (diciembre-febrero):</strong> perfecto pa cocina de cuchara, mariscu y
+		sidra nel chigre. Nieva en los Picos de Europa y les estaciones de esquí funcionan. Na costa
+		el fríu ye moderáu, sobre 8-12 °C, pero húmedu. Los mercados de Navidá en Uviéu son una pasada.
+	</p>
+
+	<h2>Qué llevar en la maleta</h2>
+	<p>
+		<strong>Chubasquero o paragües:</strong> da igual la época. Ye el accesorio estrella n'Asturies.
+		Quien viene sin ún, acaba comprándolu nel primer bazar.
+	</p>
+	<p>
+		<strong>Calzáu cómodo:</strong> vas caminar muncho — playa, casco viejo, sendas verdes,
+		subidicas a miradores. Nun ye sitiu de tacón (bueno, excepto pa salir de noche, y aun así...).
+	</p>
+	<p>
+		<strong>Ropa de capes:</strong> la temperatura cambia varias veces al día. Una camiseta,
+		un forro polar o chaqueta fina y el chubasquero encima ye la fórmula mágica.
+	</p>
+	<p>
+		<strong>Bañador:</strong> sí, incluso si vienes en mayo. El Cantábricu ye frío pero refrescante,
+		y si pilla un día de sol vas querer metete na playa de San Lorenzo aunque sea cinco minutos.
+	</p>
+	<p>
+		<strong>Protector solar:</strong> el sol asturianu ye traicioneru. Cuando sale, pega de verdá.
+		La gente se confía porque "está nublado" y acaba colorao como un pixín.
+	</p>
+
+	<h2>Frases útiles en asturiano</h2>
+	<p>
+		L'asturianu (bable) nun ye un dialecto: ye una llingua propia con gramática, lliteratura y
+		una comunidad que la cuida. Aunque todo el mundo habla castellano, soltar alguna expresión
+		en asturianu te va ganar sonrises y respetu. Aquí tienes les más prácticas:
+	</p>
+	<div class="table-scroll">
+		<table class="dict-table">
+			<thead>
+				<tr>
+					<th>Asturiano</th>
+					<th>Castellano</th>
+					<th>Cuándo usala</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>¡Puxa Asturies!</td><td>¡Viva Asturias!</td><td>Siempre. Ye el grito de guerra.</td></tr>
+				<tr><td>¿Qué tal, ñeru?</td><td>¿Qué tal, amigo?</td><td>Al saludar a alguien de confianza.</td></tr>
+				<tr><td>Ponme un culín</td><td>Ponme una sidra</td><td>En cualquier sidrería.</td></tr>
+				<tr><td>Toi afayadísimu</td><td>Estoy a gustísimo</td><td>Cuando te pregunten qué tal.</td></tr>
+				<tr><td>¿Hai fabada?</td><td>¿Hay fabada?</td><td>Nada más sentarte nel restaurante.</td></tr>
+				<tr><td>Ye lo que hai</td><td>Es lo que hay</td><td>Pa resignarte con filosofía.</td></tr>
+				<tr><td>Tas tayao</td><td>Estás loco</td><td>Si alguien propone algo descabellao.</td></tr>
+				<tr><td>Presta mucho</td><td>Me encanta / Mola mucho</td><td>Cuando algo te guste de verdá.</td></tr>
+				<tr><td>¡Qué fríu fai!</td><td>¡Qué frío hace!</td><td>Casi cualquier mañana de inviernu.</td></tr>
+				<tr><td>Echa un culín</td><td>Sirve una sidra</td><td>Si quieres hacerte el entendíu.</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+	<h2>Datos prácticos rápidos</h2>
+	<div class="table-scroll">
+		<table class="dict-table">
+			<thead>
+				<tr>
+					<th>Dato</th>
+					<th>Detalle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>Moneda</td><td>Euro (€). Tarjetas aceptadas en casi todos los sitios.</td></tr>
+				<tr><td>Idioma</td><td>Castellano (oficial) y asturiano/bable (cooficial en trámite).</td></tr>
+				<tr><td>Zona horaria</td><td>CET (UTC+1) / CEST en verano (UTC+2).</td></tr>
+				<tr><td>Corriente eléctrica</td><td>230V, 50Hz. Enchufes tipo C y F (europeo estándar).</td></tr>
+				<tr><td>Agua del grifo</td><td>Se bebe sin problema. Ye de las mejores de España.</td></tr>
+				<tr><td>WiFi</td><td>Disponible en casi todos los hoteles, bares y restaurantes.</td></tr>
+				<tr><td>Propina</td><td>No obligatoria. Redondear o dejar 1-2 euros se agradece.</td></tr>
+				<tr><td>Urgencias</td><td>Teléfono 112 (policía, ambulancia, bomberos).</td></tr>
+				<tr><td>Mejor época</td><td>Junio-septiembre pa playa; todo el año pa gastronomía y naturaleza.</td></tr>
+				<tr><td>Aparcamiento Xixón</td><td>Zona azul en centro. Parkings: Begoña, Plaza Mayor, Puerto Deportivo.</td></tr>
+			</tbody>
+		</table>
+	</div>
 
 	<CommentSection
 		title="Comentarios — información práctica"
-		placeholder="¿Dalgo que añadirías pa otros visitantes? Cuéntanoslo…"
+		placeholder="¿Dalgo que añadirías pa otros visitantes? Cuéntanoslo..."
 		page="/practico"
 	/>
 </main>
