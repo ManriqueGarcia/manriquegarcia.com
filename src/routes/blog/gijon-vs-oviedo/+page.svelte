@@ -1,4 +1,5 @@
 <script>
+	import ReadingProgress from '$lib/components/ReadingProgress.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const pageTitle = 'Gijón vs Oviedo: ¿cuál visitar? (la respuesta es ambas) | ¡Puxa Asturies!';
@@ -63,6 +64,7 @@
 	{@html `<script type="application/ld+json">${articleJsonLd}<\/script>`}
 </svelte:head>
 
+<ReadingProgress />
 <main class="container">
 	<h1>Gijón vs Oviedo: ¿cuál visitar? (la respuesta ye ambes)</h1>
 

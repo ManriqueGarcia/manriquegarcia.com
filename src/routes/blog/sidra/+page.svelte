@@ -1,4 +1,5 @@
 <script>
+	import ReadingProgress from '$lib/components/ReadingProgress.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const pageTitle = 'Guía de la sidra asturiana: escanciar, beber y repetir (manual completo) | ¡Puxa Asturies!';
@@ -61,6 +62,7 @@
 	{@html `<script type="application/ld+json">${articleJsonLd}<\/script>`}
 </svelte:head>
 
+<ReadingProgress />
 <main class="container">
 	<h1>Guía de la sidra asturiana: escanciar, beber y repetir (manual completo)</h1>
 

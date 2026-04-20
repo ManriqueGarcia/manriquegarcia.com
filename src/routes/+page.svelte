@@ -1,7 +1,80 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+
+	const SCENE_CARDS = [
+		{ emoji: '🏖️', caption: 'Playa de San Lorenzo', g1: '#3b82f6', g2: '#06b6d4' },
+		{ emoji: '🍎', caption: 'Sidra asturiana', g1: '#22c55e', g2: '#84cc16' },
+		{ emoji: '⛰️', caption: 'Picos de Europa', g1: '#6366f1', g2: '#8b5cf6' },
+		{ emoji: '🏘️', caption: 'Pueblos con encanto', g1: '#f59e0b', g2: '#ef4444' },
+		{ emoji: '🎪', caption: 'Fiestas y folixa', g1: '#ec4899', g2: '#f43f5e' }
+	];
+
+	/** @param {HTMLElement} node */
+	function reveal(node) {
+		const obs = new IntersectionObserver(
+			([e]) => {
+				if (e?.isIntersecting) {
+					node.classList.add('revealed');
+					obs.unobserve(node);
+				}
+			},
+			{ threshold: 0.15 }
+		);
+		obs.observe(node);
+		return {
+			destroy() {
+				obs.disconnect();
+			}
+		};
+	}
+
+	let sidrerias = $state(0);
+	let fiestas = $state(0);
+	let quesos = $state(0);
+	let rutas = $state(0);
+	let counterSectionEl = $state(/** @type {HTMLElement | null} */ (null));
+
+	onMount(() => {
+		const el = counterSectionEl;
+		if (!el) return;
+
+		let started = false;
+		const obs = new IntersectionObserver(
+			([e]) => {
+				if (!e?.isIntersecting || started) return;
+				started = true;
+				obs.disconnect();
+
+				const duration = 1500;
+				const start = performance.now();
+				/** @param {number} t */
+				const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+				function frame(now) {
+					const t = Math.min(1, (now - start) / duration);
+					const e = easeOutCubic(t);
+					sidrerias = Math.round(11 * e);
+					fiestas = Math.round(65 * e);
+					quesos = Math.round(40 * e);
+					rutas = Math.round(3 * e);
+					if (t < 1) {
+						requestAnimationFrame(frame);
+					} else {
+						sidrerias = 11;
+						fiestas = 65;
+						quesos = 40;
+						rutas = 3;
+					}
+				}
+				requestAnimationFrame(frame);
+			},
+			{ threshold: 0.15 }
+		);
+		obs.observe(el);
+		return () => obs.disconnect();
+	});
 
 	const PHRASES = [
 		'Asturies ye sidra, mar y montaña',
@@ -111,6 +184,23 @@
 	<p class="subtitle">
 		La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu
 	</p>
+
+	<div class="hero-carousel" aria-label="Escenes d'Asturies">
+		<div class="hero-carousel-inner">
+			<div class="hero-carousel-track">
+				{#each [...SCENE_CARDS, ...SCENE_CARDS] as scene, i (i)}
+					<div
+						class="scene-card"
+						style="--scene-g1: {scene.g1}; --scene-g2: {scene.g2}"
+						aria-hidden="true"
+					>
+						<span class="scene-emoji">{scene.emoji}</span>
+						<span class="scene-caption">{scene.caption}</span>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</div>
 </div>
 
 <main class="container">
@@ -136,7 +226,29 @@
 		<WeatherWidget />
 	</div>
 
-	<nav class="nav-cards">
+	<section class="home-stats" aria-label="Datos curiosos" bind:this={counterSectionEl} use:reveal>
+		<h2 class="home-stats-heading">Asturies en cifres (aprox.)</h2>
+		<div class="stats-grid">
+			<div class="stat">
+				<span class="stat-value">{sidrerias}</span>
+				<span class="stat-label">Sidrerías</span>
+			</div>
+			<div class="stat">
+				<span class="stat-value">{fiestas}{fiestas >= 65 ? '+' : ''}</span>
+				<span class="stat-label">Fiestas</span>
+			</div>
+			<div class="stat">
+				<span class="stat-value">{quesos}{quesos >= 40 ? '+' : ''}</span>
+				<span class="stat-label">Quesos</span>
+			</div>
+			<div class="stat">
+				<span class="stat-value">{rutas}</span>
+				<span class="stat-label">Rutas a pie</span>
+			</div>
+		</div>
+	</section>
+
+	<nav class="nav-cards" use:reveal>
 		{#each [
 			{
 				href: '/restaurantes',
@@ -181,8 +293,8 @@
 				title: 'Diccionario',
 				desc: 'Pa que nun te miren como un bañista'
 			}
-		] as item, i}
-			<a href={item.href} class="nav-card" in:fly={{ y: 20, duration: 400, delay: i * 80 }}>
+		] as item}
+			<a href={item.href} class="nav-card">
 				<div class="icon">{item.icon}</div>
 				<h2>{item.title}</h2>
 				<p>{item.desc}</p>
@@ -282,5 +394,223 @@
 		font-size: 0.82rem;
 		color: var(--color-text-muted);
 		margin-top: 0.2rem;
+	}
+
+	/* --- Hero scene carousel (CSS-only) --- */
+	.hero-carousel {
+		margin-top: 1.75rem;
+		width: 100%;
+		max-width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		overflow: hidden;
+		mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+	}
+
+	.hero-carousel-inner {
+		overflow: hidden;
+		padding: 0.25rem 0 0.5rem;
+	}
+
+	.hero-carousel-track {
+		display: flex;
+		gap: 1rem;
+		width: max-content;
+		animation: hero-carousel-scroll 20s linear infinite;
+		will-change: transform;
+	}
+
+	.hero-carousel:hover .hero-carousel-track {
+		animation-play-state: paused;
+	}
+
+	@keyframes hero-carousel-scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	.scene-card {
+		flex: 0 0 auto;
+		width: 280px;
+		height: 160px;
+		border-radius: var(--radius, 12px);
+		background: linear-gradient(135deg, var(--scene-g1), var(--scene-g2));
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.scene-card::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
+		pointer-events: none;
+	}
+
+	.scene-emoji {
+		font-size: 3.25rem;
+		line-height: 1;
+		position: relative;
+		z-index: 1;
+		filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+	}
+
+	.scene-caption {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 0.65rem 0.75rem;
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: #fff;
+		text-align: center;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+		z-index: 1;
+		line-height: 1.25;
+	}
+
+	@media (max-width: 640px) {
+		.scene-card {
+			width: 220px;
+			height: 132px;
+		}
+
+		.scene-emoji {
+			font-size: 2.5rem;
+		}
+
+		.scene-caption {
+			font-size: 0.75rem;
+			padding: 0.5rem 0.6rem;
+		}
+
+		.hero-carousel-track {
+			gap: 0.65rem;
+		}
+	}
+
+	/* --- Animated counters --- */
+	.home-stats {
+		margin: 2rem 0 0.5rem;
+	}
+
+	.home-stats-heading {
+		font-size: 1.15rem;
+		margin: 0 0 1rem;
+		text-align: center;
+		color: var(--color-accent);
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		text-align: center;
+	}
+
+	.stat {
+		padding: 0.75rem 0.25rem;
+	}
+
+	.stat-value {
+		display: block;
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1.1;
+		color: var(--color-accent);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.stat-label {
+		display: block;
+		margin-top: 0.35rem;
+		font-size: 0.88rem;
+		color: var(--color-text-muted);
+	}
+
+	@media (max-width: 720px) {
+		.stats-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	/* --- Scroll reveal (use:reveal adds global class `revealed`) --- */
+	.nav-cards:not(:global(.revealed)) > .nav-card {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.nav-cards:global(.revealed) > .nav-card {
+		opacity: 1;
+		transform: none;
+	}
+
+	.home-stats:not(:global(.revealed)) .home-stats-heading,
+	.home-stats:not(:global(.revealed)) .stats-grid .stat {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.home-stats:global(.revealed) .home-stats-heading,
+	.home-stats:global(.revealed) .stats-grid .stat {
+		opacity: 1;
+		transform: none;
+	}
+
+	.nav-cards:global(.revealed) > .nav-card:nth-child(1) {
+		transition-delay: 0.05s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(2) {
+		transition-delay: 0.1s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(3) {
+		transition-delay: 0.15s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(4) {
+		transition-delay: 0.2s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(5) {
+		transition-delay: 0.25s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(6) {
+		transition-delay: 0.3s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(7) {
+		transition-delay: 0.35s;
+	}
+	.nav-cards:global(.revealed) > .nav-card:nth-child(8) {
+		transition-delay: 0.4s;
+	}
+
+	.home-stats:global(.revealed) .home-stats-heading {
+		transition-delay: 0.05s;
+	}
+	.home-stats:global(.revealed) .stats-grid .stat:nth-child(1) {
+		transition-delay: 0.1s;
+	}
+	.home-stats:global(.revealed) .stats-grid .stat:nth-child(2) {
+		transition-delay: 0.15s;
+	}
+	.home-stats:global(.revealed) .stats-grid .stat:nth-child(3) {
+		transition-delay: 0.2s;
+	}
+	.home-stats:global(.revealed) .stats-grid .stat:nth-child(4) {
+		transition-delay: 0.25s;
 	}
 </style>

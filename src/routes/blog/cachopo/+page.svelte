@@ -1,4 +1,5 @@
 <script>
+	import ReadingProgress from '$lib/components/ReadingProgress.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const pageTitle =
@@ -62,6 +63,7 @@
 	{@html `<script type="application/ld+json">${articleJsonLd}<\/script>`}
 </svelte:head>
 
+<ReadingProgress />
 <main class="container">
 	<h1>Guía del cachopo asturiano: qué es, dónde comerlo y cómo no morir en el intento</h1>
 

@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import Confetti from '$lib/components/Confetti.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const pageTitle = 'Contador de culines | ¡Puxa Asturies!';
@@ -20,17 +21,64 @@
 	});
 
 	const milestones = [
-		{ bottles: 1, emoji: '🌱', title: 'Aprendiz', desc: 'Has empezáu bien' },
-		{ bottles: 3, emoji: '🍎', title: 'Aficionáu', desc: 'Ya controles el culín' },
-		{ bottles: 5, emoji: '⭐', title: 'Sidrero', desc: 'Empiezes a escanciar con estilu' },
-		{ bottles: 10, emoji: '🏆', title: 'Maestru escanciador', desc: 'Respetu total' },
-		{ bottles: 20, emoji: '👑', title: 'Leyenda', desc: 'Ye impossible que sigas de pie' }
+		{
+			bottles: 1,
+			emoji: '🌱',
+			title: 'Aprendiz',
+			label: 'Aprendiz',
+			desc: 'Has empezáu bien',
+			fill: '#c8e6c9',
+			stroke: '#81c784',
+			strokeWidth: 1
+		},
+		{
+			bottles: 3,
+			emoji: '🍎',
+			title: 'Aficionáu',
+			label: 'Aficionáu',
+			desc: 'Ya controles el culín',
+			fill: '#4caf50',
+			stroke: '#2e7d32',
+			strokeWidth: 1
+		},
+		{
+			bottles: 5,
+			emoji: '⭐',
+			title: 'Sidrero',
+			label: 'Sidrero',
+			desc: 'Empiezes a escanciar con estilu',
+			fill: '#ffd54f',
+			stroke: '#ff8f00',
+			strokeWidth: 1
+		},
+		{
+			bottles: 10,
+			emoji: '🏆',
+			title: 'Maestru escanciador',
+			label: 'Maestru',
+			desc: 'Respetu total',
+			fill: '#ffb74d',
+			stroke: '#f57c00',
+			strokeWidth: 1
+		},
+		{
+			bottles: 20,
+			emoji: '👑',
+			title: 'Leyenda',
+			label: 'Leyenda',
+			desc: 'Ye impossible que sigas de pie',
+			fill: '#9575cd',
+			stroke: '#d4af37',
+			strokeWidth: 3
+		}
 	];
 
 	/** @type {{ bottleIndex: number; place: string; time: string }[]} */
 	let history = $state([]);
 	let placeInput = $state('');
 	let shareCopied = $state(false);
+	let milestoneConfetti = $state(false);
+	let milestoneConfettiTimer = 0;
 
 	let bottleCount = $derived(history.length);
 	let culines = $derived(bottleCount * CULINES_PER_BOTTLE);
@@ -78,6 +126,15 @@
 		history = [...history, { bottleIndex: next, place, time }];
 		placeInput = '';
 		persist();
+
+		if (next === 5 || next === 10 || next === 20) {
+			milestoneConfetti = true;
+			if (milestoneConfettiTimer) clearTimeout(milestoneConfettiTimer);
+			milestoneConfettiTimer = window.setTimeout(() => {
+				milestoneConfetti = false;
+				milestoneConfettiTimer = 0;
+			}, 2500);
+		}
 	}
 
 	function removeBottle() {
@@ -88,6 +145,11 @@
 
 	function resetTrip() {
 		if (!confirm('¿Seguro que quies reaniciar el viaxe? Va desaniciar toles botelles.')) return;
+		if (milestoneConfettiTimer) {
+			clearTimeout(milestoneConfettiTimer);
+			milestoneConfettiTimer = 0;
+		}
+		milestoneConfetti = false;
 		history = [];
 		persist();
 	}
@@ -140,6 +202,7 @@
 </svelte:head>
 
 <main class="container culines-page">
+	<Confetti active={milestoneConfetti} />
 	<h1>Contador de culines</h1>
 	<p class="page-intro">
 		{pageDesc} Una botella da aproximadamente {CULINES_PER_BOTTLE} culines: rexistra botelles y el contador fai'l restu.
@@ -179,15 +242,38 @@
 		</div>
 	</section>
 
-	{#if topMilestone}
-		<div class="milestone-banner">
-			<p class="milestone-emoji">{topMilestone.emoji}</p>
-			<div>
-				<p class="milestone-title">{topMilestone.title}</p>
-				<p class="milestone-desc">{topMilestone.desc}</p>
-			</div>
+	<section class="milestone-badges" aria-label="Insignias del viaxe por botelles">
+		<div class="badge-row" role="list">
+			{#each milestones as m (m.bottles)}
+				{@const unlocked = bottleCount >= m.bottles}
+				{@const isCurrent = topMilestone !== null && topMilestone.bottles === m.bottles}
+				<div class="badge-item" role="listitem">
+					<div
+						class="badge"
+						class:locked={!unlocked}
+						class:current={unlocked && isCurrent}
+						title="{m.title} ({m.bottles} bot.): {m.desc}"
+					>
+						<svg class="badge-svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+							<circle
+								cx="32"
+								cy="32"
+								r="28"
+								fill={m.fill}
+								stroke={m.stroke}
+								stroke-width={m.strokeWidth}
+							/>
+						</svg>
+						<span class="badge-emoji" aria-hidden="true">{m.emoji}</span>
+					</div>
+					<p class="badge-label">{m.label}</p>
+				</div>
+			{/each}
 		</div>
-	{/if}
+		{#if topMilestone}
+			<p class="milestone-caption">{topMilestone.desc}</p>
+		{/if}
+	</section>
 
 	<section class="history-section" aria-labelledby="history-heading">
 		<h2 id="history-heading">Historial</h2>
@@ -338,31 +424,85 @@
 		color: var(--color-text);
 	}
 
-	.milestone-banner {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1rem 1.25rem;
-		background: var(--color-accent-light);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius, 12px);
+	.milestone-badges {
 		margin-bottom: 1.5rem;
 	}
 
-	.milestone-emoji {
-		font-size: 2.25rem;
-		margin: 0;
+	.badge-row {
+		display: flex;
+		gap: 0.75rem;
+		justify-content: center;
+		margin: 1.5rem 0 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.badge-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 4.5rem;
+	}
+
+	.badge {
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		transition: all 0.3s;
+		position: relative;
+	}
+
+	.badge-svg {
+		display: block;
+		width: 64px;
+		height: 64px;
+		flex-shrink: 0;
+	}
+
+	.badge-emoji {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
 		line-height: 1;
+		pointer-events: none;
 	}
 
-	.milestone-title {
-		font-weight: 700;
-		margin: 0 0 0.2rem;
-		font-size: 1.05rem;
+	.badge.locked {
+		filter: grayscale(1);
+		opacity: 0.3;
 	}
 
-	.milestone-desc {
-		margin: 0;
+	.badge.current {
+		animation: badge-pulse 2s ease infinite;
+	}
+
+	@keyframes badge-pulse {
+		0%,
+		100% {
+			box-shadow: 0 0 0 0 rgba(26, 107, 60, 0.4);
+		}
+		50% {
+			box-shadow: 0 0 0 10px rgba(26, 107, 60, 0);
+		}
+	}
+
+	.badge-label {
+		font-size: 0.65rem;
+		text-align: center;
+		margin-top: 0.25rem;
+		color: var(--color-text-muted);
+		margin-bottom: 0;
+	}
+
+	.milestone-caption {
+		text-align: center;
+		margin: 0.75rem 0 0;
 		font-size: 0.92rem;
 		color: var(--color-text-muted);
 	}

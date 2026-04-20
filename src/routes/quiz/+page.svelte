@@ -1,4 +1,5 @@
 <script>
+	import Confetti from '$lib/components/Confetti.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 	import { fly } from 'svelte/transition';
 
@@ -171,6 +172,7 @@
 </svelte:head>
 
 <main class="container">
+	<Confetti active={finished && score >= 7} />
 	<h1>¿Cuánto sabes de Asturias?</h1>
 
 	<p class="page-intro">
