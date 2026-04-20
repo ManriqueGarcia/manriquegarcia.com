@@ -142,8 +142,8 @@
 		<p>
 			A ver, esto nun ye una comparativa: ye una verdá absoluta. El <strong>Real Sporting de
 			Xixón</strong> ye historia viva del fútbol español. La tierra de <strong>Quini</strong>, el
-			brujo de El Molinón, máximu goleador de la Liga en dos ocasiones, Pichichi inmortal y leyenda
-			que nun necesita filtru de Instagram pa ser grande. Quini ye eterno, y El Molinón —el estadiu
+			brujo de El Molinón, <strong>siete veces Pichichi</strong> entre Primera y Segunda División.
+			Solo Messi lo supera. Léelo otra vez: <em>solo Messi</em>. Quini ye eterno, y El Molinón —el estadiu
 			más antiguo d'España en activo— ye una catedral onde la xente reza con bufanda rojiblanca.
 		</p>
 		<p>
