@@ -8,6 +8,14 @@
 
 	const posts = [
 		{
+			href: '/blog/gijon-vs-oviedo',
+			emoji: '⚔️',
+			title: 'Gijón vs Oviedo: ¿cuál visitar?',
+			date: '20 abr 2026',
+			excerpt:
+				'Playa, cascu, sidra, museos y vida nocturna: comparativa con humor y veredictu anti-drama (spoiler: visita les dos).'
+		},
+		{
 			href: '/blog/cachopo',
 			emoji: '🥩',
 			title: 'Guía del cachopo asturiano',

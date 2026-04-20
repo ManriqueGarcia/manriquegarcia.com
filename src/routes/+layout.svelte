@@ -26,7 +26,11 @@
 		'/blog/sidra',
 		'/blog/descenso-del-sella',
 		'/faq',
-		'/en'
+		'/quiz',
+		'/en',
+		'/plan',
+		'/culines',
+		'/presupuesto'
 	]);
 
 	let showLayoutFallbackDescription = $derived(
@@ -111,6 +115,12 @@
 			<a href="/diccionario">Diccionario</a>
 			<a href="/practico">Práctico</a>
 			<a href="/fiestas">Fiestas</a>
+			<a href="/hoy">Hoy</a>
+			<a href="/rutas">Rutas</a>
+			<a href="/plan">Plan random</a>
+			<a href="/quiz">Quiz</a>
+			<a href="/culines">Culines</a>
+			<a href="/presupuesto">Presupuesto</a>
 			<a href="/faq">FAQ</a>
 			<a href="/blog">Blog</a>
 			<a href="/guia">Guía PDF</a>
