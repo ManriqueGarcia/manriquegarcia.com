@@ -218,7 +218,9 @@
 		<strong>El escanciado:</strong> la sidra asturiana se sirve escanciao — el camareru (o tú, si te
 		atreves) vierte la botella desde arriba pa que la sidra caya con fuerza nel vasu y se oxigene.
 		Se sirve un <strong>culín</strong> (un dedín de sidra nel vasu) y se bebe d'un trago. Si
-		dexes un pocu nel fondu del vasu, tíralo al suelu — ye tradición, nun ye falta de educación.
+		dexes un pocu nel fondu del vasu, tíralo al suelu — antes los vasos eran compartidos
+		y al tirar lo que sobraba se llimpiaba el borde pal siguiente. Hoy nun se comparte vasu,
+		pero la costumbre quedó.
 	</p>
 	<p>
 		<strong>Cuánto cuesta:</strong> una botella de sidra natural en sidrería ronda los

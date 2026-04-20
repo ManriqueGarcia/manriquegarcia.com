@@ -63,8 +63,9 @@
 	<p>
 		Asturian cider is <strong>natural apple cider</strong> — no bubbles, no sweetness, just pure fermented apple juice.
 		It's poured from height (<em>escanciado</em>) so it hits the glass and gets oxygenated. You drink
-		a small amount called a <strong>culín</strong> in one gulp, then throw the rest on the floor.
-		Yes, really. A bottle costs <strong>€4-6</strong> and gets you 6-7 culines.
+		a small amount called a <strong>culín</strong> in one gulp, then pour out what's left.
+		This isn't just tradition — glasses used to be shared, so tossing the leftover cider
+		cleaned the rim for the next person. A bottle costs <strong>€4-6</strong> and gets you 6-7 culines.
 	</p>
 	<p>
 		Best cider spots: <strong>Calle Gascona</strong> in Oviedo ("Cider Boulevard"),
