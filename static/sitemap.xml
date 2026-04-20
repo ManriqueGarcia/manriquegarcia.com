@@ -9,5 +9,11 @@
   <url><loc>https://manriquegarcia.com/diccionario</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://manriquegarcia.com/practico</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://manriquegarcia.com/fiestas</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://manriquegarcia.com/faq</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://manriquegarcia.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://manriquegarcia.com/blog/cachopo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://manriquegarcia.com/blog/sidra</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://manriquegarcia.com/blog/descenso-del-sella</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://manriquegarcia.com/en</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://manriquegarcia.com/guia</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

@@ -3,6 +3,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareWhatsApp from '$lib/components/ShareWhatsApp.svelte';
 	import { slugify } from '$lib/utils/slugify.js';
+	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const hotels = [
 		{
@@ -289,6 +290,22 @@
 		{/each}
 	</div>
 
+	<div class="related-pages">
+		<h2>Tamién te puede interesar</h2>
+		<div class="related-grid">
+			<a href="/restaurantes" class="related-link"
+				>🍴 Restaurantes<span>Dónde comer bien cerquina del hotel</span></a
+			>
+			<a href="/mapa" class="related-link"
+				>🗺️ Ver nel mapa<span>Ubica los hoteles y tolo demás</span></a
+			>
+			<a href="/practico" class="related-link"
+				>📋 Info práctica<span>Cómo llegar y moverse por Xixón</span></a
+			>
+		</div>
+	</div>
+
+	<ShareButtons title="Hoteles en Gijón" description="Dónde dormir sin romperte el bolsillu" />
 	<CommentSection
 		sectionTitle="Comentarios sobre hoteles"
 		inputPlaceholder="¿Dormiste en dalgún sitiu que merezca la pena?…"
@@ -322,5 +339,50 @@
 		flex-wrap: wrap;
 		gap: 0.35rem;
 		margin: 0.5rem 0 0.75rem;
+	}
+
+	.related-pages {
+		margin: 2.5rem 0 1rem;
+	}
+
+	.related-pages h2 {
+		font-size: 1.15rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 0.75rem;
+	}
+
+	.related-link {
+		display: block;
+		padding: 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius, 12px);
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 600;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.related-link:hover {
+		border-color: var(--color-accent);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		text-decoration: none;
+		color: var(--color-text);
+	}
+
+	.related-link span {
+		display: block;
+		font-weight: 400;
+		font-size: 0.82rem;
+		color: var(--color-text-muted);
+		margin-top: 0.2rem;
 	}
 </style>

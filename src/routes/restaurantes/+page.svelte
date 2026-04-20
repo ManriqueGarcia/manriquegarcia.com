@@ -6,6 +6,7 @@
 	import ShareWhatsApp from '$lib/components/ShareWhatsApp.svelte';
 	import QuickRating from '$lib/components/QuickRating.svelte';
 	import { slugify } from '$lib/utils/slugify.js';
+	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const restaurants = [
 		{
@@ -347,6 +348,22 @@
 		sitios donde el cachopo pesa lo suyo en la mesa… y en la conciencia.
 	</p>
 
+	<div class="related-pages">
+		<h2>Tamién te puede interesar</h2>
+		<div class="related-grid">
+			<a href="/bares" class="related-link"
+				>🍺 Bares y cafés<span>Pa tomar un culín entre comida y comida</span></a
+			>
+			<a href="/mapa" class="related-link"
+				>🗺️ Ver nel mapa<span>Toles sidrerías y restaurantes ubicaos</span></a
+			>
+			<a href="/practico" class="related-link"
+				>📋 Info práctica<span>Horarios, propinas y consejos pa comer</span></a
+			>
+		</div>
+	</div>
+
+	<ShareButtons title="Restaurantes y sidrerías en Asturias" description="Dónde comer de verdá en Xixón y alrededores" />
 	<CommentSection
 		title="💬 ¿Conoces algún sitio más? ¿Qué tal comiste? ¡Cuéntanos!"
 		page="/restaurantes"
@@ -455,5 +472,50 @@
 		margin-top: 0.85rem;
 		padding-top: 0.75rem;
 		border-top: 1px solid var(--color-border);
+	}
+
+	.related-pages {
+		margin: 2.5rem 0 1rem;
+	}
+
+	.related-pages h2 {
+		font-size: 1.15rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 0.75rem;
+	}
+
+	.related-link {
+		display: block;
+		padding: 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius, 12px);
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 600;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.related-link:hover {
+		border-color: var(--color-accent);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		text-decoration: none;
+		color: var(--color-text);
+	}
+
+	.related-link span {
+		display: block;
+		font-weight: 400;
+		font-size: 0.82rem;
+		color: var(--color-text-muted);
+		margin-top: 0.2rem;
 	}
 </style>

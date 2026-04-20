@@ -20,7 +20,13 @@
 		'/practico',
 		'/fiestas',
 		'/guia',
-		'/favoritos'
+		'/favoritos',
+		'/blog',
+		'/blog/cachopo',
+		'/blog/sidra',
+		'/blog/descenso-del-sella',
+		'/faq',
+		'/en'
 	]);
 
 	let showLayoutFallbackDescription = $derived(
@@ -70,6 +76,8 @@
 			<a href="/diccionario" class:active={$page.url.pathname.startsWith('/diccionario')}>Diccionario</a>
 			<a href="/practico" class:active={$page.url.pathname.startsWith('/practico')}>Práctico</a>
 			<a href="/fiestas" class:active={$page.url.pathname.startsWith('/fiestas')}>Fiestas</a>
+			<a href="/faq" class:active={$page.url.pathname.startsWith('/faq')}>FAQ</a>
+			<a href="/blog" class:active={$page.url.pathname.startsWith('/blog')}>Blog</a>
 			<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
 			<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
 			<button
@@ -103,7 +111,10 @@
 			<a href="/diccionario">Diccionario</a>
 			<a href="/practico">Práctico</a>
 			<a href="/fiestas">Fiestas</a>
+			<a href="/faq">FAQ</a>
+			<a href="/blog">Blog</a>
 			<a href="/guia">Guía PDF</a>
+			<a href="/en">🇬🇧 English</a>
 		</nav>
 		<p class="footer-copy">{@html `&copy; ${year} manriquegarcia.com &mdash; Fechu con cariñu y sidra`}</p>
 	</div>

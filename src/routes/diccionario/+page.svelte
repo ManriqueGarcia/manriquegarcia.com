@@ -1,5 +1,6 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
+	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const entries = [
 		{ es: 'Mujeres', ast: 'Muyeres (las que mandan de verdad)', cat: 'Dones', and: 'Mujere' },
@@ -304,6 +305,20 @@
 		</p>
 	</div>
 
+	<div class="related-pages">
+		<h2>Tamién te puede interesar</h2>
+		<div class="related-grid">
+			<a href="/practico" class="related-link"
+				>📋 Info práctica<span>Más consejos pa la to visita</span></a
+			>
+			<a href="/restaurantes" class="related-link"
+				>🍴 Restaurantes<span>Practica les frases pidiendo fabada</span></a
+			>
+			<a href="/fiestas" class="related-link">🎪 Fiestas<span>Más vocabulario nuevo garantizáu</span></a>
+		</div>
+	</div>
+
+	<ShareButtons title="Diccionario Asturiano" description="Frases pa entenderte con la xente" />
 	<CommentSection
 		sectionTitle="Comentarios del diccionario"
 		inputPlaceholder="¿La to frase favorita o una corrección con cariñu?…"
@@ -434,5 +449,45 @@
 		.dict-desktop {
 			display: block;
 		}
+	}
+
+	.related-pages {
+		margin: 2.5rem 0 1rem;
+	}
+	.related-pages h2 {
+		font-size: 1.15rem;
+		margin-bottom: 0.75rem;
+	}
+	.related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 0.75rem;
+	}
+	.related-link {
+		display: block;
+		padding: 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius, 12px);
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 600;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+	.related-link:hover {
+		border-color: var(--color-accent);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		text-decoration: none;
+		color: var(--color-text);
+	}
+	.related-link span {
+		display: block;
+		font-weight: 400;
+		font-size: 0.82rem;
+		color: var(--color-text-muted);
+		margin-top: 0.2rem;
 	}
 </style>

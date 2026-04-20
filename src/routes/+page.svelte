@@ -1,6 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
+	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
 	const PHRASES = [
 		'Asturies ye sidra, mar y montaña',
@@ -44,6 +45,8 @@
 	<title>{pageTitle}</title>
 	<meta name="description" content={pageDesc} />
 	<link rel="canonical" href={canonical} />
+	<link rel="alternate" hreflang="es" href={canonical} />
+	<link rel="alternate" hreflang="en" href="https://manriquegarcia.com/en" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={canonical} />
 	<meta property="og:title" content={pageTitle} />
@@ -194,6 +197,19 @@
 			<strong>Siempre.</strong>
 		</p>
 	</div>
+
+	<div class="related-pages">
+		<h2>Tamién te puede interesar</h2>
+		<div class="related-grid">
+			<a href="/restaurantes" class="related-link"
+				>🍴 Restaurantes<span>Les mejores sidrerías de Xixón</span></a
+			>
+			<a href="/visitar" class="related-link">🏛️ Qué visitar<span>Xixón, Uviéu y pueblinos</span></a>
+			<a href="/fiestas" class="related-link">🎪 Fiestas<span>Calendariu completísimo</span></a>
+		</div>
+	</div>
+
+	<ShareButtons title="¡Puxa Asturies! Guía de Asturias" description="Too lo que necesites pa disfrutar Asturies" />
 </main>
 
 <style>
@@ -226,5 +242,45 @@
 
 	.home-weather {
 		margin: 2rem 0 0.5rem;
+	}
+
+	.related-pages {
+		margin: 2.5rem 0 1rem;
+	}
+	.related-pages h2 {
+		font-size: 1.15rem;
+		margin-bottom: 0.75rem;
+	}
+	.related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 0.75rem;
+	}
+	.related-link {
+		display: block;
+		padding: 1rem;
+		background: var(--color-card);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius, 12px);
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 600;
+		font-size: 0.95rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+	.related-link:hover {
+		border-color: var(--color-accent);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		text-decoration: none;
+		color: var(--color-text);
+	}
+	.related-link span {
+		display: block;
+		font-weight: 400;
+		font-size: 0.82rem;
+		color: var(--color-text-muted);
+		margin-top: 0.2rem;
 	}
 </style>
