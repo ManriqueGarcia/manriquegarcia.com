@@ -1,6 +1,7 @@
 <script>
 	import ReadingProgress from '$lib/components/ReadingProgress.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const pageTitle =
 		'Descenso del Sella 2026: guía completa para vivirlo (con o sin piragua) | ¡Puxa Asturies!';
@@ -56,6 +57,10 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Descenso del Sella — guía de vista previa ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -66,6 +71,12 @@
 <ReadingProgress />
 <main class="container">
 	<h1>Descenso del Sella 2026: guía completa para vivirlo (con o sin piragua)</h1>
+	<Breadcrumb
+		items={[
+			{ href: '/blog', label: 'Blog' },
+			{ label: 'Descenso del Sella 2026' }
+		]}
+	/>
 
 	<p class="article-meta">
 		<time datetime={published}>20 de abril de 2026</time>

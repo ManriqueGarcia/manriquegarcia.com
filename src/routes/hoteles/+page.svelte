@@ -4,6 +4,7 @@
 	import ShareWhatsApp from '$lib/components/ShareWhatsApp.svelte';
 	import { slugify } from '$lib/utils/slugify.js';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const hotels = [
 		{
@@ -216,6 +217,37 @@
 			}
 		}))
 	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Dónde es mejor alojarse en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Gijón es ideal como base. Desde ahí puedes moverte a toda la región. Oviedo es alternativa si prefieres ciudad con menos turismo.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cuánto cuesta un hotel en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Pensiones y hostales desde 35€/noche. Hoteles 3 estrellas: 60-90€. Casas rurales: 50-80€. En agosto sube un 30-50%.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Es mejor hotel o casa rural?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Para costa y ciudad, hotel. Para interior, Picos de Europa y pueblos, casa rural sin duda.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -232,15 +264,21 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Hoteles y alojamiento en Gijón y Asturias — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 	{@html `<script type="application/ld+json">${hotelJsonLd}<\/script>`}
+	{@html '<script type="application/ld+json">' + faqJsonLd + '<\/script>'}
 </svelte:head>
 
 <main class="container">
 	<h1>Hoteles y Alojamiento</h1>
+	<Breadcrumb items={[{ label: 'Hoteles' }]} />
 
 	<p class="page-intro">
 		Gijón dispone de una gran variedad de hoteles. Aquí hemos resumido los más conocidos, con

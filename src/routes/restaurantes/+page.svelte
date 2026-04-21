@@ -7,8 +7,13 @@
 	import QuickRating from '$lib/components/QuickRating.svelte';
 	import { slugify } from '$lib/utils/slugify.js';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import { autolink, escapeHtml } from '$lib/utils/autolink.js';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+
+	const CHAT_API = 'https://8u1htcpsr1.execute-api.eu-west-1.amazonaws.com/chat';
 
 	/** @typedef {'Gijón centro' | 'Gijón playa' | 'Gijón otros' | 'Oviedo' | 'Rural'} RestZone */
+	/** @typedef {{ role: 'user' | 'assistant'; text: string }} ChatMsg */
 
 	const TAG_OPTIONS = [
 		'sidrería',
@@ -196,6 +201,115 @@
 		`${activeFilter}|${selectedZone ?? ''}|${[...selectedTags].sort().join(',')}`
 	);
 
+	/** @type {string | null} */
+	let activeChat = $state(null);
+
+	/** @type {ChatMsg[]} */
+	let inlineMessages = $state([]);
+
+	let inlineLoading = $state(false);
+	let inlineInput = $state('');
+
+	let visibleInlineMessages = $derived(inlineMessages.slice(-3));
+
+	/** @param {string} text */
+	function formatInlineAssistant(text) {
+		let s = escapeHtml(text);
+		s = s.replace(/\r\n/g, '\n');
+		s = s.replace(/\n/g, '<br>');
+		return s;
+	}
+
+	/** @param {string} text */
+	function formatInlineUser(text) {
+		return escapeHtml(text).replace(/\n/g, '<br>');
+	}
+
+	/** @param {{ name: string; description: string }} r */
+	async function toggleConcierge(r) {
+		if (activeChat === r.name) {
+			activeChat = null;
+			inlineMessages = [];
+			inlineInput = '';
+			return;
+		}
+		activeChat = r.name;
+		inlineInput = '';
+		inlineMessages = [];
+		inlineLoading = true;
+		const firstMsg = `Cuéntame más sobre ${r.name}: qué pedir, ambiente, y cuándo ir`;
+		try {
+			const res = await fetch(CHAT_API, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ message: firstMsg, history: [] })
+			});
+			const data = await res.json();
+			const reply =
+				typeof data?.reply === 'string'
+					? data.reply
+					: 'Perdona, nun recibí respuesta. Prueba otra vuelta.';
+			inlineMessages = [
+				{ role: 'user', text: firstMsg },
+				{ role: 'assistant', text: reply }
+			];
+		} catch {
+			inlineMessages = [
+				{ role: 'user', text: firstMsg },
+				{
+					role: 'assistant',
+					text: 'Perdona, el concierge ta ocupáu. Prueba otra vuelta.'
+				}
+			];
+		} finally {
+			inlineLoading = false;
+		}
+	}
+
+	function closeConcierge() {
+		activeChat = null;
+		inlineMessages = [];
+		inlineInput = '';
+	}
+
+	async function sendInlineFollowUp() {
+		if (!activeChat || !inlineInput.trim() || inlineLoading) return;
+		const userMsg = inlineInput.trim();
+		inlineInput = '';
+		const next = [...inlineMessages, { role: 'user', text: userMsg }];
+		inlineMessages = next;
+		inlineLoading = true;
+		const history = next.slice(0, -1).map((m) => ({ role: m.role, text: m.text }));
+		try {
+			const res = await fetch(CHAT_API, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ message: userMsg, history })
+			});
+			const data = await res.json();
+			const reply =
+				typeof data?.reply === 'string'
+					? data.reply
+					: 'Perdona, nun recibí respuesta. Prueba otra vuelta.';
+			inlineMessages = [...next, { role: 'assistant', text: reply }];
+		} catch {
+			inlineMessages = [
+				...next,
+				{ role: 'assistant', text: 'Equí falló dalgo. Prueba otra vuelta.' }
+			];
+		} finally {
+			inlineLoading = false;
+		}
+	}
+
+	/** @param {KeyboardEvent} e */
+	function onInlineKeydown(e) {
+		if (e.key === 'Enter' && !e.shiftKey) {
+			e.preventDefault();
+			sendInlineFollowUp();
+		}
+	}
+
 	const pageTitle = 'Restaurantes y Sidrerías | ¡Puxa Asturies!';
 	const pageDesc =
 		'Las mejores sidrerías y restaurantes de Gijón y Asturias con valoraciones, direcciones y el ritual del escanciado de sidra.';
@@ -231,6 +345,37 @@
 			}
 		]
 	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Cuál es la mejor sidrería de Gijón?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Casa Trabanco en Lavandera es la referencia. Pero El Sauco y Parrilla Antonio son también imprescindibles.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Qué se come en una sidrería asturiana?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Sidra natural escanciada, tabla de quesos cabrales, tortilla de merluza, chorizo a la sidra, cachopo y fabada.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cuánto cuesta comer en una sidrería?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Un menú del día ronda los 12-15€. Una comida con sidra, entrantes y plato fuerte: 20-30€ por persona.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -247,15 +392,21 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Sidrerías y restaurantes en Asturias — guía ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 	{@html `<script type="application/ld+json">${restaurantJsonLd}<\/script>`}
+	{@html '<script type="application/ld+json">' + faqJsonLd + '<\/script>'}
 </svelte:head>
 
 <main class="container">
 	<h1>Restaurantes y Sidrerías</h1>
+	<Breadcrumb items={[{ label: 'Restaurantes' }]} />
 
 	<p class="page-intro">
 		Bienveníu al capítulo más serio de esta guía: dónde comer en Asturias sin que te vendan
@@ -430,7 +581,7 @@
 								{/each}
 							</p>
 						{/if}
-						<p class="description">{r.description}</p>
+						<p class="description">{@html autolink(escapeHtml(r.description))}</p>
 						{#if r.url}
 							<p class="card-actions">
 								<a href={r.url} target="_blank" rel="noopener noreferrer">Web oficial →</a>
@@ -444,7 +595,72 @@
 							/>
 							<QuickRating itemId={`rest-${slugify(r.name)}`} label="¿Qué tal?" />
 						</div>
+						<button
+							type="button"
+							class="concierge-toggle"
+							onclick={() => toggleConcierge(r)}
+							aria-expanded={activeChat === r.name}
+						>
+							💬 Pregúntale al concierge
+						</button>
 					</div>
+					{#if activeChat === r.name}
+						<div class="inline-concierge" transition:fade={{ duration: 180 }}>
+							<div class="inline-concierge__head">
+								<span class="inline-concierge__title">Concierge</span>
+								<button
+									type="button"
+									class="inline-concierge__close"
+									onclick={closeConcierge}
+									aria-label="Cerrar chat"
+								>
+									✕
+								</button>
+							</div>
+							<div class="inline-concierge__messages" role="log" aria-live="polite">
+								{#each visibleInlineMessages as m, mi (`${m.role}-${mi}-${m.text.slice(0, 24)}`)}
+									<div class="inline-msg" class:inline-msg--user={m.role === 'user'}>
+										<div
+											class="inline-msg__bubble"
+											class:inline-msg__bubble--user={m.role === 'user'}
+										>
+											{#if m.role === 'assistant'}
+												{@html formatInlineAssistant(m.text)}
+											{:else}
+												{@html formatInlineUser(m.text)}
+											{/if}
+										</div>
+									</div>
+								{/each}
+								{#if inlineLoading}
+									<div class="inline-msg">
+										<div class="inline-msg__bubble inline-msg__bubble--loading" aria-hidden="true">
+											<span class="inline-dots">…</span>
+										</div>
+									</div>
+								{/if}
+							</div>
+							<div class="inline-concierge__input-row">
+								<input
+									class="inline-concierge__input"
+									type="text"
+									placeholder="Otra pregunta…"
+									bind:value={inlineInput}
+									disabled={inlineLoading}
+									onkeydown={onInlineKeydown}
+									aria-label="Siguiente pregunta al concierge"
+								/>
+								<button
+									type="button"
+									class="inline-concierge__send"
+									disabled={inlineLoading || !inlineInput.trim()}
+									onclick={sendInlineFollowUp}
+								>
+									Enviar
+								</button>
+							</div>
+						</div>
+					{/if}
 				</article>
 			{/each}
 		</div>
@@ -741,5 +957,164 @@
 		font-size: 0.82rem;
 		color: var(--color-text-muted);
 		margin-top: 0.2rem;
+	}
+
+	.concierge-toggle {
+		appearance: none;
+		margin-top: 0.65rem;
+		padding: 0.45rem 0.75rem;
+		font: inherit;
+		font-size: 0.86rem;
+		font-weight: 600;
+		border-radius: 999px;
+		border: 1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+		background: color-mix(in srgb, var(--color-accent) 10%, var(--color-card));
+		color: var(--color-text);
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			border-color 0.2s;
+	}
+
+	.concierge-toggle:hover {
+		background: color-mix(in srgb, var(--color-accent) 18%, var(--color-card));
+		border-color: var(--color-accent);
+	}
+
+	.inline-concierge {
+		margin-top: 0;
+		padding: 0.85rem 1.1rem 1rem;
+		border-top: 1px solid var(--color-border);
+		background: color-mix(in srgb, var(--color-card) 94%, var(--color-border));
+	}
+
+	.inline-concierge__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 0.55rem;
+	}
+
+	.inline-concierge__title {
+		font-size: 0.78rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--color-text-muted);
+	}
+
+	.inline-concierge__close {
+		appearance: none;
+		width: 1.85rem;
+		height: 1.85rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		border-radius: 8px;
+		background: transparent;
+		color: var(--color-text-muted);
+		font-size: 1rem;
+		line-height: 1;
+		cursor: pointer;
+	}
+
+	.inline-concierge__close:hover {
+		background: color-mix(in srgb, var(--color-border) 80%, transparent);
+		color: var(--color-text);
+	}
+
+	.inline-concierge__messages {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+		max-height: 11rem;
+		overflow-y: auto;
+		margin-bottom: 0.55rem;
+	}
+
+	.inline-msg {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.inline-msg--user {
+		justify-content: flex-end;
+	}
+
+	.inline-msg__bubble {
+		max-width: 92%;
+		padding: 0.45rem 0.6rem;
+		border-radius: 10px;
+		font-size: 0.86rem;
+		line-height: 1.45;
+		word-wrap: break-word;
+		background: color-mix(in srgb, var(--color-card) 90%, var(--color-border));
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+	}
+
+	.inline-msg__bubble--user {
+		background: var(--color-accent);
+		color: #fff;
+		border-color: var(--color-accent);
+	}
+
+	.inline-msg__bubble--loading {
+		min-width: 3rem;
+		opacity: 0.85;
+	}
+
+	.inline-dots {
+		animation: inline-pulse 1s ease-in-out infinite;
+	}
+
+	@keyframes inline-pulse {
+		50% {
+			opacity: 0.35;
+		}
+	}
+
+	.inline-concierge__input-row {
+		display: flex;
+		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.inline-concierge__input {
+		flex: 1;
+		min-width: 0;
+		padding: 0.45rem 0.6rem;
+		font: inherit;
+		font-size: 0.88rem;
+		border-radius: 8px;
+		border: 1px solid var(--color-border);
+		background: var(--color-card);
+		color: var(--color-text);
+	}
+
+	.inline-concierge__input:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 22%, transparent);
+	}
+
+	.inline-concierge__send {
+		appearance: none;
+		flex-shrink: 0;
+		padding: 0.45rem 0.75rem;
+		font: inherit;
+		font-size: 0.86rem;
+		font-weight: 600;
+		border: none;
+		border-radius: 8px;
+		background: var(--color-accent);
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.inline-concierge__send:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
 	}
 </style>

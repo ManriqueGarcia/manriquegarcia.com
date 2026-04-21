@@ -1,5 +1,6 @@
 <script>
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import AiSummary from '$lib/components/AiSummary.svelte';
 
 	const pageTitle = 'Preguntas frecuentes sobre Asturias | ¡Puxa Asturies!';
 	const pageDesc = 'Respuestas a las preguntas más frecuentes sobre viajar a Asturias: cuándo ir, qué comer, cómo escanciar sidra, playas, lluvia y más.';
@@ -57,6 +58,7 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:alt" content="Preguntas frecuentes sobre Asturias — ¡Puxa Asturies!" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -66,6 +68,11 @@
 
 <main class="container">
 	<h1>Preguntas frecuentes sobre Asturias</h1>
+
+	<AiSummary
+		pageTitle={pageTitle}
+		pageContent="Preguntas frecuentes sobre visitar Asturias: sidra, clima, comida, transporte"
+	/>
 
 	<p class="page-intro">
 		Too lo que la xente pregunta antes de venir (y dalgo que debería preguntar pero nun se atreve).

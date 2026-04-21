@@ -270,6 +270,17 @@ footer {
   .card-grid { grid-template-columns: 1fr; }
 }
 
+.auto-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+.auto-link:hover {
+  text-decoration-style: solid;
+}
+
 @media print {
   header, footer, .no-print { display: none !important; }
   body { background: #fff; }

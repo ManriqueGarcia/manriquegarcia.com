@@ -1,6 +1,7 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const entries = [
 		{ es: 'Mujeres', ast: 'Muyeres (las que mandan de verdad)', cat: 'Dones', and: 'Mujere' },
@@ -137,6 +138,29 @@
 			{ '@type': 'ListItem', position: 2, name: 'Diccionario', item: 'https://manriquegarcia.com/diccionario' }
 		]
 	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Qué idioma se habla en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Castellano es oficial. El asturiano (bable) es lengua tradicional reconocida. En la calle escucharás mezcla de ambos.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: "¿Qué significa 'culín'?",
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Es la pequeña cantidad de sidra que se sirve en un vaso para beber de un trago. Sale de escanciar la botella.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -162,14 +186,20 @@
 		content="Diccionario asturiano-castellano-catalán-andaluz: palabras y expresiones útiles para entender Asturias."
 	/>
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Diccionario asturiano y expresiones — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
+	{@html '<script type="application/ld+json">' + faqJsonLd + '<\/script>'}
 </svelte:head>
 
 <main class="container">
 	<h1>Diccionario Asturiano</h1>
+	<Breadcrumb items={[{ label: 'Diccionario' }]} />
 
 	<p class="page-intro">
 		Llibru pa entenderse con la xente. Un pequeño diccionario pa que puedas comunicarte durante la

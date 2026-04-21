@@ -1,6 +1,8 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import AiSummary from '$lib/components/AiSummary.svelte';
 
 	const fiestas = [
 		{ month: 'Xineru', items: [
@@ -128,6 +130,37 @@
 			}
 		}))
 	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Cuál es la fiesta más importante de Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'La Semana Grande de Gijón en agosto. Fuegos artificiales, conciertos y mucha sidra.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Qué es el Descenso del Sella?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Una fiesta-carrera de piraguas de Arriondas a Ribadesella, el primer sábado de agosto. Miles de personas celebran en la orilla.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cuándo es la Noche de San Juan en Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'El 23 de junio. Se encienden hogueras en todas las playas de la costa. En Gijón es espectacular.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -144,15 +177,26 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Calendario de fiestas de Asturias — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 	{@html `<script type="application/ld+json">${eventJsonLd}<\/script>`}
+	{@html '<script type="application/ld+json">' + faqJsonLd + '<\/script>'}
 </svelte:head>
 
 <main class="container">
 	<h1>Calendariu de fiestes (con dates aproximao)</h1>
+	<Breadcrumb items={[{ label: 'Fiestas' }]} />
+
+	<AiSummary
+		pageTitle={pageTitle}
+		pageContent="Calendario completo de fiestas y festivales de Asturias"
+	/>
 
 	<p class="page-intro">
 		Asturies nun para: hay fiesta pa'l que quiera folixa y pa'l que quiera tradición. Dates

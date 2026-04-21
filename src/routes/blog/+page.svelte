@@ -1,5 +1,6 @@
 <script>
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const pageTitle = 'Blog | ¡Puxa Asturies!';
 	const pageDesc =
@@ -8,10 +9,38 @@
 
 	const posts = [
 		{
+			href: '/blog/ruta-coche',
+			emoji: '🚗',
+			title: 'Ruta en coche por Asturias en 7 días',
+			date: '21 abr 2026',
+			dateIso: '2026-04-21',
+			excerpt:
+				'Costa, Picos, Oviedo, Cudillero y Taramundi: itinerariu pa conducir con vistas y paciencia en curva.'
+		},
+		{
+			href: '/blog/fiestas-2026',
+			emoji: '📅',
+			title: 'Fiestas de Asturias 2026: calendario completo',
+			date: '21 abr 2026',
+			dateIso: '2026-04-21',
+			excerpt:
+				'Antroxu, San Xuan, Festival de la Sidra, Semana Grande, Sella y Día d’Asturies: mes a mes con humor.'
+		},
+		{
+			href: '/blog/quesos',
+			emoji: '🧀',
+			title: 'Guía de quesos asturianos',
+			date: '21 abr 2026',
+			dateIso: '2026-04-21',
+			excerpt:
+				'Cabrales, Afuega’l Pitu, Gamonéu, Casín y maridaxes con sidra: parque temáticu pa la boca.'
+		},
+		{
 			href: '/blog/gijon-vs-oviedo',
 			emoji: '⚔️',
 			title: 'Gijón vs Oviedo: ¿cuál visitar?',
 			date: '20 abr 2026',
+			dateIso: '2026-04-20',
 			excerpt:
 				'Playa, cascu, sidra, museos y vida nocturna: comparativa con humor y veredictu anti-drama (spoiler: visita les dos).'
 		},
@@ -20,6 +49,7 @@
 			emoji: '🥩',
 			title: 'Guía del cachopo asturiano',
 			date: '20 abr 2026',
+			dateIso: '2026-04-20',
 			excerpt:
 				'Qué ye, dónde lo comes en Xixón sin quedate tiesu y cómo pides “individual” o pa compartir sin sustos.'
 		},
@@ -28,6 +58,7 @@
 			emoji: '🍎',
 			title: 'Guía de la sidra asturiana',
 			date: '20 abr 2026',
+			dateIso: '2026-04-20',
 			excerpt:
 				'Escanciado, culines, etiqueta del suelu moyáu y onde beber en Xixón y alrededores como unu más.'
 		},
@@ -36,6 +67,7 @@
 			emoji: '🛶',
 			title: 'Descenso del Sella 2026',
 			date: '20 abr 2026',
+			dateIso: '2026-04-20',
 			excerpt:
 				'La carrera, la folixa, los meyores sitios pa ver y cómo sobrevivir si nun pillasti habitación a tiempo.'
 		}
@@ -65,6 +97,7 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta property="og:image:alt" content="Blog sobre Asturias, sidra y viajes — ¡Puxa Asturies!" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -73,6 +106,7 @@
 
 <main class="container">
 	<h1>Blog</h1>
+	<Breadcrumb items={[{ label: 'Blog' }]} />
 
 	<p class="page-intro">
 		Artículos largos, con manía y datos útiles: cocina, sidra, fiestas y esos detalles que naide te cuenta
@@ -84,7 +118,7 @@
 			<a class="blog-card" href={post.href}>
 				<span class="blog-card-icon" aria-hidden="true">{post.emoji}</span>
 				<h2 class="blog-card-title">{post.title}</h2>
-				<time class="blog-card-date" datetime="2026-04-20">{post.date}</time>
+				<time class="blog-card-date" datetime={post.dateIso}>{post.date}</time>
 				<p class="blog-card-excerpt">{post.excerpt}</p>
 				<span class="blog-card-cta">Lleer artículu →</span>
 			</a>

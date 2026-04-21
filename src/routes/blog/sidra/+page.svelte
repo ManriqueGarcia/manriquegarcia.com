@@ -1,6 +1,7 @@
 <script>
 	import ReadingProgress from '$lib/components/ReadingProgress.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const pageTitle = 'Guía de la sidra asturiana: escanciar, beber y repetir (manual completo) | ¡Puxa Asturies!';
 	const pageDesc =
@@ -55,6 +56,10 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Guía de la sidra asturiana — imagen de vista previa ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -65,6 +70,12 @@
 <ReadingProgress />
 <main class="container">
 	<h1>Guía de la sidra asturiana: escanciar, beber y repetir (manual completo)</h1>
+	<Breadcrumb
+		items={[
+			{ href: '/blog', label: 'Blog' },
+			{ label: 'Guía de la sidra asturiana' }
+		]}
+	/>
 
 	<p class="article-meta">
 		<time datetime={published}>20 de abril de 2026</time>

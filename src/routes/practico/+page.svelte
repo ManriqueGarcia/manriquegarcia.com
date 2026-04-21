@@ -1,6 +1,8 @@
 <script>
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import AiSummary from '$lib/components/AiSummary.svelte';
 
 	const pageTitle = 'Información práctica | ¡Puxa Asturies!';
 	const pageDesc =
@@ -94,6 +96,10 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Información práctica para visitar Asturias — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -103,6 +109,12 @@
 
 <main class="container">
 	<h1>Información práctica (pa que nun te pierdas)</h1>
+	<Breadcrumb items={[{ label: 'Práctico' }]} />
+
+	<AiSummary
+		pageTitle={pageTitle}
+		pageContent="Info práctica sobre clima, transporte, sidra y consejos para viajar a Asturias"
+	/>
 
 	<p class="page-intro">
 		Lo básico pa llegar, moverte, comer y llamar a quién toque si pasa dalgo. Nada de postureo: esto ye lo

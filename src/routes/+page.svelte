@@ -142,6 +142,10 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Guía de visita a Asturias y Gijón — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -192,7 +196,15 @@
 			<path d="M2 0h36a2 2 0 012 2v28c0 6-10 16-20 18C10 46 0 36 0 30V2a2 2 0 012-2z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
 		</svg>
 		<!-- Escudo del Real Sporting de Gijón -->
-		<img class="hf hf-shield" src="/images/sporting-gijon.svg" alt="Real Sporting de Gijón" width="24" height="30" decoding="async" />
+		<img
+			class="hf hf-shield"
+			src="/images/sporting-gijon.svg"
+			alt="Real Sporting de Gijón"
+			width="24"
+			height="30"
+			loading="lazy"
+			decoding="async"
+		/>
 	</div>
 	<h1>¡Puxa Asturies!</h1>
 	<p class="subtitle">

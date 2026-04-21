@@ -555,6 +555,10 @@
 		content="Mapa interactivo de Asturias con restaurantes, sidrerías, hoteles y lugares de interés marcados."
 	/>
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Mapa interactivo de lugares en Asturias — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />

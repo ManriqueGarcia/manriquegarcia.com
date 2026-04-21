@@ -4,55 +4,57 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import { slugify } from '$lib/utils/slugify.js';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import { autolink, escapeHtml } from '$lib/utils/autolink.js';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const gijon = [
 		{
 			name: 'Playa de San Lorenzo',
 			description:
 				'La playa urbana por excelencia. En pleno centro de Xixón, pa chapuzón y sol. Eso sí, que sepas que el Cantábrico está fresquín… Bueno, vale, está helao. Pero eso te despierta y te curte. Como un asturianu de verdad.',
-			image: '/images/playa-san-lorenzo.jpg'
+			image: '/images/playa-san-lorenzo.webp'
 		},
 		{
 			name: 'Barrio de Cimadevilla',
 			description:
 				'La parte más vieja de la ciudá. Vestigios romanos, las Termas de Campo Valdés y callejuelas con más encanto que un cachopo recién hecho. Perderse por aquí ye obligatorio.',
-			image: '/images/cimadevilla.jpg'
+			image: '/images/cimadevilla.webp'
 		},
 		{
 			name: 'Cerro de Santa Catalina',
 			description:
 				'Sube hasta arriba y plántate delante del Elogio del Horizonte de Chillida. Ahí, con el viento dándote en la cara y las vistas de toda la costa, entenderás por qué los asturianos dicen aquello de "Asturies, patria querida". Se te pone la piel de gallina, oh.',
-			image: '/images/elogio-horizonte.jpg'
+			image: '/images/elogio-horizonte.webp'
 		},
 		{
 			name: 'Parque Isabel la Católica',
 			description:
 				'Patos, cisnes, avestruces y pavos reales campando a sus anchas. Es como un zoo pero en plan natural y gratis. Perfecto pa pasear después de comer y bajar el cachopo.',
-			image: '/images/parque-isabel.jpg'
+			image: '/images/parque-isabel.webp'
 		},
 		{
 			name: 'El Molinón',
 			description:
 				'El estadio del Real Sporting de Gijón, ¡PUXA SPORTING! Si hay partido, ve. Si no hay partido, al menos pásate a verlo por fuera y haz como que entiendes de fútbol. Aquí el Sporting ye una religión.',
-			image: '/images/molinon.jpg'
+			image: '/images/molinon.webp'
 		},
 		{
 			name: 'Universidad Laboral',
 			description:
 				'El edificio más grande de España. 270.000 m² de los años 50. Cuando lo veas vas a decir "¿pero esto qué ye?". La torre tiene unas vistas que quitan el sentíu. Patrimonio brutal.',
-			image: '/images/universidad-laboral.jpg'
+			image: '/images/universidad-laboral.webp'
 		},
 		{
 			name: 'La Campa de Torres',
 			description:
 				'Aquí vivía la xente antes de que Xixón fuera Xixón. Restos de un castro celta (el oppidum Noega, pa que flipen tus amigos del WhatsApp). Parque arqueológico al aire libre con vistas a la ría del Aboño.',
-			image: '/images/campa-torres.jpg'
+			image: '/images/campa-torres.webp'
 		},
 		{
 			name: 'Jardín Botánico Atlántico',
 			description:
 				'El primer jardín botánico del noroeste de la península. Flora atlántica, senderos guapos y ese verde que solo Asturias sabe hacer. Pa desconectar del mundo y reconectar con la naturaleza (y con el oxígeno, que aquí hay de sobra).',
-			image: '/images/jardin-botanico.jpg'
+			image: '/images/jardin-botanico.webp'
 		}
 	];
 
@@ -61,25 +63,25 @@
 			name: 'La Catedral',
 			description:
 				'Gótica, prerrománica, románica, renacentista y barroca. Todo metido en un mismo edificio. La Cámara Santa dentro ye Patrimonio de la Humanidad. Mucha chicha pa los frikis de la historia.',
-			image: '/images/catedral-oviedo.jpg'
+			image: '/images/catedral-oviedo.webp'
 		},
 		{
 			name: 'Barrio Antiguo',
 			description:
 				'El casco viejo de Uviéu. Calles con encanto, el Palacio Arzobispal, la Universidad Vieja (siglo XVI, ahí es ná)… Déjate perder y pasa por la estatua de Woody Allen, que filmó aquí "Vicky Cristina Barcelona". Bueno, la parte de Barcelona no, obviamente.',
-			image: '/images/casco-historico-oviedo.jpg'
+			image: '/images/casco-historico-oviedo.webp'
 		},
 		{
 			name: 'Teatro Campoamor',
 			description:
 				'El teatro de ópera de Uviéu, donde cada año se entregan los Premios Princesa de Asturias. Inaugurado en 1892, ye una joya arquitectónica. Si pillas función, ve. Si no, al menos plántate delante y hazle una foto que ye mu fotoxénicu. Y si alguien te dice que aquí cantó Plácido Domingo, créetelo: ye verdad.',
-			image: '/images/teatro-campoamor.jpg'
+			image: '/images/teatro-campoamor.webp'
 		},
 		{
 			name: 'Monte Naranco',
 			description:
 				'Santa María del Naranco (siglo IX, prerrománico, Patrimonio de la Humanidad, la joya de la corona) y la Cruz de la Victoria de 35 metros. Las vistas desde arriba son pa quedase vivir. Eso sí, la cuesta pa subir te hace sudar el cachopo del mediodía.',
-			image: '/images/santa-maria-naranco.jpg'
+			image: '/images/santa-maria-naranco.webp'
 		}
 	];
 
@@ -91,7 +93,7 @@
 			dist: '15 km desde Xixón · 40 km desde Uviéu',
 			description:
 				'Miradores, playas, puerto pesquero y el Festival de la Sardina el 1 de agosto (todo el pueblo oliendo a sardinas a la brasa, una maravilla). Si vas en verano, no te lo pierdas. Si vas en invierno, también mola.',
-			image: '/images/candas.jpg'
+			image: '/images/candas.webp'
 		},
 		{
 			name: 'Luanco',
@@ -100,7 +102,7 @@
 			dist: '20 km desde Xixón · 45 km desde Uviéu',
 			description:
 				'La zona de veraneo favorita de los asturianos. Playas guapes, buen pescao, y ese ritmo lento de pueblo marinero que te hace olvidar que existen los emails. Prescripción médica: mínimo un día aquí.',
-			image: '/images/luanco.jpg'
+			image: '/images/luanco.webp'
 		},
 		{
 			name: 'Colunga',
@@ -109,7 +111,7 @@
 			dist: '45 km desde Xixón · 65 km desde Uviéu',
 			description:
 				'El conceyu de Colunga ye tierra de dinosaurios (literalmente: el MUJA, Museo del Jurásico, está aquí al lau). Pueblo tranquilu con buena gastronomía, sidra y una costa que quita el hipo. Además, Lastres pertenece a Colunga, así que dos por el precio de uno.',
-			image: '/images/colunga.jpg'
+			image: '/images/colunga.webp'
 		},
 		{
 			name: 'Lastres',
@@ -118,7 +120,7 @@
 			dist: '50 km desde Xixón · 70 km desde Uviéu',
 			description:
 				'Conocido como "San Martín del Sella" por la serie Doctor Mateo. Si la viste, reconocerás cada rincón. Si no la viste, te da igual: el pueblo ye guapísimo con o sin tele.',
-			image: '/images/lastres.jpg'
+			image: '/images/lastres.webp'
 		},
 		{
 			name: 'Cudillero',
@@ -127,7 +129,7 @@
 			dist: '60 km desde Xixón · 55 km desde Uviéu',
 			description:
 				'El pueblo más fotogénico de Asturias. Casines de colores apilaes en la ladera como si fueran fichas de dominó. Es tan bonito que cuesta creer que sea real y no un decorado de película.',
-			image: '/images/cudillero.jpg'
+			image: '/images/cudillero.webp'
 		},
 		{
 			name: 'Ribadesella',
@@ -136,7 +138,7 @@
 			dist: '70 km desde Xixón · 85 km desde Uviéu',
 			description:
 				'Famosa por el Descenso Internacional del Sella en piraguas: miles de personas, mucha folixia y ríu pa dar y regalar. Fuera de temporada es un pueblo tranquilo pa pasear por la ría. Playa de Santa Marina, espectacular.',
-			image: '/images/ribadesella.jpg'
+			image: '/images/ribadesella.webp'
 		},
 		{
 			name: 'Llanes',
@@ -145,7 +147,7 @@
 			dist: '110 km desde Xixón · 130 km desde Uviéu',
 			description:
 				'Playas de esas que salen en las postales y los Cubos de la Memoria de Ibarrola: bloques de hormigón pintados que están más guapos que muchos cuadros de museo. Arte, mar y sidra. ¿Se puede pedir más?',
-			image: '/images/llanes.jpg'
+			image: '/images/llanes.webp'
 		},
 		{
 			name: 'Luarca',
@@ -154,7 +156,7 @@
 			dist: '115 km desde Xixón · 95 km desde Uviéu',
 			description:
 				'La "Villa Blanca de la Costa Verde". Un pueblo marinero precioso metíu entre acantilados con un puerto que ye una postal. Aquí nació Severo Ochoa, premio Nobel. El cementerio con vistas al mar ye de los más bonitos que vas a ver (morboso pero cierto). El faro, los acantilados y la ermita en lo alto completan un combo imbatible.',
-			image: '/images/luarca.jpg'
+			image: '/images/luarca.webp'
 		},
 		{
 			name: 'Tapia de Casariego',
@@ -163,7 +165,7 @@
 			dist: '170 km desde Xixón · 150 km desde Uviéu',
 			description:
 				'Capital del surf en Asturias, campeonatos mundiales incluidos. Pero no hace falta surfear: el pueblo ye una maravilla con su isla del faro, sus playas salvajes y un ambiente tranquilu que engancha. La playa de Peñarronda, compartida con Castropol, ye de las más guapes del Cantábrico. Merece el viaje aunque pille lejos.',
-			image: '/images/tapia-casariego.jpg'
+			image: '/images/tapia-casariego.webp'
 		},
 		{
 			name: 'Taramundi',
@@ -172,7 +174,7 @@
 			dist: '195 km desde Xixón · 175 km desde Uviéu',
 			description:
 				'El pueblo que inventó el turismo rural en España (en serio, fue el primero en los años 80). Famoso por sus cuchillos artesanales — la navaja taramundi ye un clásico — y por el conjunto etnográfico de Os Teixois, con mazos, fraguas y molinos movidos por agua. Está en el interior profundo de Asturias, rodeado de bosques y ríos. Si buscas desconexión total, ye tu sitio.',
-			image: '/images/taramundi.jpg'
+			image: '/images/taramundi.webp'
 		}
 	];
 
@@ -225,6 +227,37 @@
 			}
 		}))
 	});
+
+	const faqJsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: '¿Qué ver en Gijón en un día?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Playa de San Lorenzo, Cimadevilla, Cerro de Santa Catalina con el Elogio del Horizonte, y sidra en el Barrio de la Sidra.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Merece la pena ir a Covadonga?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Absolutamente. Los Lagos de Covadonga son espectaculares. Sube temprano para evitar colas.'
+				}
+			},
+			{
+				'@type': 'Question',
+				name: '¿Cuál es el pueblo más bonito de Asturias?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: 'Difícil elegir: Cudillero es el más fotogénico, Lastres tiene encanto pesquero, y Taramundi ofrece artesanía única.'
+				}
+			}
+		]
+	});
 </script>
 
 <svelte:head>
@@ -250,15 +283,21 @@
 		content="Qué visitar en Asturias: Gijón, Oviedo, Cudillero, Llanes, Luarca y más pueblos con fotos y distancias en coche."
 	/>
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Qué visitar en Asturias — playas, pueblos y monumentos — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}<\/script>`}
 	{@html `<script type="application/ld+json">${placesJsonLd}<\/script>`}
+	{@html '<script type="application/ld+json">' + faqJsonLd + '<\/script>'}
 </svelte:head>
 
 <main class="container">
 	<h1>Qué visitar</h1>
+	<Breadcrumb items={[{ label: 'Qué visitar' }]} />
 
 	<p class="page-intro">
 		Asturias nun ye solo sidra y cachopo (bueno, casi). Aquí tienes lo imprescindible pa decir que
@@ -296,7 +335,7 @@
 				/>
 				<div class="card-body">
 					<h3>{place.name}</h3>
-					<p class="description">{place.description}</p>
+					<p class="description">{@html autolink(escapeHtml(place.description))}</p>
 				</div>
 			</article>
 		{/each}
@@ -323,7 +362,7 @@
 				/>
 				<div class="card-body">
 					<h3>{place.name}</h3>
-					<p class="description">{place.description}</p>
+					<p class="description">{@html autolink(escapeHtml(place.description))}</p>
 				</div>
 			</article>
 		{/each}
@@ -359,7 +398,7 @@
 					{#if place.dist}
 						<span class="dist-badge">🚗 {place.dist}</span>
 					{/if}
-					<p class="description">{place.description}</p>
+					<p class="description">{@html autolink(escapeHtml(place.description))}</p>
 				</div>
 			</article>
 		{/each}

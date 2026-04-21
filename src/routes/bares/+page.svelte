@@ -2,6 +2,7 @@
 	import CoffeeGuide from '$lib/components/CoffeeGuide.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 
 	const pageTitle = 'Bares y Cafés | ¡Puxa Asturies!';
 	const pageDesc =
@@ -32,6 +33,10 @@
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={pageDesc} />
 	<meta property="og:image" content="https://manriquegarcia.com/images/og-image.png" />
+	<meta
+		property="og:image:alt"
+		content="Bares, cafés y zona de copas en Gijón — ¡Puxa Asturies!"
+	/>
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:image" content="https://manriquegarcia.com/images/og-image.png" />
@@ -41,6 +46,7 @@
 <main>
 	<div class="container">
 		<h1>Bares, Copas y el Drama del Café</h1>
+		<Breadcrumb items={[{ label: 'Bares y Cafés' }]} />
 		<p class="page-intro">
 			¿De copas? Tenemos. ¿Cafeterías? También. ¿Un sistema de medidas de café que desafía toda
 			lógica conocida? <strong>Especialmente eso.</strong> Bienveníu al caos organizado de la noche
