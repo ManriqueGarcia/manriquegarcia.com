@@ -4,14 +4,6 @@
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 	import DailyChallenge from '$lib/components/DailyChallenge.svelte';
 
-	const SCENE_CARDS = [
-		{ emoji: '🏖️', caption: 'Playa de San Lorenzo', g1: '#3b82f6', g2: '#06b6d4' },
-		{ emoji: '🍎', caption: 'Sidra asturiana', g1: '#22c55e', g2: '#84cc16' },
-		{ emoji: '⛰️', caption: 'Picos de Europa', g1: '#6366f1', g2: '#8b5cf6' },
-		{ emoji: '🏘️', caption: 'Pueblos con encanto', g1: '#f59e0b', g2: '#ef4444' },
-		{ emoji: '🎪', caption: 'Fiestas y folixa', g1: '#ec4899', g2: '#f43f5e' }
-	];
-
 	/** @param {HTMLElement} node */
 	function reveal(node) {
 		const obs = new IntersectionObserver(
@@ -185,23 +177,6 @@
 	<p class="subtitle">
 		La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu
 	</p>
-
-	<div class="hero-carousel" aria-label="Escenes d'Asturies">
-		<div class="hero-carousel-inner">
-			<div class="hero-carousel-track">
-				{#each [...SCENE_CARDS, ...SCENE_CARDS] as scene, i (i)}
-					<div
-						class="scene-card"
-						style="--scene-g1: {scene.g1}; --scene-g2: {scene.g2}"
-						aria-hidden="true"
-					>
-						<span class="scene-emoji">{scene.emoji}</span>
-						<span class="scene-caption">{scene.caption}</span>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</div>
 </div>
 
 <main class="container">
@@ -397,109 +372,6 @@
 		font-size: 0.82rem;
 		color: var(--color-text-muted);
 		margin-top: 0.2rem;
-	}
-
-	/* --- Hero scene carousel (CSS-only) --- */
-	.hero-carousel {
-		margin-top: 1.75rem;
-		width: 100%;
-		max-width: 100vw;
-		margin-left: calc(50% - 50vw);
-		margin-right: calc(50% - 50vw);
-		overflow: hidden;
-		mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-		-webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-	}
-
-	.hero-carousel-inner {
-		overflow: hidden;
-		padding: 0.25rem 0 0.5rem;
-	}
-
-	.hero-carousel-track {
-		display: flex;
-		gap: 1rem;
-		width: max-content;
-		animation: hero-carousel-scroll 20s linear infinite;
-		will-change: transform;
-	}
-
-	.hero-carousel:hover .hero-carousel-track {
-		animation-play-state: paused;
-	}
-
-	@keyframes hero-carousel-scroll {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(-50%);
-		}
-	}
-
-	.scene-card {
-		flex: 0 0 auto;
-		width: 280px;
-		height: 160px;
-		border-radius: var(--radius, 12px);
-		background: linear-gradient(135deg, var(--scene-g1), var(--scene-g2));
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		overflow: hidden;
-	}
-
-	.scene-card::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
-		pointer-events: none;
-	}
-
-	.scene-emoji {
-		font-size: 3.25rem;
-		line-height: 1;
-		position: relative;
-		z-index: 1;
-		filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
-	}
-
-	.scene-caption {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		padding: 0.65rem 0.75rem;
-		font-size: 0.82rem;
-		font-weight: 600;
-		color: #fff;
-		text-align: center;
-		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-		z-index: 1;
-		line-height: 1.25;
-	}
-
-	@media (max-width: 640px) {
-		.scene-card {
-			width: 220px;
-			height: 132px;
-		}
-
-		.scene-emoji {
-			font-size: 2.5rem;
-		}
-
-		.scene-caption {
-			font-size: 0.75rem;
-			padding: 0.5rem 0.6rem;
-		}
-
-		.hero-carousel-track {
-			gap: 0.65rem;
-		}
 	}
 
 	/* --- Animated counters --- */
