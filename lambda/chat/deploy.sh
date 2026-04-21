@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Deploy puxa-chat Lambda and HTTP API routes (API Gateway v2).
-# Usage: ./deploy.sh <GEMINI_API_KEY> [LAMBDA_EXECUTION_ROLE_ARN]
+# Usage: ./deploy.sh <GROQ_API_KEY> [LAMBDA_EXECUTION_ROLE_ARN]
 # On first create, pass an IAM role ARN (or set LAMBDA_ROLE_ARN) with AWSLambdaBasicExecutionRole.
-# Example role policy: AWSLambdaBasicExecutionRole (managed policy).
 
 set -euo pipefail
 
@@ -15,18 +14,18 @@ API_ID="8u1htcpsr1"
 ZIP_FILE="${SCRIPT_DIR}/function.zip"
 
 if [ -z "${1:-}" ]; then
-  echo "Usage: $0 <GEMINI_API_KEY> [LAMBDA_EXECUTION_ROLE_ARN]" >&2
+  echo "Usage: $0 <GROQ_API_KEY> [LAMBDA_EXECUTION_ROLE_ARN]" >&2
   echo "  LAMBDA_ROLE_ARN can be set instead of the second argument (required on first create)." >&2
   exit 1
 fi
 
-GEMINI_API_KEY="$1"
-export GEMINI_API_KEY
+GROQ_API_KEY="$1"
+export GROQ_API_KEY
 LAMBDA_ROLE_ARN="${LAMBDA_ROLE_ARN:-${2:-}}"
 
 write_env_file() {
   local path="$1"
-  python3 -c "import json, os; print(json.dumps({'Variables': {'GEMINI_API_KEY': os.environ['GEMINI_API_KEY']}}))" >"$path"
+  python3 -c "import json, os; print(json.dumps({'Variables': {'GROQ_API_KEY': os.environ['GROQ_API_KEY']}}))" >"$path"
 }
 
 zip_function() {

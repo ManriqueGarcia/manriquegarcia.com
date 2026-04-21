@@ -1,5 +1,5 @@
-const GEMINI_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODELS = ['llama-4-scout-17b-16e-instruct', 'llama-3.3-70b-versatile', 'llama-3.1-8b-instant'];
 
 const SYSTEM_PROMPT = `Eres el concierge virtual de manriquegarcia.com, una guía informal de Asturias con tono divertido y cercano. Hablas como un asturiano orgulloso que quiere que los visitantes disfruten al máximo.
 
@@ -78,10 +78,7 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
-const GEMINI_ERR =
-  'El concierge está echando un culín, prueba en un momentín.';
-const FALLBACK_REPLY =
-  'Nun pude responder, prueba otra vuelta.';
+const ERR_REPLY = 'El concierge está echando un culín, prueba en un momentín.';
 
 function getHttpMethod(event) {
   return (
@@ -137,10 +134,10 @@ export async function handler(event) {
     return jsonResponse(405, { error: 'Método no permitido' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    console.error('GEMINI_API_KEY no configurada');
-    return jsonResponse(500, { reply: GEMINI_ERR });
+    console.error('GROQ_API_KEY not configured');
+    return jsonResponse(500, { reply: ERR_REPLY });
   }
 
   const payload = parseBody(event);
@@ -162,63 +159,49 @@ export async function handler(event) {
     return jsonResponse(400, { error: histErr });
   }
 
-  const body = {
-    contents: [
-      ...history.map((h) => ({
-        role: h.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: h.text }],
-      })),
-      { role: 'user', parts: [{ text: trimmed }] },
-    ],
-    systemInstruction: {
-      parts: [{ text: SYSTEM_PROMPT }],
-    },
-    generationConfig: {
-      temperature: 0.8,
-      maxOutputTokens: 1024,
-    },
-  };
+  const messages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...history.map((h) => ({ role: h.role, content: h.text })),
+    { role: 'user', content: trimmed },
+  ];
 
-  const url = `${GEMINI_URL}?key=${encodeURIComponent(apiKey)}`;
-
-  try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(25000),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error(
-        JSON.stringify({
-          err: 'gemini_http',
-          status: res.status,
-          body: data,
+  for (const model of GROQ_MODELS) {
+    try {
+      const res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages,
+          temperature: 0.8,
+          max_tokens: 1024,
         }),
-      );
-      return jsonResponse(200, { reply: GEMINI_ERR });
+        signal: AbortSignal.timeout(25000),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 429 || res.status === 503) {
+        console.warn(JSON.stringify({ warn: 'model_rate_limited', model, status: res.status }));
+        continue;
+      }
+
+      if (!res.ok) {
+        console.error(JSON.stringify({ err: 'groq_http', model, status: res.status, body: data }));
+        continue;
+      }
+
+      const reply = data.choices?.[0]?.message?.content ?? 'Nun pude responder, prueba otra vuelta.';
+      return jsonResponse(200, { reply });
+    } catch (e) {
+      console.warn(JSON.stringify({ warn: 'model_failed', model, message: e?.message ?? String(e) }));
+      continue;
     }
-
-    if (data.error) {
-      console.error(JSON.stringify({ err: 'gemini_api_error', body: data }));
-      return jsonResponse(200, { reply: GEMINI_ERR });
-    }
-
-    const reply =
-      data.candidates?.[0]?.content?.parts?.[0]?.text ?? FALLBACK_REPLY;
-
-    return jsonResponse(200, { reply });
-  } catch (e) {
-    console.error(
-      JSON.stringify({
-        err: 'chat_handler',
-        message: e?.message ?? String(e),
-        name: e?.name,
-      }),
-    );
-    return jsonResponse(200, { reply: GEMINI_ERR });
   }
+
+  console.error('All Groq models exhausted');
+  return jsonResponse(200, { reply: ERR_REPLY });
 }
