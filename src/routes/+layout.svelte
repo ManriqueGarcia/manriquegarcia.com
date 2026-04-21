@@ -5,6 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import BackToTop from '$lib/components/BackToTop.svelte';
+	import ChatBot from '$lib/components/ChatBot.svelte';
 	import SearchSpotlight from '$lib/components/SearchSpotlight.svelte';
 
 	const KONAMI_SEQUENCE = [
@@ -296,6 +297,9 @@
 		{@render children()}
 	</div>
 {/key}
+
+<ChatBot />
+<BackToTop />
 
 <footer>
 	<div class="container">
