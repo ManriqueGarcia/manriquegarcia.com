@@ -162,7 +162,7 @@
 	$effect(() => {
 		if (!themeHydrated) return;
 		document.documentElement.dataset.theme = theme;
-		localStorage.setItem('theme', theme);
+		try { localStorage.setItem('theme', theme); } catch { /* private mode / quota */ }
 	});
 
 	$effect(() => {

@@ -92,18 +92,22 @@
 
 	onMount(() => {
 		let i = 0;
+		let cursorTimeout = 0;
 		const interval = setInterval(() => {
 			if (i < phrase.length) {
 				displayedPhrase = phrase.slice(0, i + 1);
 				i++;
 			} else {
 				clearInterval(interval);
-				setTimeout(() => {
+				cursorTimeout = setTimeout(() => {
 					showCursor = false;
 				}, 2000);
 			}
 		}, 50);
-		return () => clearInterval(interval);
+		return () => {
+			clearInterval(interval);
+			clearTimeout(cursorTimeout);
+		};
 	});
 
 	const pageTitle = 'Inicio | ¡Puxa Asturies!';

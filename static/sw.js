@@ -1,4 +1,4 @@
-const CACHE_NAME = 'puxa-v6';
+const CACHE_NAME = 'puxa-v7';
 
 self.addEventListener('install', () => {
 	self.skipWaiting();

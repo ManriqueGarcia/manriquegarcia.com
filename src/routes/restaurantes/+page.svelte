@@ -225,15 +225,24 @@
 		return escapeHtml(text).replace(/\n/g, '<br>');
 	}
 
+	/** @type {AbortController | null} */
+	let conciergeAbort = null;
+
 	/** @param {{ name: string; description: string }} r */
 	async function toggleConcierge(r) {
 		if (activeChat === r.name) {
 			activeChat = null;
 			inlineMessages = [];
 			inlineInput = '';
+			conciergeAbort?.abort();
+			conciergeAbort = null;
 			return;
 		}
-		activeChat = r.name;
+		conciergeAbort?.abort();
+		const controller = new AbortController();
+		conciergeAbort = controller;
+		const targetName = r.name;
+		activeChat = targetName;
 		inlineInput = '';
 		inlineMessages = [];
 		inlineLoading = true;
@@ -242,8 +251,10 @@
 			const res = await fetch(CHAT_API, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message: firstMsg, history: [] })
+				body: JSON.stringify({ message: firstMsg, history: [] }),
+				signal: controller.signal
 			});
+			if (activeChat !== targetName) return;
 			const data = await res.json();
 			const reply =
 				typeof data?.reply === 'string'
@@ -253,7 +264,8 @@
 				{ role: 'user', text: firstMsg },
 				{ role: 'assistant', text: reply }
 			];
-		} catch {
+		} catch (e) {
+			if (e instanceof DOMException && e.name === 'AbortError') return;
 			inlineMessages = [
 				{ role: 'user', text: firstMsg },
 				{
@@ -262,7 +274,7 @@
 				}
 			];
 		} finally {
-			inlineLoading = false;
+			if (activeChat === targetName) inlineLoading = false;
 		}
 	}
 

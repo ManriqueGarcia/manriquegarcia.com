@@ -34,6 +34,9 @@
 		{ title: 'Guía de la sidra', path: '/blog/sidra', emoji: '🍎', category: 'Blog' },
 		{ title: 'Descenso del Sella', path: '/blog/descenso-del-sella', emoji: '🛶', category: 'Blog' },
 		{ title: 'Gijón vs Oviedo', path: '/blog/gijon-vs-oviedo', emoji: '⚔️', category: 'Blog' },
+		{ title: 'Guía de quesos asturianos', path: '/blog/quesos', emoji: '🧀', category: 'Blog', keywords: 'quesos cabrales gamonéu DOP' },
+		{ title: 'Fiestas de Asturias 2026', path: '/blog/fiestas-2026', emoji: '🎆', category: 'Blog', keywords: 'fiestas calendario semana grande' },
+		{ title: 'Ruta en coche 7 días', path: '/blog/ruta-coche', emoji: '🚗', category: 'Blog', keywords: 'coche ruta itinerario conducir' },
 		{ title: 'Favoritos guardados', path: '/favoritos', emoji: '♥', category: 'Otros' },
 		{ title: 'Guía PDF', path: '/guia', emoji: '📄', category: 'Otros' },
 		{ title: 'English guide', path: '/en', emoji: '🇬🇧', category: 'Otros' },
@@ -225,17 +228,18 @@
 						<path d="m21 21-4.3-4.3" />
 					</svg>
 				</span>
-				<input
-					bind:this={inputEl}
-					type="search"
-					class="search-input"
-					placeholder="Buscar en la guía..."
-					autocomplete="off"
-					spellcheck="false"
-					aria-autocomplete="list"
-					aria-controls="search-spotlight-results"
-					bind:value={query}
-				/>
+			<input
+				bind:this={inputEl}
+				type="search"
+				class="search-input"
+				placeholder="Buscar en la guía..."
+				autocomplete="off"
+				spellcheck="false"
+				aria-autocomplete="list"
+				aria-controls="search-spotlight-results"
+				aria-activedescendant={visibleMatches.length ? `spotlight-opt-${selectedIndex}` : undefined}
+				bind:value={query}
+			/>
 				<span class="kbd-hint" aria-hidden="true"><kbd>{shortcutLabel}</kbd></span>
 			</div>
 

@@ -126,6 +126,14 @@
 			sendMessage();
 		}
 	}
+
+	/** @param {KeyboardEvent} e */
+	function onPanelKeydown(e) {
+		if (e.key === 'Escape') {
+			e.preventDefault();
+			closePanel();
+		}
+	}
 </script>
 
 <button
@@ -152,7 +160,7 @@
 </button>
 
 {#if open}
-	<div class="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title">
+	<div class="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chatbot-title" onkeydown={onPanelKeydown}>
 		<div class="chat-header">
 			<div class="chat-header-text">
 				<h2 id="chatbot-title" class="chat-title">🍎 Concierge Asturianu</h2>

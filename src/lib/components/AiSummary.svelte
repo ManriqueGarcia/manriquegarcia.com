@@ -41,11 +41,13 @@
 		class="ai-summary-btn"
 		onclick={generateSummary}
 		disabled={loading}
+		aria-expanded={shown}
+		aria-controls="ai-summary-content"
 	>
 		{loading ? '⏳ Generando...' : shown ? '📝 Ocultar resumen' : '🤖 TL;DR — Resumen rápido'}
 	</button>
 	{#if shown && summary}
-		<div class="ai-summary-box">
+		<div id="ai-summary-content" class="ai-summary-box" role="region" aria-live="polite">
 			<p>{summary}</p>
 		</div>
 	{/if}
