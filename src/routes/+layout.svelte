@@ -7,6 +7,7 @@
 	import BackToTop from '$lib/components/BackToTop.svelte';
 	import ChatBot from '$lib/components/ChatBot.svelte';
 	import SearchSpotlight from '$lib/components/SearchSpotlight.svelte';
+	import { favorites } from '$lib/stores/favorites.svelte.js';
 
 	const KONAMI_SEQUENCE = [
 		'ArrowUp',
@@ -76,6 +77,8 @@
 	let showLayoutFallbackDescription = $derived(
 		!ROUTES_WITH_PAGE_DESCRIPTION.has($page.url.pathname)
 	);
+
+	let favCount = $derived(favorites.items.length);
 
 	let theme = $state(/** @type {'light' | 'dark'} */ ('light'));
 	let themeHydrated = $state(false);
@@ -203,7 +206,9 @@
 				<a href="/presupuesto" class:active={$page.url.pathname.startsWith('/presupuesto')}>💰 Presupuesto</a>
 				<a href="/faq" class:active={$page.url.pathname.startsWith('/faq')}>FAQ</a>
 				<a href="/blog" class:active={$page.url.pathname.startsWith('/blog')}>Blog</a>
-				<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
+				<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}
+					>♥ Favoritos{#if favCount > 0}<span class="fav-badge">{favCount}</span>{/if}</a
+				>
 				<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
 				<button
 					type="button"
@@ -270,7 +275,9 @@
 						<div class="nav-group-label">Más</div>
 						<a href="/faq" class:active={$page.url.pathname.startsWith('/faq')}>FAQ</a>
 						<a href="/blog" class:active={$page.url.pathname.startsWith('/blog')}>Blog</a>
-						<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}>♥ Favoritos</a>
+						<a href="/favoritos" class:active={$page.url.pathname.startsWith('/favoritos')}
+							>♥ Favoritos{#if favCount > 0}<span class="fav-badge">{favCount}</span>{/if}</a
+						>
 						<a href="/guia" class="nav-pdf" class:active={$page.url.pathname.startsWith('/guia')} title="Descargar guía en PDF">📄 PDF</a>
 						<a href="/en" class:active={$page.url.pathname === '/en' || $page.url.pathname.startsWith('/en/')}>🇬🇧 English</a>
 					</div>
@@ -300,6 +307,15 @@
 
 <ChatBot />
 <BackToTop />
+
+<div class="footer-divider" aria-hidden="true">
+	<svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+		<path
+			d="M0,0 C360,80 720,0 1080,60 S1440,20 1440,20 L1440,80 L0,80 Z"
+			fill="var(--color-hero-bg)"
+		/>
+	</svg>
+</div>
 
 <footer>
 	<div class="container">
@@ -355,6 +371,17 @@
 {/if}
 
 <style>
+	.footer-divider {
+		line-height: 0;
+		margin-bottom: -1px;
+	}
+
+	.footer-divider svg {
+		width: 100%;
+		height: 50px;
+		display: block;
+	}
+
 	.main-nav {
 		width: 100%;
 		display: flex;
@@ -458,6 +485,23 @@
 	.theme-toggle:hover {
 		background: rgba(255, 255, 255, 0.12);
 		border-color: rgba(255, 255, 255, 0.35);
+	}
+
+	.fav-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 1.1rem;
+		height: 1.1rem;
+		padding: 0 0.3rem;
+		margin-left: 0.3rem;
+		background: #e53e3e;
+		color: #fff;
+		font-size: 0.65rem;
+		font-weight: 700;
+		border-radius: 50%;
+		line-height: 1;
+		vertical-align: middle;
 	}
 
 	.nav-pdf {

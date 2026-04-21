@@ -15,6 +15,27 @@
 		return '⛅';
 	}
 
+	/** CSS-only background animation class from WMO weathercode (current). */
+	/** @param {number} code */
+	function weatherAnimClass(code) {
+		if (code >= 71 && code <= 77) return 'weather-snow';
+		if (
+			(code >= 51 && code <= 67) ||
+			(code >= 80 && code <= 82) ||
+			(code >= 95 && code <= 99)
+		) {
+			return 'weather-rain';
+		}
+		if (code >= 0 && code <= 1) return 'weather-sun';
+		if ((code >= 2 && code <= 3) || (code >= 45 && code <= 48)) return 'weather-cloud';
+		return '';
+	}
+
+	let animClass = $derived.by(() => {
+		if (loading || error || !current) return '';
+		return weatherAnimClass(current.code);
+	});
+
 	let loading = $state(true);
 	/** @type {string | null} */
 	let error = $state(null);
@@ -76,7 +97,7 @@
 	});
 </script>
 
-<div class="weather-bar" aria-live="polite">
+<div class="weather-bar" class:weather-rain={animClass === 'weather-rain'} class:weather-sun={animClass === 'weather-sun'} class:weather-cloud={animClass === 'weather-cloud'} class:weather-snow={animClass === 'weather-snow'} aria-live="polite">
 	{#if loading}
 		<p class="weather-status">Cargando tiempu…</p>
 	{:else if error}
@@ -86,7 +107,9 @@
 			<span class="weather-label">Xixón ahora</span>
 			{#if current}
 				<span class="weather-emoji" aria-hidden="true">{weatherEmoji(current.code)}</span>
-				<span class="weather-temp">{current.temp}°C</span>
+				<span class="weather-temp-wrap">
+					<span class="weather-temp">{current.temp}°C</span>
+				</span>
 			{/if}
 		</div>
 		{#if days.length > 0}
@@ -104,6 +127,8 @@
 
 <style>
 	.weather-bar {
+		position: relative;
+		overflow: hidden;
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
@@ -113,6 +138,135 @@
 		border-radius: var(--radius, 12px);
 		padding: 0.6rem 1.1rem;
 		font-size: 0.85rem;
+	}
+
+	/* Rain */
+	.weather-bar.weather-rain::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			transparent,
+			transparent 4px,
+			rgba(100, 150, 255, 0.12) 4px,
+			rgba(100, 150, 255, 0.12) 5px
+		);
+		background-size: 10px 20px;
+		animation: weather-rain-fall 0.8s linear infinite;
+		pointer-events: none;
+		border-radius: inherit;
+	}
+
+	@keyframes weather-rain-fall {
+		to {
+			background-position: 0 20px;
+		}
+	}
+
+	/* Sun rays around temperature */
+	.weather-temp-wrap {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.15rem 0.35rem;
+	}
+
+	.weather-bar.weather-sun .weather-temp-wrap::before {
+		content: '';
+		position: absolute;
+		inset: -4px;
+		border-radius: 50%;
+		background: repeating-conic-gradient(
+			from 0deg,
+			transparent 0deg 14deg,
+			rgba(255, 200, 80, 0.22) 14deg 16deg
+		);
+		animation: weather-sun-spin 24s linear infinite;
+		pointer-events: none;
+		z-index: 0;
+		mask: radial-gradient(circle, transparent 55%, #000 56%);
+		-webkit-mask: radial-gradient(circle, transparent 55%, #000 56%);
+	}
+
+	.weather-bar.weather-sun .weather-temp {
+		position: relative;
+		z-index: 1;
+	}
+
+	@keyframes weather-sun-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	/* Clouds */
+	.weather-bar.weather-cloud::before,
+	.weather-bar.weather-cloud::after {
+		content: '';
+		position: absolute;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.45);
+		pointer-events: none;
+		filter: blur(0.5px);
+	}
+
+	.weather-bar.weather-cloud::before {
+		width: 48px;
+		height: 22px;
+		left: -8%;
+		top: 35%;
+		animation: weather-cloud-drift 18s ease-in-out infinite;
+		box-shadow: 22px 4px 0 -4px rgba(255, 255, 255, 0.35);
+	}
+
+	.weather-bar.weather-cloud::after {
+		width: 38px;
+		height: 18px;
+		right: -6%;
+		top: 40%;
+		animation: weather-cloud-drift 22s ease-in-out infinite reverse;
+		opacity: 0.75;
+	}
+
+	@keyframes weather-cloud-drift {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(12px);
+		}
+	}
+
+	/* Snow */
+	.weather-bar.weather-snow::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55) 0 1px, transparent 2px),
+			radial-gradient(circle at 55% 30%, rgba(255, 255, 255, 0.45) 0 1px, transparent 2px),
+			radial-gradient(circle at 80% 55%, rgba(255, 255, 255, 0.5) 0 1px, transparent 2px),
+			radial-gradient(circle at 35% 70%, rgba(255, 255, 255, 0.4) 0 1px, transparent 2px);
+		background-size: 100% 100%;
+		animation: weather-snow-fall 2.2s linear infinite;
+		pointer-events: none;
+		border-radius: inherit;
+		opacity: 0.85;
+	}
+
+	@keyframes weather-snow-fall {
+		0% {
+			background-position: 0 0, 4px 6px, -3px 4px, 2px -2px;
+		}
+		100% {
+			background-position: 0 14px, 4px 20px, -3px 18px, 2px 12px;
+		}
+	}
+
+	.weather-bar > * {
+		position: relative;
+		z-index: 1;
 	}
 
 	.weather-status {

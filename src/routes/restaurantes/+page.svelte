@@ -423,6 +423,13 @@
 						{#if r.phone}
 							<p class="meta"><a href={`tel:${r.phone.replace(/\s+/g, '')}`}>{r.phone}</a></p>
 						{/if}
+						{#if r.tags?.length}
+							<p class="rest-tags" aria-label="Etiquetas">
+								{#each r.tags as tag (tag)}
+									<span class="tag-stamp">{tag}</span>
+								{/each}
+							</p>
+						{/if}
 						<p class="description">{r.description}</p>
 						{#if r.url}
 							<p class="card-actions">
@@ -646,6 +653,11 @@
 
 	.rest-body {
 		padding: 1.1rem 1.4rem 1.4rem;
+	}
+
+	.rest-tags {
+		margin: 0.5rem 0 0;
+		line-height: 1.5;
 	}
 
 	.meta {

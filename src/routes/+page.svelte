@@ -87,6 +87,25 @@
 	];
 	const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
 
+	let displayedPhrase = $state('');
+	let showCursor = $state(true);
+
+	onMount(() => {
+		let i = 0;
+		const interval = setInterval(() => {
+			if (i < phrase.length) {
+				displayedPhrase = phrase.slice(0, i + 1);
+				i++;
+			} else {
+				clearInterval(interval);
+				setTimeout(() => {
+					showCursor = false;
+				}, 2000);
+			}
+		}, 50);
+		return () => clearInterval(interval);
+	});
+
 	const pageTitle = 'Inicio | ¡Puxa Asturies!';
 	const pageDesc =
 		'Guía informal de Asturias: restaurantes, sidrerías, playas, pueblos y diccionario asturiano. Todo lo que necesitas pa disfrutar del Paraísu Natural.';
@@ -130,7 +149,9 @@
 </svelte:head>
 
 <div class="hero">
-	<p class="hero-phrase">{phrase}</p>
+	<p class="hero-phrase">
+		{displayedPhrase}<span class="typewriter-cursor" class:hidden={!showCursor}>|</span>
+	</p>
 	<div class="hero-flags" aria-hidden="true">
 		<!-- Bandera de Asturias -->
 		<svg class="hf" viewBox="0 0 60 40">
@@ -177,6 +198,15 @@
 	<p class="subtitle">
 		La guía que necesites pa nun perdete, comer como un xixonencu y nun pedir un café equivocáu
 	</p>
+</div>
+
+<div class="hero-divider" aria-hidden="true">
+	<svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+		<path
+			d="M0,120 L0,80 Q120,20 240,60 T480,40 T720,70 T960,30 T1200,55 T1440,45 L1440,120 Z"
+			fill="var(--color-bg)"
+		/>
+	</svg>
 </div>
 
 <main class="container">
@@ -272,7 +302,19 @@
 				desc: 'Pa que nun te miren como un bañista'
 			}
 		] as item}
-			<a href={item.href} class="nav-card">
+			<a
+				href={item.href}
+				class="nav-card"
+				onmousemove={(e) => {
+					const rect = e.currentTarget.getBoundingClientRect();
+					e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+					e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+				}}
+				onmouseleave={(e) => {
+					e.currentTarget.style.removeProperty('--mouse-x');
+					e.currentTarget.style.removeProperty('--mouse-y');
+				}}
+			>
 				<div class="icon">{item.icon}</div>
 				<h2>{item.title}</h2>
 				<p>{item.desc}</p>
@@ -303,11 +345,40 @@
 </main>
 
 <style>
+	.hero-divider {
+		margin-top: -60px;
+		position: relative;
+		z-index: 1;
+		line-height: 0;
+		pointer-events: none;
+	}
+
+	.hero-divider svg {
+		width: 100%;
+		height: 60px;
+		display: block;
+	}
+
 	.hero-phrase {
 		font-size: 0.85rem;
 		font-style: italic;
 		color: rgba(245, 240, 232, 0.5);
 		margin: 0 0 0.75rem;
+	}
+
+	.typewriter-cursor {
+		animation: blink 0.7s step-end infinite;
+		color: rgba(245, 240, 232, 0.6);
+	}
+
+	.typewriter-cursor.hidden {
+		display: none;
+	}
+
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
 	}
 
 	.hero-flags {
@@ -487,5 +558,32 @@
 	}
 	.home-stats:global(.revealed) .stats-grid .stat:nth-child(4) {
 		transition-delay: 0.25s;
+	}
+
+	/* Cursor-following radial highlight (see app.css for .nav-card positioning) */
+	.nav-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(
+			300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+			rgba(26, 107, 60, 0.08),
+			transparent 60%
+		);
+		border-radius: inherit;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.3s;
+		z-index: 0;
+	}
+	.nav-card:hover::before {
+		opacity: 1;
+	}
+	.nav-card > * {
+		position: relative;
+		z-index: 1;
 	}
 </style>

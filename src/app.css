@@ -46,6 +46,7 @@ html {
   color: var(--color-text);
   line-height: 1.75;
   scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.3s ease;
 }
 
 body { min-height: 100vh; }
@@ -74,6 +75,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.4s ease, color 0.3s ease;
 }
 
 header .container { display: flex; align-items: center; justify-content: center; }
@@ -82,7 +84,27 @@ nav { display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center; justify
 nav a { color: rgba(245, 240, 232, 0.7); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
 nav a:hover, nav a.active { color: var(--color-hero-text); background: rgba(255, 255, 255, 0.1); text-decoration: none; }
 
-.hero { background: var(--color-hero-bg); color: var(--color-hero-text); padding: 3.5rem 0 3rem; text-align: center; }
+.hero {
+  background: linear-gradient(-45deg, #1a3a2a, #0f2b3d, #1a3a2a, #2a4a35);
+  background-size: 400% 400%;
+  animation: hero-gradient 15s ease infinite;
+  color: var(--color-hero-text);
+  padding: 3.5rem 0 3rem;
+  text-align: center;
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(-45deg, #0f0f1e, #1a1a3e, #0f1f2e, #0f0f1e);
+  background-size: 400% 400%;
+  animation: hero-gradient 15s ease infinite;
+}
+
+@keyframes hero-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
 .hero .subtitle { font-size: 1.15rem; opacity: 0.8; max-width: 550px; margin: 0 auto; }
 
@@ -99,7 +121,12 @@ main { padding: 2.5rem 0 4rem; }
   border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: 0 2px 8px var(--color-shadow-soft);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
   transform-style: preserve-3d;
 }
 .card:hover {
@@ -120,6 +147,24 @@ main { padding: 2.5rem 0 4rem; }
 .card .tag { display: inline-block; background: var(--color-accent-light); color: var(--color-accent); padding: 0.2em 0.7em; border-radius: 20px; font-size: 0.78rem; font-weight: 500; }
 .card .tag.warm { background: var(--color-warm-light); color: var(--color-warm); }
 
+.tag-stamp {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border: 2px dashed var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+  margin-right: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+.tag-stamp:nth-child(even) { transform: rotate(1.5deg); }
+.tag-stamp:nth-child(3n) { transform: rotate(-3deg); }
+
 .section-note {
   background: var(--color-accent-light);
   border-left: 4px solid var(--color-accent);
@@ -127,6 +172,7 @@ main { padding: 2.5rem 0 4rem; }
   border-radius: 0 var(--radius) var(--radius) 0;
   margin: 1.5rem 0;
   font-size: 0.92rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .dict-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 1.5rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
@@ -139,12 +185,19 @@ main { padding: 2.5rem 0 4rem; }
 
 .nav-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
 .nav-card {
+  position: relative;
+  overflow: hidden;
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.75rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
   transform-style: preserve-3d;
   text-decoration: none;
   color: var(--color-text);
@@ -199,7 +252,14 @@ main a.related-link:hover {
   75% { transform: rotate(10deg); }
 }
 
-footer { background: var(--color-hero-bg); color: rgba(245, 240, 232, 0.6); text-align: center; padding: 1.5rem 0; font-size: 0.85rem; }
+footer {
+  background: var(--color-hero-bg);
+  color: rgba(245, 240, 232, 0.6);
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
 
 @media (max-width: 640px) {
   .hero h1 { font-size: 2rem; }

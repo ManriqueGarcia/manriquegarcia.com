@@ -304,15 +304,22 @@
 
 	.spotlight-modal {
 		width: min(560px, 100%);
-		background: var(--color-card);
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
 		color: var(--color-text);
 		border-radius: var(--radius, 12px);
-		border: 1px solid var(--color-border);
+		border: 1px solid rgba(255, 255, 255, 0.2);
 		box-shadow:
 			0 24px 80px rgba(0, 0, 0, 0.28),
 			0 0 0 1px rgba(255, 255, 255, 0.04) inset;
 		overflow: hidden;
 		transform-origin: top center;
+	}
+
+	:global([data-theme='dark']) .spotlight-modal {
+		background: rgba(34, 34, 58, 0.9);
+		border-color: rgba(255, 255, 255, 0.08);
 	}
 
 	.search-field {

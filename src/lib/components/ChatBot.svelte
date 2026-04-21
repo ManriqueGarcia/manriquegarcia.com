@@ -196,10 +196,12 @@
 
 			{#if loading}
 				<div class="chat-row">
-					<div class="chat-bubble chat-bubble-assistant chat-typing" aria-hidden="true">
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
+					<div class="chat-bubble chat-bubble-assistant chat-loading-skeleton" aria-hidden="true">
+						<div class="chat-skeleton">
+							<div class="skeleton-line" style="width: 85%"></div>
+							<div class="skeleton-line" style="width: 65%"></div>
+							<div class="skeleton-line" style="width: 75%"></div>
+						</div>
 					</div>
 				</div>
 			{/if}
@@ -291,12 +293,19 @@
 		max-height: 500px;
 		display: flex;
 		flex-direction: column;
-		background: var(--color-card);
-		border: 1px solid var(--color-border);
+		background: rgba(255, 255, 255, 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
 		border-radius: 16px;
 		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 		overflow: hidden;
 		animation: chat-panel-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+
+	:global([data-theme='dark']) .chat-panel {
+		background: rgba(34, 34, 58, 0.85);
+		border-color: rgba(255, 255, 255, 0.08);
 	}
 
 	@keyframes chat-panel-in {
@@ -444,41 +453,38 @@
 		transform: translateY(-1px);
 	}
 
-	.chat-typing {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.28rem;
-		padding: 0.65rem 0.85rem;
-		min-height: 2.25rem;
+	.chat-loading-skeleton {
+		padding: 0;
+		min-width: 72%;
+		max-width: 88%;
 	}
 
-	.chat-typing .dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: var(--color-text);
-		opacity: 0.35;
-		animation: chat-dot 1.1s ease-in-out infinite;
+	.chat-skeleton {
+		padding: 0.75rem 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
-	.chat-typing .dot:nth-child(2) {
-		animation-delay: 0.15s;
+	.skeleton-line {
+		height: 0.75rem;
+		background: linear-gradient(
+			90deg,
+			var(--color-border) 25%,
+			var(--color-card) 50%,
+			var(--color-border) 75%
+		);
+		background-size: 200% 100%;
+		animation: skeleton-shimmer 1.5s ease infinite;
+		border-radius: 4px;
 	}
 
-	.chat-typing .dot:nth-child(3) {
-		animation-delay: 0.3s;
-	}
-
-	@keyframes chat-dot {
-		0%,
-		60%,
-		100% {
-			opacity: 0.25;
-			transform: translateY(0);
+	@keyframes skeleton-shimmer {
+		0% {
+			background-position: 200% 0;
 		}
-		30% {
-			opacity: 0.95;
-			transform: translateY(-3px);
+		100% {
+			background-position: -200% 0;
 		}
 	}
 
