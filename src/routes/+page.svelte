@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import WeatherWidget from '$lib/components/WeatherWidget.svelte';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
+	import DailyChallenge from '$lib/components/DailyChallenge.svelte';
 
 	const SCENE_CARDS = [
 		{ emoji: '🏖️', caption: 'Playa de San Lorenzo', g1: '#3b82f6', g2: '#06b6d4' },
@@ -221,6 +222,8 @@
 		<em>culín</em>, lo del <em>escanciáu</em> y lo del <em>yes bobu</em>, vas a estar más perdíu
 		que un pulpu en un garaje.
 	</p>
+
+	<DailyChallenge />
 
 	<div class="home-weather">
 		<WeatherWidget />

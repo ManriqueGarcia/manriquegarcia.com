@@ -1,5 +1,5 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import SidraRating from '$lib/components/SidraRating.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
@@ -8,12 +8,29 @@
 	import { slugify } from '$lib/utils/slugify.js';
 	import ShareButtons from '$lib/components/ShareButtons.svelte';
 
+	/** @typedef {'Gijón centro' | 'Gijón playa' | 'Gijón otros' | 'Oviedo' | 'Rural'} RestZone */
+
+	const TAG_OPTIONS = [
+		'sidrería',
+		'parrilla',
+		'marisquería',
+		'cocina tradicional',
+		'pinchos',
+		'alta cocina',
+		'económico'
+	];
+
+	const ZONE_OPTIONS = ['Gijón centro', 'Gijón playa', 'Gijón otros', 'Oviedo', 'Rural'];
+
 	const restaurants = [
 		{
 			name: 'Casa Trabanco',
 			rating: 'sublime',
 			address: 'Ctra. de Lavandera 3255, 33350 Gijón',
 			phone: '985 136 462',
+			/** @type {RestZone} */
+			zone: 'Gijón otros',
+			tags: ['sidrería', 'cocina tradicional', 'alta cocina'],
 			description:
 				'Esto no es una sidrería. Esto ye LA sidrería. Casa Trabanco ye el Bernabéu de la sidra, el Vaticano del escanciado, el sitio donde los asturianos llevan a la xente de fuera cuando quieren dejarles la boca abierta. Producen su propia sidra (que ye una maravilla), la comida ye espectacular, y el sitio en sí — un lagar enorme rodeado de manzanos — ye pa quedase vivir. Si solo puedes ir a un sitio en toda Asturias, que sea este. Luego nos das las gracias.',
 			url: 'https://www.casatrabanco.com'
@@ -23,6 +40,8 @@
 			rating: 5,
 			address: 'C/ Valencia 20, 33210 Gijón',
 			phone: '985 39 83 30',
+			zone: 'Gijón centro',
+			tags: ['sidrería', 'pinchos'],
 			description:
 				'Sidra por la tarde con pinchos que quitan el sentíu, menú al mediodía, carta por la noche. Todo está riquísimo. Una de las sidrerías que nunca falta en nuestra ruta xixonenca. Si solo puedes ir a un sitio, ve aquí. Luego repite.',
 			url: 'http://www.elsauco.com'
@@ -32,6 +51,8 @@
 			rating: 4,
 			address: 'Roncal 1, 33208 Gijón',
 			phone: '985 154 973',
+			zone: 'Gijón otros',
+			tags: ['sidrería', 'parrilla', 'pinchos'],
 			description:
 				'Llegas, te plantas en la barra, y empiezas a picar pinchos y sidra como si no hubiera mañana. La parrilla funciona de cara al público, así que ves cómo se hace tu comida. Los choricitos y el queso cabrales están pa chuparse los deos.',
 			url: 'https://parrilla-antonio-gijon.es'
@@ -41,6 +62,8 @@
 			rating: 4,
 			address: 'Pz. de la Serena 1, 33208 Gijón',
 			phone: '985 380 447',
+			zone: 'Gijón otros',
+			tags: ['sidrería', 'pinchos', 'cocina tradicional'],
 			description:
 				'La sidra ye de primera, los pinchos nun fallan, y el menú del día merece la pena. Un clásico del Barrio de la Sidra al que siempre se vuelve.'
 		},
@@ -49,6 +72,8 @@
 			rating: 4,
 			address: 'Plaza Mayor 10, 33201 Gijón',
 			phone: '985 17 24 29',
+			zone: 'Gijón centro',
+			tags: ['sidrería', 'cocina tradicional'],
 			description:
 				'Muy céntrico (en la mismísima Plaza Mayor), sidra buena, comida muy buena. Eso sí, al estar en el meollo los precios suben un pelín. Pero oye, las vistas no te las quita nadie.',
 			url: 'https://restauranteasturianolagalana.es'
@@ -58,6 +83,8 @@
 			rating: 4,
 			address: 'C/ Domingo Juliana 6, 33212 Gijón',
 			phone: '984 293 447',
+			zone: 'Gijón playa',
+			tags: ['sidrería', 'cocina tradicional', 'pinchos'],
 			description:
 				'Aquí se viene a por el cachopo: bistec + jamón + queso + pimientos, rebozado y con patatas fritas. Un cuarto de cachopo ya es para dos personas. ¿Uno entero? Solo si llevas tres días sin comer o eres un asturiano de pura cepa.',
 			url: 'https://restaurante-celorio.es'
@@ -67,6 +94,8 @@
 			rating: 4,
 			address: 'Ctra. de la Carbonera, 33209 Gijón',
 			phone: '985 380 471',
+			zone: 'Gijón otros',
+			tags: ['sidrería', 'cocina tradicional'],
 			description:
 				'Los callos de Casa Ferino son legendarios. Si vas a comer los encontrarás seguro, pero por la noche… nun te lo garantizo, güaje. Vuelan.',
 			url: 'http://www.casaferino.com'
@@ -76,6 +105,8 @@
 			rating: 5,
 			address: 'Ctra. AS-17 Km 26, 33429 Bobes, Siero',
 			phone: '985 985 304',
+			zone: 'Rural',
+			tags: ['sidrería', 'parrilla', 'cocina tradicional'],
 			description:
 				'Está en Siero (un poco fuera de Xixón, pero merece la escapada). Parrilla tipo argentina que ta pa morirse, decoración guapísima, ambiente acogedor. Ye de esos sitios de los que sales diciendo "hay que volver".',
 			url: 'https://elquesu.es'
@@ -85,6 +116,8 @@
 			rating: 3,
 			address: 'C/ San Bernardo 13, 33201 Gijón',
 			phone: '985 17 22 47',
+			zone: 'Gijón centro',
+			tags: ['sidrería', 'cocina tradicional', 'económico'],
 			description:
 				'Comida típica asturiana, sin florituras. Vas, comes bien, y vuelves a casa contentu. A veces no hace falta más, ¿no?',
 			url: 'http://www.sidreriaelglobo.es'
@@ -94,6 +127,8 @@
 			rating: 4,
 			address: 'Av. de la Costa 32, 33205 Gijón',
 			phone: '985 161 499',
+			zone: 'Gijón playa',
+			tags: ['sidrería', 'parrilla'],
 			description:
 				'Especialidad en carnes argentinas. Si te gusta un buen chuletón o una entraña a la parrilla, este ye tu sitio. La mezcla de sidra asturiana con corte argentino suena rara pero funciona de maravilla.',
 			url: 'http://sidrerialacosta.com'
@@ -103,6 +138,8 @@
 			rating: 4,
 			address: 'Av. Pablo Iglesias 23, 33205 Gijón',
 			phone: '985 131 487',
+			zone: 'Gijón playa',
+			tags: ['sidrería', 'cocina tradicional'],
 			description:
 				'El rabo de toro de Cabranes ye pa llorar de la emoción. Si está en carta, pídelo. Si no está, llora igualmente y pide otra cosa, que too ta ricu.',
 			url: 'https://sidreriacabranes.es'
@@ -112,16 +149,51 @@
 	/** @type {'all' | 'sublime' | '5' | '4' | '3'} */
 	let activeFilter = $state('all');
 
-	let filtered = $derived(
-		activeFilter === 'all'
-			? restaurants
-			: restaurants.filter((r) => {
-					if (activeFilter === 'sublime') return r.rating === 'sublime';
-					if (activeFilter === '5') return r.rating === 5;
-					if (activeFilter === '4') return r.rating === 4;
-					if (activeFilter === '3') return r.rating === 3;
-					return false;
-				})
+	/** @type {Set<string>} */
+	let selectedTags = $state(new Set());
+
+	/** @type {string | null} */
+	let selectedZone = $state(null);
+
+	function toggleTag(tag) {
+		const next = new Set(selectedTags);
+		if (next.has(tag)) next.delete(tag);
+		else next.add(tag);
+		selectedTags = next;
+	}
+
+	function clearAllFilters() {
+		activeFilter = 'all';
+		selectedTags = new Set();
+		selectedZone = null;
+	}
+
+	let filtered = $derived.by(() => {
+		let list =
+			activeFilter === 'all'
+				? restaurants
+				: restaurants.filter((r) => {
+						if (activeFilter === 'sublime') return r.rating === 'sublime';
+						if (activeFilter === '5') return r.rating === 5;
+						if (activeFilter === '4') return r.rating === 4;
+						if (activeFilter === '3') return r.rating === 3;
+						return false;
+					});
+		if (selectedZone) {
+			list = list.filter((r) => r.zone === selectedZone);
+		}
+		if (selectedTags.size > 0) {
+			list = list.filter((r) => [...selectedTags].every((t) => r.tags.includes(t)));
+		}
+		return list;
+	});
+
+	let hasActiveFilters = $derived(
+		activeFilter !== 'all' || selectedTags.size > 0 || selectedZone !== null
+	);
+
+	let filterListKey = $derived(
+		`${activeFilter}|${selectedZone ?? ''}|${[...selectedTags].sort().join(',')}`
 	);
 
 	const pageTitle = 'Restaurantes y Sidrerías | ¡Puxa Asturies!';
@@ -254,7 +326,7 @@
 
 	<h2>Nuestras recomendaciones</h2>
 
-	<div class="filter-bar" role="group" aria-label="Filtrar por valoración">
+	<div class="filter-bar filter-bar--rating" role="group" aria-label="Filtrar por valoración">
 		<button
 			type="button"
 			class="filter-btn"
@@ -297,10 +369,51 @@
 		</button>
 	</div>
 
-	{#key activeFilter}
+	<div class="filter-bar filter-bar--tags" aria-label="Filtrar por etiqueta y zona">
+		<div class="filter-row tags-row">
+			{#each TAG_OPTIONS as tag (tag)}
+				<button
+					type="button"
+					class="filter-pill"
+					class:active={selectedTags.has(tag)}
+					onclick={() => toggleTag(tag)}
+				>
+					{tag}
+				</button>
+			{/each}
+		</div>
+
+		<div class="filter-row zone-row">
+			<label class="zone-label" for="zone-filter">Zona</label>
+			<select
+				id="zone-filter"
+				class="zone-select"
+				value={selectedZone ?? ''}
+				onchange={(e) => {
+					const v = e.currentTarget.value;
+					selectedZone = v === '' ? null : v;
+				}}
+			>
+				<option value="">Todas las zonas</option>
+				{#each ZONE_OPTIONS as z (z)}
+					<option value={z}>{z}</option>
+				{/each}
+			</select>
+		</div>
+
+		<p class="filter-count">
+			Mostrando {filtered.length} de {restaurants.length} restaurantes
+		</p>
+
+		{#if hasActiveFilters}
+			<button type="button" class="filter-clear" onclick={clearAllFilters}>Quitar filtros</button>
+		{/if}
+	</div>
+
+	{#key filterListKey}
 		<div class="card-grid">
 			{#each filtered as r, i (r.name)}
-				<article class="rest-card" in:fly={{ y: 20, duration: 300, delay: i * 50 }}>
+				<article class="rest-card" in:fade={{ duration: 240, delay: Math.min(i * 35, 180) }} out:fade={{ duration: 180 }}>
 					<div class="rest-header">
 						<h3>{r.name}</h3>
 						<SidraRating rating={r.rating} />
@@ -371,11 +484,110 @@
 </main>
 
 <style>
-	.filter-bar {
+	.filter-bar--rating {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin: 1.25rem 0 1.5rem;
+	}
+
+	.filter-bar--tags {
+		margin: 1.5rem 0;
+	}
+
+	.filter-row {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.filter-row.tags-row {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		padding-bottom: 0.2rem;
+		margin-bottom: 0.75rem;
+		scrollbar-width: thin;
+	}
+
+	@media (min-width: 768px) {
+		.filter-row.tags-row {
+			flex-wrap: wrap;
+			overflow-x: visible;
+			padding-bottom: 0;
+		}
+	}
+
+	.filter-pill {
+		padding: 0.35rem 0.85rem;
+		border-radius: 20px;
+		font-size: 0.82rem;
+		flex-shrink: 0;
+		border: 1px solid var(--color-border);
+		background: var(--color-card);
+		cursor: pointer;
+		transition: all 0.2s;
+		color: var(--color-text);
+		font: inherit;
+	}
+
+	.filter-pill:hover {
+		border-color: var(--color-accent);
+	}
+
+	.filter-pill.active {
+		background: var(--color-accent);
+		color: white;
+		border-color: var(--color-accent);
+	}
+
+	.zone-row {
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5rem 0.75rem;
+	}
+
+	.zone-label {
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+		font-weight: 600;
+	}
+
+	.zone-select {
+		min-width: min(100%, 12rem);
+		padding: 0.4rem 0.65rem;
+		border-radius: 8px;
+		border: 1px solid var(--color-border);
+		background: var(--color-card);
+		color: var(--color-text);
+		font: inherit;
+		font-size: 0.88rem;
+		cursor: pointer;
+	}
+
+	.filter-count {
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+		margin: 0 0 1rem;
+	}
+
+	.filter-clear {
+		appearance: none;
+		border: none;
+		background: transparent;
+		color: var(--color-accent);
+		font: inherit;
+		font-weight: 600;
+		font-size: 0.88rem;
+		cursor: pointer;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		padding: 0;
+		margin: -0.35rem 0 0;
+	}
+
+	.filter-clear:hover {
+		opacity: 0.85;
 	}
 
 	.filter-btn {
